@@ -1,0 +1,22 @@
+CREATE TABLE sc_tmp.po_detail_lampiran (
+	nodok bpchar(20) NOT NULL,
+	nodokref bpchar(20) NOT NULL,
+	idfaktur bpchar(100) NULL,
+	id SERIAL,
+	keterangan bpchar(100) NULL,
+	nbrutto numeric(18, 2) NULL,
+	ndiskon numeric(18, 2) NULL,
+	nnetto numeric(18, 2) NULL,
+	typeservis bpchar(20) NULL,
+	inputdate timestamp NULL,
+	inputby bpchar(20) NULL,
+	updatedate timestamp NULL,
+	updateby varchar(20) NULL,
+	ref_type bpchar(12) NULL,
+	status bpchar(12) NULL,
+	exppn bpchar(18) NULL,
+	pkp bpchar(12) NULL,
+	ndpp numeric(18, 2) NULL,
+	nppn numeric(18, 2) NULL,
+	CONSTRAINT po_detail_lampiran_pkey PRIMARY KEY (id, nodok)
+);

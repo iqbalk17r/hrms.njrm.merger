@@ -1,0 +1,80 @@
+2024-05-07 21:44:57
+
+BEGIN EXECUTING "git remote set-url origin https://nusantaragroup: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@github.com/itcenternusantaragroup/hrms.nusa 2>&1"...
+
+[
+    "fatal: detected dubious ownership in repository at 'C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa'",
+    "'C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa' is owned by:",
+    "\tDESKTOP-37H9DVD\/NUSA (S-1-5-21-1830394350-2951484638-1514806529-1001)",
+    "but the current user is:",
+    "\tNT AUTHORITY\/SYSTEM (S-1-5-18)",
+    "To add an exception for this directory, call:",
+    "",
+    "\tgit config --global --add safe.directory C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa"
+]
+
+BEGIN EXECUTING "git rev-parse HEAD 2>&1"...
+
+[
+    "fatal: detected dubious ownership in repository at 'C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa'",
+    "'C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa' is owned by:",
+    "\tDESKTOP-37H9DVD\/NUSA (S-1-5-21-1830394350-2951484638-1514806529-1001)",
+    "but the current user is:",
+    "\tNT AUTHORITY\/SYSTEM (S-1-5-18)",
+    "To add an exception for this directory, call:",
+    "",
+    "\tgit config --global --add safe.directory C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa"
+]
+
+BEGIN EXECUTING "git fetch 2>&1"...
+
+[
+    "fatal: detected dubious ownership in repository at 'C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa'",
+    "'C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa' is owned by:",
+    "\tDESKTOP-37H9DVD\/NUSA (S-1-5-21-1830394350-2951484638-1514806529-1001)",
+    "but the current user is:",
+    "\tNT AUTHORITY\/SYSTEM (S-1-5-18)",
+    "To add an exception for this directory, call:",
+    "",
+    "\tgit config --global --add safe.directory C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa"
+]
+
+BEGIN EXECUTING "git status -uno 2>&1"...
+
+[
+    "fatal: detected dubious ownership in repository at 'C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa'",
+    "'C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa' is owned by:",
+    "\tDESKTOP-37H9DVD\/NUSA (S-1-5-21-1830394350-2951484638-1514806529-1001)",
+    "but the current user is:",
+    "\tNT AUTHORITY\/SYSTEM (S-1-5-18)",
+    "To add an exception for this directory, call:",
+    "",
+    "\tgit config --global --add safe.directory C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa"
+]
+
+BEGIN EXECUTING "git reset --hard origin/main 2>&1"...
+
+[
+    "fatal: detected dubious ownership in repository at 'C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa'",
+    "'C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa' is owned by:",
+    "\tDESKTOP-37H9DVD\/NUSA (S-1-5-21-1830394350-2951484638-1514806529-1001)",
+    "but the current user is:",
+    "\tNT AUTHORITY\/SYSTEM (S-1-5-18)",
+    "To add an exception for this directory, call:",
+    "",
+    "\tgit config --global --add safe.directory C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa"
+]
+
+BEGIN EXECUTING "git log --pretty=format:%C(auto)%H%n%an%n%ai%n%s%n%b### fatal: detected dubious ownership in repository at 'C:/Bitnami/wappstack-5.5.35-1/apache2/htdocs/hrms.nusa'^..HEAD 2>&1"...
+
+[
+    "fatal: detected dubious ownership in repository at 'C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa'",
+    "'C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa' is owned by:",
+    "\tDESKTOP-37H9DVD\/NUSA (S-1-5-21-1830394350-2951484638-1514806529-1001)",
+    "but the current user is:",
+    "\tNT AUTHORITY\/SYSTEM (S-1-5-18)",
+    "To add an exception for this directory, call:",
+    "",
+    "\tgit config --global --add safe.directory C:\/Bitnami\/wappstack-5.5.35-1\/apache2\/htdocs\/hrms.nusa"
+]
+

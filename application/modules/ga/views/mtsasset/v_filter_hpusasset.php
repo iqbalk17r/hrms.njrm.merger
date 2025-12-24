@@ -1,0 +1,95 @@
+<script type="text/javascript">
+            $(function() {
+                $('#example1').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+				$("#example2").dataTable();
+				$("#example3").dataTable();
+				$("#example4").dataTable();
+
+				$("#kdsubgroup").chained("#kdgroup");
+				
+			});
+</script>
+
+<link href="<?php echo base_url('assets/css/datepicker.css');?>" rel="stylesheet" type="text/css" />
+<div class="pull-right">Versi: <?php echo $version; ?></div>
+<legend><?php echo $title;?></legend>
+				<div class="row">
+                    <div class="col-xs-6">
+						<div class="box">
+							<div class="box-header">
+								<div class="col-xs-12">
+									<h4>FILTER WILAYAH & PERIODE</h4>
+								</div>
+							</div>
+                            <div class="box-body">
+								<div class="form-horizontal">
+									<form action="<?php echo site_url('ga/mtsasset/flist_hapusasset');?>" name="form" role="form" method="post">										
+										<div class="form-group">
+											<label class="col-lg-3">Wilayah</label>	
+												<div class="col-lg-9">    
+												<select class="form-control input-sm" name="kdcabang" id="kdcabang"  required>
+													<option value="">---PILIH KANTOR CABANG PENEMPATAN--</option> 
+													<option value="ALL">---ALL --</option> 
+													<?php foreach($list_kanwil as $sc){?>					  
+													  <option value="<?php echo trim($sc->kdcabang);?>" ><?php echo trim($sc->kdcabang).' || '.trim($sc->desc_cabang);?></option>						  
+													<?php }?>
+												</select>
+												</div>
+										</div>
+										<!--area-->
+										<div class="form-group">
+											<label class="col-lg-3">Jenis & Kode Perawatan</label>	
+												<div class="col-lg-9">    
+												<select class="form-control input-sm" name="kdgroup" id="kdgroup"  required>
+													<option value="">---PILIH JENIS KD GROUP--</option> 
+													<?php foreach($list_scgroup as $sc){?>					  
+													  <option value="<?php echo trim($sc->kdgroup);?>" ><?php echo trim($sc->kdgroup).' || '.trim($sc->nmgroup);?></option>						  
+													<?php }?>
+												</select>
+												</div>
+										</div>
+										<div class="form-group">
+											<label class="col-lg-3">Jenis & Kode Perawatan</label>	
+												<div class="col-lg-9">    
+												<select class="form-control input-sm" name="kdsubgroup" id="kdsubgroup"  required>
+													<option value="">---PILIH JENIS KD SUB GROUP--</option> 
+													<?php foreach($list_scsubgroup as $sc){?>					  
+													  <option value="<?php echo trim($sc->kdsubgroup);?>" class="<?php echo trim($sc->kdgroup); ?>"><?php echo trim($sc->kdsubgroup).' || '.trim($sc->nmsubgroup);?></option>						  
+													<?php }?>
+												</select>
+												</div>
+										</div>
+
+										<div class="form-group"> 
+											<div class="col-lg-4">
+												<button type='submit' class='btn btn-primary' ><i class="glyphicon glyphicon-search"></i> Proses</button>
+											   <!-- <button id="tampilkan" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> Tampilkan</button>-->
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+	
+
+<script>
+
+  
+
+	
+	//Date range picker
+    $('#tgl').daterangepicker();
+
+  
+
+</script>

@@ -1,0 +1,39 @@
+----------------------------
+[Customer Explanation]
+
+
+
+----------------------------
+[General Info]
+
+Application: Stimulsoft Reports
+Framework:   v4.0.30319
+Version:     Version: 2015.2.0 from 30 September 2015
+MachineName: DESKTOP-UQDAM9T
+OSVersion:   Microsoft Windows NT 6.2.9200.0
+UserName:    FIKY-PC
+
+----------------------------
+[Exception Info]
+Message:     Root element is missing.
+
+Source:      System.Xml
+
+StackTrace:
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at Stimulsoft.Base.Serializing.StiSerializing.Deserialize(Object obj, Stream stream, String application) in d:\Stimulsoft\Stimulsoft.Reports\Stimulsoft.Base\Serializing\StiSerializing.cs:line 1249
+   at Stimulsoft.Report.SaveLoad.StiXmlReportSLService.Load(StiReport report, Stream stream) in d:\Stimulsoft\Stimulsoft.Reports\Stimulsoft.Report\SaveLoad\StiXmlReportSLService.cs:line 107
+   at Stimulsoft.Report.StiReport.Load(StiReportSLService service, Stream stream) in d:\Stimulsoft\Stimulsoft.Reports\Stimulsoft.Report\StiReport.SaveLoad.cs:line 1709
+   at Stimulsoft.Report.StiReport.Load(Stream stream) in d:\Stimulsoft\Stimulsoft.Reports\Stimulsoft.Report\StiReport.SaveLoad.cs:line 1566
+   at Stimulsoft.Report.StiReport.Load(String path) in d:\Stimulsoft\Stimulsoft.Reports\Stimulsoft.Report\StiReport.SaveLoad.cs:line 1624
+   at Stimulsoft.Report.Design.StiDesignerControl.OpenFile(String name) in d:\Stimulsoft\Stimulsoft.Reports\Stimulsoft.Report.Design\StiDesignerControl.cs:line 946
+   at Stimulsoft.Report.Design.StiActions.MainMenu.InvokeRecentFile(StiDesignerControl designer, StiRecentFile recentFile) in d:\Stimulsoft\Stimulsoft.Reports\Stimulsoft.Report.Design\StiActions.cs:line 1246
+
+----------------------------
+[Assemblies]
+mscorlib, Version = 4.0.0.0
+Stimulsoft.Base, Version = 2015.2.0.0
+Stimulsoft.Report, Version = 2015.2.0.0
+Stimulsoft.Report.Design, Version = 2015.2.0.0
+System.Windows.Forms, Version = 4.0.0.0

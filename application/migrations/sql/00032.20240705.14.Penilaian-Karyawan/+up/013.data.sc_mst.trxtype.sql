@@ -1,0 +1,19 @@
+INSERT INTO sc_mst.trxtype (kdtrx, jenistrx, uraian)
+    VALUES
+('A', 'PKPA', 'PERLU PERSETUJUAN'),
+('A1','PKPA','PERLU PERSETUJUAN ATASAN'),
+('A2','PKPA','PERLU PERSETUJUAN ATASAN'),
+('E', 'PKPA', 'EDIT'),
+('I', 'PKPA', 'INPUT'),
+('P', 'PKPA', 'DISETUJUI/PRINT'),
+('F', 'PKPA', 'FINAL'),
+('D', 'PKPA', 'DELETE'),
+('R', 'PKPA', 'REALISASI'),
+('G', 'PKPA', 'PROSES GENERATE'),
+('C', 'PKPA', 'BATAL'),
+('R1', 'PKPA', 'PENILAIAN ATASAN'),
+('R2', 'PKPA', 'PENILAIAN ATASAN'),
+('R3', 'PKPA', 'PROSES PERHITUNGAN'),
+('RM', 'PKPA', 'PROSES REMIDI')
+ON CONFLICT
+    DO NOTHING ;

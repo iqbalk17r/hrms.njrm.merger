@@ -1,0 +1,143 @@
+{
+    "infoumum": [
+        {
+            "nik": "0522.504    ",
+            "nmlengkap": "John Doe",
+            "jk": "Laki-laki",
+            "tmptlahir": "KAB. JOMBANG",
+            "tgllahir": "1998-12-03",
+            "noktp": "3525050312981212313102                                  ",
+            "tglmasukkerja": "2022-05-10",
+            "nmagama": "ISLAM",
+            "alamatktp": "tes12442113",
+            "nmnikah": "BELUM MENIKAH",
+            "nmjabatan": "PIC OPERASIONAL IT",
+            "nmdept": "IT GROUP",
+            "nodok": "STSPG1749   ",
+            "kdkepegawaian": "P3    ",
+            "nmatasan": "Gilrandy s",
+            "nmatasan2": "Sumantri",
+            "tgl_mulai": "2024-05-10",
+            "tgl_selesai": "2025-05-09",
+            "tgl_cetak": "2025-04-09",
+            "row_number": "3",
+            "selisih_tgl": "12 bulan",
+            "tgl_mulai1": "10 Mei 2024",
+            "tgl_selesai1": "9 Mei 2025",
+            "tglmasukkerja1": "10 Mei 2022"
+        }
+    ],
+    "kondite": [
+        {
+            "ttlvalueip": "0",
+            "ttlvaluesd": "0",
+            "ttlvalueal": "0",
+            "ttlvaluetl": "0",
+            "ttlvalueipa": "0"
+        }
+    ],
+    "kpi": {
+        "month1": "a.  Juni",
+        "poin1": "92",
+        "month2": "b.  Mei",
+        "poin2": "94",
+        "month3": "c.  April",
+        "poin3": "94",
+        "month4": "d.  Maret",
+        "poin4": "84.3",
+        "month5": "e.  Februari",
+        "poin5": "94",
+        "month6": "f.  Januari",
+        "poin6": "92",
+        "month7": "g.  Desember",
+        "poin7": "92",
+        "month8": "h.  November",
+        "poin8": "92",
+        "month9": "i.  Oktober",
+        "poin9": "92",
+        "month10": "j.  September",
+        "poin10": "92",
+        "month11": "k.  Agustus",
+        "poin11": "92",
+        "month12": "l.  Juli",
+        "poin12": "92"
+
+    },
+    "detail": [
+        {
+            "kddok": "PK000000023",
+            "kdcontract": "STSPG1749           ",
+            "summary": "PKWT",
+            "description": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\r\n",
+            "status": "A2          ",
+            "approvedate": "2025-04-08 19:54:03",
+            "approveby": "Disetujui Sistem         "
+        }
+    ],
+    "aspek": [
+        {
+            "no": "1",
+            "kdcontract": "STSPG1749           ",
+            "nik": "0522.504    ",
+            "aspect_question": "Kemampuan Kerja",
+            "score": "3",
+            "desc_aspect": "Qwe"
+        },
+        {
+            "no": "2",
+            "kdcontract": "STSPG1749           ",
+            "nik": "0522.504    ",
+            "aspect_question": "Inisatif dan Kreatifitas",
+            "score": "1",
+            "desc_aspect": "Qweq"
+        },
+        {
+            "no": "3",
+            "kdcontract": "STSPG1749           ",
+            "nik": "0522.504    ",
+            "aspect_question": "Tanggung jawab",
+            "score": "2",
+            "desc_aspect": "Eqeq"
+        },
+        {
+            "no": "4",
+            "kdcontract": "STSPG1749           ",
+            "nik": "0522.504    ",
+            "aspect_question": "Kerjasama",
+            "score": "1",
+            "desc_aspect": "Qweqw"
+        },
+        {
+            "no": "5",
+            "kdcontract": "STSPG1749           ",
+            "nik": "0522.504    ",
+            "aspect_question": "Ketelitian",
+            "score": "1",
+            "desc_aspect": "Qewq"
+        },
+        {
+            "no": "6",
+            "kdcontract": "STSPG1749           ",
+            "nik": "0522.504    ",
+            "aspect_question": "Disiplin",
+            "score": "1",
+            "desc_aspect": ""
+        },
+        {
+            "no": "7",
+            "kdcontract": "STSPG1749           ",
+            "nik": "0522.504    ",
+            "aspect_question": "Sikap terhadap atasan",
+            "score": "3",
+            "desc_aspect": ""
+        }
+    ],
+    "option": {
+        "approval1": "Merry Chrissinda",
+        "approval1_job1": "D",
+        "approval2": "So,chandra Husodo,ir",
+        "approval2_job2": "GM",
+        "approval3": "Sheila Rahma Yunita",
+        "approval3_job3": "HRGA"
+    }
+}

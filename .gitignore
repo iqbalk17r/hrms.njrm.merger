@@ -1,0 +1,22 @@
+/index.php
+application/config/config.php
+application/config/database.php
+application/logs/
+assets/archive/
+assets/attachment/
+assets/db_absen web/
+assets/db_absen/
+assets/export_directory/
+assets/files/
+assets/img/profile/
+assets/img/notifpk/
+assets/img/slider/
+assets/import_directory/
+database/*.backup
+**/backup/
+/.idea
+application/libraries/fiky_ddos_protector/anti_ddos/files/check.txt
+assets/captcha/**
+.history/
+.vscode/
+assets/uploads

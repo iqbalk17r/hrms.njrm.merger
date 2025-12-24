@@ -1,0 +1,1 @@
+update sc_mst.nomor set prefix='PAS' where dokumen='PERAWATAN-ASSET';

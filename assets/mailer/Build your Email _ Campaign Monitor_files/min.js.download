@@ -1,0 +1,42 @@
+var require = {
+	"urlArgs": "v=1576110099",
+	"waitSeconds": 0,
+	"paths": {
+		"jquery": "vendor/jquery-3.3.1.min",
+		"vendor/ckeditor/ckeditor": "vendor/ckeditor_4.5.6/ckeditor",
+		"pikaday": "vendor/pikaday-1.8.0/pikaday"
+	},
+	map: {
+        "*": { "angular": "vendor/angular" }
+    },
+	"shim": {
+		"vendor/ckeditor/ckeditor": {
+			"exports": "CKEDITOR"
+		},
+		"vendor/angular": {
+			"exports": "angular",
+			"deps": ["jquery"]
+		}
+	},
+	"packages": []
+};
+
+require.bundles = {
+	"angular.min": [
+		"vendor/angular",
+		"vendor/angular-sanitize",
+		"vendor/angular-animate",
+		"vendor/angular-route",
+		"vendor/angular-cookies"
+	],
+	"main.min": [
+		"modules/emailbuilder/main"
+	],
+	"codemirror.min": [
+		"vendor/codemirror/lib/codemirror",
+		"vendor/codemirror/mode/htmlmixed/htmlmixed",
+		"vendor/codemirror/addon/selection/active-line"
+	]
+};
+
+

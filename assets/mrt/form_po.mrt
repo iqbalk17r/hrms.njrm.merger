@@ -1,0 +1,1053 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <PO Ref="2" type="Stimulsoft.Report.Dictionary.StiJsonDatabase" isKey="true">
+        <Alias>PO</Alias>
+        <Key />
+        <Name>PO</Name>
+        <PathData>D:\PT. Nusa - NBI\Form Mrt\PO.json</PathData>
+      </PO>
+    </Databases>
+    <DataSources isList="true" count="2">
+      <detail Ref="3" type="DataTableSource" isKey="true">
+        <Alias>detail</Alias>
+        <Columns isList="true" count="40">
+          <value>branch,System.String</value>
+          <value>nodok,System.String</value>
+          <value>kdgroup,System.String</value>
+          <value>kdsubgroup,System.String</value>
+          <value>stockcode,System.String</value>
+          <value>loccode,System.String</value>
+          <value>nodokref,System.String</value>
+          <value>desc_barang,System.String</value>
+          <value>satkecil,System.String</value>
+          <value>satminta,System.String</value>
+          <value>qtyreceipt,System.String</value>
+          <value>qtyreceiptkecil,System.String</value>
+          <value>disc2,System.String</value>
+          <value>disc4,System.String</value>
+          <value>exppn,System.String</value>
+          <value>ttldiskon,System.String</value>
+          <value>ttlppn,System.String</value>
+          <value>keterangan,System.String</value>
+          <value>inputdate,System.String</value>
+          <value>inputby,System.String</value>
+          <value>updatedate,System.String</value>
+          <value>updateby,System.String</value>
+          <value>approvaldate,System.String</value>
+          <value>approvalby,System.String</value>
+          <value>status,System.String</value>
+          <value>pkp,System.String</value>
+          <value>nmbarang,System.String</value>
+          <value>nmsatkecil,System.String</value>
+          <value>nmsatbesar,System.String</value>
+          <value>rowselect,System.String</value>
+          <value>ketstatus,System.String</value>
+          <value>qtykecil,System.Byte</value>
+          <value>disc1,System.Double</value>
+          <value>ttlbrutto,System.Double</value>
+          <value>ttlnetto,System.Double</value>
+          <value>unitprice,System.Double</value>
+          <value>disc3,System.Byte</value>
+          <value>id,System.Byte</value>
+          <value>ttldpp,System.Int32</value>
+          <value>qtyminta,System.Byte</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>fda02a102e5c4569abe6ee55118f9c02</Key>
+        <Name>detail</Name>
+        <NameInSource>PO.detail</NameInSource>
+      </detail>
+      <master Ref="4" type="DataTableSource" isKey="true">
+        <Alias>master</Alias>
+        <Columns isList="true" count="45">
+          <value>branch,System.String</value>
+          <value>nodok,System.String</value>
+          <value>nodokref,System.String</value>
+          <value>loccode,System.String</value>
+          <value>kdgroupsupplier,System.String</value>
+          <value>kdsupplier,System.String</value>
+          <value>kdsubsupplier,System.String</value>
+          <value>kdcabangsupplier,System.String</value>
+          <value>pkp,System.String</value>
+          <value>disc2,System.String</value>
+          <value>disc4,System.String</value>
+          <value>exppn,System.String</value>
+          <value>ttldiskon,System.String</value>
+          <value>ttlppn,System.String</value>
+          <value>payterm,System.String</value>
+          <value>keterangan,System.String</value>
+          <value>inputby,System.String</value>
+          <value>updateby,System.String</value>
+          <value>approvalby,System.String</value>
+          <value>hangusdate,System.String</value>
+          <value>hangusby,System.String</value>
+          <value>canceldate,System.String</value>
+          <value>cancelby,System.String</value>
+          <value>nodoktmp,System.String</value>
+          <value>nmsupplier,System.String</value>
+          <value>nmsubsupplier,System.String</value>
+          <value>addsupplier,System.String</value>
+          <value>kdcabang,System.String</value>
+          <value>phone2,System.String</value>
+          <value>email,System.String</value>
+          <value>ownsupplier,System.String</value>
+          <value>ketstatus,System.String</value>
+          <value>itemtype,System.String</value>
+          <value>disc1,System.Double</value>
+          <value>ttlbrutto,System.Double</value>
+          <value>ttlnetto,System.Double</value>
+          <value>updatedate,System.DateTime</value>
+          <value>status,System.Char</value>
+          <value>fax,System.Byte</value>
+          <value>disc3,System.Byte</value>
+          <value>inputdate,System.DateTime</value>
+          <value>phone1,System.Int32</value>
+          <value>ttldpp,System.Int32</value>
+          <value>podate,System.DateTime</value>
+          <value>approvaldate,System.DateTime</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>dad9940ef0734634bd0df2acc464e250</Key>
+        <Name>master</Name>
+        <NameInSource>PO.master</NameInSource>
+      </master>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Resources isList="true" count="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <Key>3d4f44564c3b4054a63bfd1f23d737cb</Key>
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="5" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="3">
+        <DataBand1 Ref="6" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,0.4,20,6</ClientRectangle>
+          <Components isList="true" count="22">
+            <Text43 Ref="7" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.2,0,12.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>c7ac2863cbc04afe98dcf2bbde81ea56</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text43</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>PT. NUSANTARA JAYA RAYA MUJUR</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text43>
+            <Text44 Ref="8" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.2,0.6,12.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>d798448fc85d4117b8f2dc7e14a32bec</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text44</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Jl. Margomulyo Indah II Blok A No. 15, Surabaya</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text44>
+            <Text45 Ref="9" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.2,1,12.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>2cf563dd22254eb6ba8eaa23a2f30644</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text45</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>&lt;b&gt;Phone&lt;/b&gt; : 031-7491856 | &lt;b&gt;Fax&lt;/b&gt; : 031-7480188</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text45>
+            <Text1 Ref="10" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.8,1.8,6.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>PURCHASE ORDER</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+            <Text2 Ref="11" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.6,2.4,10.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>&lt;b&gt;Number :&lt;/b&gt; {master.nodok} | &lt;b&gt;PO Date :&lt;/b&gt; {master.podate}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+            <Text3 Ref="12" type="Text" isKey="true">
+              <Border>Top, Right, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>[191:191:191]</Brush>
+              <ClientRectangle>0.4,3,8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>KEPADA SUPPLIER :</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text3>
+            <Text4 Ref="13" type="Text" isKey="true">
+              <Border>Top, Right, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.4,3.6,8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>{master.nmsubsupplier}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text4>
+            <Text5 Ref="14" type="Text" isKey="true">
+              <Border>Top, Right, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.4,4,8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>ea0d93b09f864d8b8ce1d6842cccfcdd</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>TELP: {master.phone1}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text5>
+            <Text6 Ref="15" type="Text" isKey="true">
+              <Border>Top, Right, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.4,4.4,8,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>a5d8552da33044be9330a608915ab7e5</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>ALAMAT: {master.addsupplier}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text6>
+            <Text7 Ref="16" type="Text" isKey="true">
+              <Border>Top, Left, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>[191:191:191]</Brush>
+              <ClientRectangle>0.2,3,0.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text7>
+            <Text8 Ref="17" type="Text" isKey="true">
+              <Border>Top, Left, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,3.6,0.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>57d78533438f44f192dd0ac4af7e48ee</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text8>
+            <Text9 Ref="18" type="Text" isKey="true">
+              <Border>Top, Left, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,4,0.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>5a7147b5d71341f39c4a63c6fac3a272</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text9>
+            <Text10 Ref="19" type="Text" isKey="true">
+              <Border>Top, Left, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,4.4,0.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>96fb61c37062401cab714b7b58c5ad44</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text10>
+            <Text11 Ref="20" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>0.2,5.4,3.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Kode Barang</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text11>
+            <Text12 Ref="21" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>3.8,5.4,6.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Guid>a8e93ece771949d2ac4e6ac2f01a48d3</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Nama Barang
+</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text12>
+            <Text13 Ref="22" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>10.2,5.4,1.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Guid>0498194824694d8481ab7f1676b6ef2e</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Jumlah</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text13>
+            <Text14 Ref="23" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>12,5.4,1.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Guid>10658135e6554703a19558c9134cce6b</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Satuan</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text14>
+            <Text15 Ref="24" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>13.8,5.4,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Guid>6186f58558984adeab0567c960e5fd36</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Harga Satuan</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text15>
+            <Text16 Ref="25" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>16.8,5.4,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Guid>a795f7a43ce64a779ccc5da5dc07b56a</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Total Harga</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text16>
+            <Image1 Ref="26" type="Image" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>1.2,0,1.6,1.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageBytes>iVBORw0KGgoAAAANSUhEUgAAADwAAAArCAMAAAAT8RtjAAAAolBMVEVHcEwBYEsBYEtRgVhmgjsB
+YUsHZE8PaFQCYUwFYk4EYk0DYU3YrwsOZ1MDYU3btiQDYUwDYUwBYEsBYEsMZVEFYk3XrgYCYEsc
+cFwDYk3XrgYJZVADYUwEYU0ldWMQaVUJZFDXrgYPZlIIZE8KZVHWrADXrQLXrQMGY0/XrwnWrADX
+rgXWrADXrgbXrgYGY07WrQHWrACYtZ7WrQEBYEvWrADJoMYuAAAANHRSTlMA9foBA+cwIps7e7ES
+EMYLz+681hlDulcH3VxwpWcOupJJCk5c1a7Ihxz5ifI0eCia/gng+KJx1QAAAv1JREFUSMeNVtli
+qkAMBYZ9kx1ZiyJKrXVp8f9/7cLMAEOwt82b8RyTyXIix2FDpaYFIvcX28qhwiKtWrVd3jGKYInb
+mKYJflHWvYT3Df02Od6EjpijMbj3a9Q0zX3H0C1doki/IG7N7yZLZvbn6Yntcn+fuOqMFPTt4LE7
+xhJ55DbP0Y4m9eksUjj0nqJbmErSMaPnbCkpqiwtkP6NK70l2SWhd2eGfCKh2yVSyDjNXbq6DAM/
+GO7zvMM9AmE6g9N44FJxk04smeStJADp/kSO1uQVslu7cnGV9gWnXdoA6XA3mIyEK5auCyYaqxxR
+DpPJh+6bx5n7uJI2H4QFjg/7p0iAzBd4SL4n8seG9Nlaljsve2fWrdhoYNPYF8rtrWbb6uPnle3k
+E2w853zWZy6a6TGKjvdPZjHiOUt/3IKa+qTDXsGp8fmwcgh9bRDYyDFzVZl8hM0Po07YXVJYL6Ug
+IF+re8aH3+1hT1Dx5AW6vH/BxuOcKIxHvA2hC/ohptPgeroWQLI1VMVYvKZ0elc8ATKbtpT31XCZ
+f/n2C7mnx6o/8u2CTfLrd3Jf6qCubDr3SSX/jxz4kEz0uKXxk2x8vOWsyPWAqRBkIxTEHglvh2RY
+8FY7bB1LY94naPvawHQeyyUiIqizckyS85SXg7GPHdz5XOHEjOQhxeMMKMYk+jG4GO8m3gpFxRyn
+MkbpENQSQ26MQrgH5mJ8nJrvJkoHOirg4naqNU/rqCPjsojpoPqPx+NMNF+GItS1CJyBvgv0MbsL
+uBiytNYrC/wij0Mjk9Xe69BDVAGyoP8k+umDITc4dCj8UfSX0vvA0qsJfxR988XFkN3fRb/64WKg
+F6IPL5AQ4rSv64vxQvQ5UETbgp16PiMivuCSuzXsn0BHbMNcjHNK99ZZXRaks1Vst+Nwzq++j6of
+siUjWyROf3E6oS3n0T6SW/d9nS6GeEgAt4+tGdIQnffiLbtTu3sURdfPhehXBOnrsxx8yVmetyHU
+eSSK8F8hkg95rtYk7D9TUxOlsZSPmgAAAABJRU5ErkJggg==</ImageBytes>
+              <Margins>0,0,0,0</Margins>
+              <Name>Image1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <VertAlignment>Center</VertAlignment>
+            </Image1>
+            <Image2 Ref="27" type="Image" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>3,0.2,4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageBytes>iVBORw0KGgoAAAANSUhEUgAAAI0AAAAUCAMAAACH6U4cAAAAjVBMVEVHcEwCYEsCYUwBYEsBYEsF
+Y04BYEsDYUwEYUwBYEsDYUwCYUwJZE8OZ1MWalYHY04MZVEHY08CYUwHY08DYUwHY04BYEsCYEsX
+bFgGY09qm44CYEwKZVEFYk4NZlIUbFgDYU0SalYWbVkZb1wQaVU2gXBSkoQZb1xGi3tRkoNPkYJS
+k4RMj4ABYEsCYUxykef7AAAALXRSTlMAn+mv+mJN31j+1fMaJwMHC0K9D8UwzYQhdwFqOZgUio9M
+b6CwFAfNiXx+gX8UW8MSAAADyElEQVRIx9WW15bjKBBAEUpGKAcrWWrb22FmdtH/f95WAMnT3X7b
+M+csLwaqKC6VZCH+lyP/I7c0VdTRTWUVXXAyRNHAoqKKqneaDdHdf4mq0h0CXack0ijK3KTj827Y
+Ax1oTLtJGpfiIMhgacWiD5SccXIPjLyAzdYYn3UjrXSI14yx2oxRuo6skTFQW5vyfDEqrvBZr8ac
+V1H4RrkRnFChkkrFF+FM0pDt2PDOlJ2NkidL4xlDFOLFGDxdBWCU3xSC6K9JrL5xQ1ckeEtgHkRs
+DaVncFQmjYlTUZ7NMfCZE95grmI3aYdncXpc+PlBY/zmCc0GNPdtt3Dm8Nw0LpZpp9muxVOaIcZZ
+sn6m2dgfDenL7IHGjE9pRNOisTkMPWldMy10Jk53GqMjR1N4bdsibQK/6L5QmcOTSCNBII3LB7wP
+smB+pJHVU5oUTm53rKquYn8OCZ3hrGAak6SWRhRFUdawc8qLAvRzvkAtO41fFsUJb6FQXVG4pyor
+m/rtGc0b+iYeo3Qvg5MyKgE1Lz9ozLWTzl0iJxpWxkAlIDqnO414uGWFQMnzHipLY16e5g2l2RbE
+/sxZg68NTsAYZw80evyeBgO1oO2bo0nGcUSFurBYfm9T7KCRyTOa1FdWJxlRkOFrV7CwhQ80Rgff
+0RB6hWlPSf+QxSp0gZo77UKFNHVs9ky46J3mji7Dgr5TWhp7PwTKeKLSXJdIo2or/0qDgTqv2BLi
+4TearV5doLJ30Jedo+lntdOUEAJNvSqHdqZOtvf2foI67crOeP35Q7IFWs7eMxoKzT9/f9ikx6UK
+0FKduV4R//j1wWVtaQp/p8lx2gsbESrMHJN/Smc4qTva3mBYZxNNyE3lK837qyFtYysaadrLGGAR
+ouLCtlBel45GdPFesyGI9Jy+dTX7Ar4DSZ+tTAdeC9URewgV04iT/pYGC80NLBuuKWph6Is0PsQU
+EKYRiMs0VNFB/CHt43P0iUyuCxZ1PJDvZAIjoAsszfvyLc2I16Cy5rIhmkmcAs4j/CWxtAGxNKW/
+97Ob3nlfy9/5zUItV0dN0wxnaqGWhlviZxpqgy+g3Fw5VJbGOoc6o4/iGePQMM3V+ZRo8tGV2Ctm
+WtEf3vZTMe8fnZ4ucDTTDX31iaYL3Je2Yk9aGqpL2WG2cZ3gGwMIVeh5Hm5MMFnst+vixVLK+l7a
+b35fw1LqdgSKCPRD/tuyeN51FTNsYMiLEZb8XZ7udm8AlZ6sND2Zr0Bws0uvG64gpiNFf9z+ZUxZ
+13XNw1+yDkf6H//Rm6bp086/BAu60bjCs8MAAAAASUVORK5CYII=</ImageBytes>
+              <Margins>0,0,0,0</Margins>
+              <Name>Image2</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <VertAlignment>Center</VertAlignment>
+            </Image2>
+            <HorizontalLinePrimitive1 Ref="28" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,1.6,20,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <Conditions isList="true" count="0" />
+              <EndCap Ref="29" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Name>HorizontalLinePrimitive1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Size>2</Size>
+              <StartCap Ref="30" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+            </HorizontalLinePrimitive1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>master</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+        <DataBand2 Ref="31" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,7.2,20,0.4</ClientRectangle>
+          <Components isList="true" count="6">
+            <Text17 Ref="32" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>0.2,0,3.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="5" />
+              <Parent isRef="31" />
+              <Text> {detail.stockcode}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text17>
+            <Text18 Ref="33" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>3.8,0,6.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>e5089a756c1241bebfee1e4e2612cf7a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="5" />
+              <Parent isRef="31" />
+              <Text> {detail.nmbarang}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text18>
+            <Text19 Ref="34" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>10.2,0,1.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>e828ba41df9846d0b0756b4c78cc175c</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="5" />
+              <Parent isRef="31" />
+              <Text> {detail.qtyminta}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text19>
+            <Text20 Ref="35" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>12,0,1.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>9685614f55bd4d65a04a19b140511f08</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="5" />
+              <Parent isRef="31" />
+              <Text>{detail.nmsatbesar}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text20>
+            <Text21 Ref="36" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>13.8,0,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>7be5b7e2e6ae4796a772a386addce9ab</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="5" />
+              <Parent isRef="31" />
+              <Text>{detail.unitprice} </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text21>
+            <Text22 Ref="37" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>16.8,0,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>dc69bb7f7f4443b39d5eebbbaf00853b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="5" />
+              <Parent isRef="31" />
+              <Text>{detail.ttlnetto} </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text22>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>detail</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand2</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+          <Sort isList="true" count="0" />
+        </DataBand2>
+        <DataBand3 Ref="38" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.4,20,4.8</ClientRectangle>
+          <Components isList="true" count="22">
+            <Text23 Ref="39" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>13.8,0,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Guid>7b6d67084f77462ba4c8525112e58244</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text> Subtotal</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text23>
+            <Text24 Ref="40" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>13.8,0.4,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Guid>d2b96205892b42e68d35b33566cc81db</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text> DPP</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text24>
+            <Text25 Ref="41" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>13.8,0.8,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Guid>3022d2756b3c4506929879d973ab93b0</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text> PPN</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text25>
+            <Text26 Ref="42" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>13.8,1.2,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Guid>48d9b21e9a9942368c9c8a66c0572946</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text> Diskon</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text26>
+            <Text27 Ref="43" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>13.8,1.6,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Guid>7220e90a8c6f4a4f94c35736e312f1b2</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text> Total</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text27>
+            <Text28 Ref="44" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>16.8,0,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>ebdab78a18434164ba8bed65f6b2389b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text28</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>{master.ttlbrutto} </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text28>
+            <Text29 Ref="45" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>16.8,0.4,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>23c99b39ed624cfe9c5cd17504278a51</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text29</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>{master.ttldpp} </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text29>
+            <Text30 Ref="46" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>16.8,0.8,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>51a07df2bfb04fdab8819a4fa246f35d</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text30</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>{master.ttlppn} </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text30>
+            <Text31 Ref="47" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>16.8,1.2,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>9aaa43080281421a8d293939486158a1</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text31</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>{master.ttldiskon} </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text31>
+            <Text32 Ref="48" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>16.8,1.6,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>d589488f3fed4306bc00b215ad360067</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text32</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>{master.ttlnetto} </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text32>
+            <Text33 Ref="49" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[216:216:216]</Brush>
+              <ClientRectangle>0.2,0,13.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Guid>3a8a88bc92f94f14aedb8842be76960c</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text33</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text> Keterangan</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text33>
+            <Text34 Ref="50" type="Text" isKey="true">
+              <Border>Top, Left, Right;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>0.2,0.4,13.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>595819308e0e484d9cb84d52e17a24e4</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text34</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text34>
+            <Text35 Ref="51" type="Text" isKey="true">
+              <Border>Left, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>0.2,0.6,0.2,1.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>a63921863d99461290d21af30ee06958</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text35</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text35>
+            <Text36 Ref="52" type="Text" isKey="true">
+              <Border>Right, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>0.4,0.6,13.4,1.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>80b78bfc226a4ea6a608f2d4c752580e</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text36</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>{master.keterangan}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+            </Text36>
+            <Text37 Ref="53" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>0.2,2.2,4.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text37</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>Dibuat oleh,</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text37>
+            <Text38 Ref="54" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>5.2,2.2,4.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>a0f31ef177a441ec932e2315a1ac3c47</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text38</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>Diperiksa oleh,</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text38>
+            <Text39 Ref="55" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>10.4,2.2,4.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>7d3a0981d8dc4898816f8d9a67b72918</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text39</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>Diketahui oleh,</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text39>
+            <Text40 Ref="56" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>15.4,2.2,4.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>86c1ae45401b47f9a7c3b348df93554e</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text40</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>Disetujui oleh,</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text40>
+            <Text41 Ref="57" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>0.2,3.4,4.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>6c78d5dcda524bb7a9a2b576aca87a48</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text41</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>( ............................ )</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text41>
+            <Text42 Ref="58" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>5.2,3.4,4.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>3ddd299bbe854d1396d02026d5ba1b85</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text42</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>( ............................ )</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text42>
+            <Text46 Ref="59" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>10.4,3.4,4.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>02de325a152143d2b23cbb2e0347f471</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text46</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>( ............................ )</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text46>
+            <Text47 Ref="60" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>15.4,3.4,4.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>609af72397fd4085bc54b17162c2670d</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text47</Name>
+              <Page isRef="5" />
+              <Parent isRef="38" />
+              <Text>( ............................ )</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text47>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand3</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+          <Sort isList="true" count="0" />
+        </DataBand3>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>d3a72746cbfa4eb798f24b776ffaacdd</Guid>
+      <Margins>0.5,0.5,0.5,0.5</Margins>
+      <Name>Page1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>14.8</PageHeight>
+      <PageWidth>21</PageWidth>
+      <PaperSize>A5</PaperSize>
+      <Report isRef="0" />
+    </Page1>
+  </Pages>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>10/3/2025 2:59:47 PM</ReportChanged>
+  <ReportCreated>9/4/2018 9:28:11 AM</ReportCreated>
+  <ReportFile>D:\Project\PHP\hrms.nusa\assets\mrt\form_po.mrt</ReportFile>
+  <ReportGuid>32f4d175677a4edd9545511f66269b2e</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2020.2.3.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

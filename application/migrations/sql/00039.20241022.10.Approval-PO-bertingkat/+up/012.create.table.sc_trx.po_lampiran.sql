@@ -1,0 +1,20 @@
+CREATE TABLE sc_trx.po_lampiran (
+	nodok bpchar(20) NOT NULL,
+	nodokref bpchar(20) NOT NULL,
+	idfaktur bpchar(20) NOT NULL,
+	id int not null,
+	file_name varchar(255) NOT NULL,
+	file_type varchar(255) NOT NULL,
+	full_path text NOT NULL,
+	orig_name varchar(255) NOT NULL,
+	file_ext varchar(255) NOT NULL,
+	file_size int4 NOT NULL,
+	keterangan bpchar(100) NULL,
+	typeservis bpchar(20) NULL,
+	inputdate timestamp NULL,
+	inputby bpchar(20) NULL,
+	updatedate timestamp NULL,
+	updateby varchar(20) NULL,
+	ref_type bpchar(12) NULL,
+	CONSTRAINT po_lampiran_pkey PRIMARY KEY (id, nodok, nodokref, idfaktur)
+);

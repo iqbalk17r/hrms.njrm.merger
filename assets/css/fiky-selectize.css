@@ -1,0 +1,57 @@
+/*
+ * Created by PhpStorm.
+ *  * User: FIKY-PC
+ *  * Date: 4/25/19 9:46 AM
+ *  * Last Modified: 4/25/19 9:45 AM.
+ *  Developed By: Fiky Ashariza Powered By PhpStorm
+ *  Copyright© 2019 .All rights reserved.
+ *
+ */
+
+
+.selectize-input {
+    overflow: visible;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+.selectize-input.dropdown-active {
+    min-height: 30px;
+    line-height: normal;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+.selectize-dropdown, .selectize-input, .selectize-input input {
+    min-height: 30px;
+    line-height: normal;
+}
+.loading .selectize-dropdown-content:after {
+    content: 'loading...';
+    height: 30px;
+    display: block;
+    text-align: center;
+}
+
+.selectize-hidden-accessible {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+    display: block !important;
+}
+
+.selectize-input.disabled {
+    opacity: 1 !important;
+    background-color: #eeeeee !important;
+}
+
+.selectize-input.disabled:after {
+    display: none !important;
+}

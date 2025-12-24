@@ -1,0 +1,1403 @@
+{
+  "ReportVersion": "2015.2.0",
+  "ReportGuid": "4454432a95304b2a8d80978131c1e5d4",
+  "ReportName": "realizations",
+  "ReportAlias": "Realisasi Jadwal Kunjungan",
+  "ReportAuthor": "nusa::syifarahmat.id",
+  "ReportDescription": "Laporan realisasi jadwal kunjungan sales",
+  "ReportCreated": "/Date(1085817540000+0700)/",
+  "ReportChanged": "/Date(1513735883362+0700)/",
+  "EngineVersion": "EngineV2",
+  "PreviewMode": "StandardAndDotMatrix",
+  "AutoLocalizeReportOnRun": true,
+  "Culture": "id-ID",
+  "Script": "using System;\r\nusing System.Drawing;\r\nusing System.Windows.Forms;\r\nusing System.Data;\r\nusing Stimulsoft.Report;\r\nusing Stimulsoft.Report.Components;\r\nusing Stimulsoft.Base.Drawing;\r\n\r\nnamespace Reports\r\n{\r\n    \r\n\tpublic class MasterDetail : Stimulsoft.Report.StiReport\r\n    {\r\n        \r\n\t\tpublic MasterDetail()\r\n        {\r\n            this.InitializeComponent();\r\n        }\r\n        \r\n        #region StiReport Designer generated code - do not modify\r\n\t\t#endregion StiReport Designer generated code - do not modify\r\n    }\r\n}",
+  "Styles": {
+    "0": {
+      "Ident": "StiStyle",
+      "Name": "Title1",
+      "HorAlignment": "Right",
+      "VertAlignment": "Center",
+      "Font": ";19;;",
+      "Border": ";193,152,89;;;;;;solid:Black",
+      "Brush": "solid:",
+      "TextBrush": "solid:193,152,89",
+      "AllowUseBorderSides": false
+    },
+    "1": {
+      "Ident": "StiStyle",
+      "Name": "Title2",
+      "VertAlignment": "Center",
+      "Font": ";9;;",
+      "Border": ";102,77,38;;;;;;solid:Black",
+      "Brush": "solid:",
+      "TextBrush": "solid:102,77,38",
+      "AllowUseBorderSides": false
+    },
+    "2": {
+      "Ident": "StiStyle",
+      "Name": "Header1",
+      "VertAlignment": "Center",
+      "Font": ";19;;",
+      "Border": ";193,152,89;;;;;;solid:Black",
+      "Brush": "solid:",
+      "TextBrush": "solid:193,152,89",
+      "AllowUseBorderSides": false
+    },
+    "3": {
+      "Ident": "StiStyle",
+      "Name": "Header2",
+      "HorAlignment": "Center",
+      "VertAlignment": "Center",
+      "Font": ";12;Bold;",
+      "Border": ";193,152,89;;;;;;solid:Black",
+      "Brush": "solid:",
+      "TextBrush": "solid:193,152,89",
+      "AllowUseBorderSides": false
+    },
+    "4": {
+      "Ident": "StiStyle",
+      "Name": "Header3",
+      "HorAlignment": "Center",
+      "VertAlignment": "Center",
+      "Font": ";9;Bold;",
+      "Border": "All;193,152,89;;;;;;solid:Black",
+      "Brush": "solid:242,234,221",
+      "TextBrush": "solid:193,152,89",
+      "AllowUseHorAlignment": true,
+      "AllowUseVertAlignment": true,
+      "AllowUseBorderSides": false
+    },
+    "5": {
+      "Ident": "StiStyle",
+      "Name": "Data1",
+      "VertAlignment": "Center",
+      "Font": ";9;;",
+      "Border": ";193,152,89;;;;;;solid:Black",
+      "Brush": "solid:",
+      "TextBrush": "solid:102,77,38",
+      "AllowUseBorderSides": false
+    },
+    "6": {
+      "Ident": "StiStyle",
+      "Name": "Data2",
+      "Font": ";9;;",
+      "Border": ";;;;;;;solid:Black",
+      "Brush": "solid:240,237,232",
+      "TextBrush": "solid:Black",
+      "AllowUseFont": false,
+      "AllowUseBorderFormatting": false,
+      "AllowUseBorderSides": false,
+      "AllowUseTextBrush": false
+    },
+    "7": {
+      "Ident": "StiStyle",
+      "Name": "Data3",
+      "VertAlignment": "Center",
+      "Font": ";9;;",
+      "Border": ";193,152,89;;;;;;solid:Black",
+      "Brush": "solid:240,237,232",
+      "TextBrush": "solid:102,77,38",
+      "AllowUseBorderSides": false
+    },
+    "8": {
+      "Ident": "StiStyle",
+      "Name": "Footer1",
+      "VertAlignment": "Center",
+      "Font": ";9;;",
+      "Border": "Top;193,152,89;;;;;;solid:Black",
+      "Brush": "solid:",
+      "TextBrush": "solid:102,77,38",
+      "AllowUseBorderSides": false
+    },
+    "9": {
+      "Ident": "StiStyle",
+      "Name": "Footer2",
+      "HorAlignment": "Right",
+      "VertAlignment": "Center",
+      "Font": ";12;Bold;",
+      "Border": ";193,152,89;;;;;;solid:Black",
+      "Brush": "solid:",
+      "TextBrush": "solid:193,152,89",
+      "AllowUseBorderSides": false
+    }
+  },
+  "ReferencedAssemblies": {
+    "0": "System.Dll",
+    "1": "System.Drawing.Dll",
+    "2": "System.Windows.Forms.Dll",
+    "3": "System.Data.Dll",
+    "4": "System.Xml.Dll",
+    "5": "Stimulsoft.Base.Dll",
+    "6": "Stimulsoft.Controls.Dll",
+    "7": "Stimulsoft.Report.Dll"
+  },
+  "ReportResources": {
+    "0": {
+      "Resource": "Image1.png",
+      "Component": "Image1",
+      "Property": "Image"
+    }
+  },
+  "Dictionary": {
+    "DataSources": {
+      "0": {
+        "Ident": "StiDataTableSource",
+        "Name": "branch",
+        "Alias": "branch",
+        "Columns": {
+          "0": {
+            "Name": "branch",
+            "Index": -1,
+            "NameInSource": "branch",
+            "Alias": "branch",
+            "Type": "System.String"
+          },
+          "1": {
+            "Name": "branchname",
+            "Index": -1,
+            "NameInSource": "branchname",
+            "Alias": "branchname",
+            "Type": "System.String"
+          },
+          "2": {
+            "Name": "address",
+            "Index": -1,
+            "NameInSource": "address",
+            "Alias": "address",
+            "Type": "System.String"
+          },
+          "3": {
+            "Name": "phone1",
+            "Index": -1,
+            "NameInSource": "phone1",
+            "Alias": "phone1",
+            "Type": "System.String"
+          },
+          "4": {
+            "Name": "phone2",
+            "Index": -1,
+            "NameInSource": "phone2",
+            "Alias": "phone2",
+            "Type": "System.String"
+          },
+          "5": {
+            "Name": "fax",
+            "Index": -1,
+            "NameInSource": "fax",
+            "Alias": "fax",
+            "Type": "System.String"
+          }
+        },
+        "NameInSource": "FSPPB.branch"
+      },
+      "1": {
+        "Ident": "StiDataTableSource",
+        "Name": "detail",
+        "Alias": "detail",
+        "Columns": {
+          "0": {
+            "Name": "branch",
+            "Index": -1,
+            "NameInSource": "branch",
+            "Alias": "branch",
+            "Type": "System.String"
+          },
+          "1": {
+            "Name": "nodok",
+            "Index": -1,
+            "NameInSource": "nodok",
+            "Alias": "nodok",
+            "Type": "System.String"
+          },
+          "2": {
+            "Name": "kdgroup",
+            "Index": -1,
+            "NameInSource": "kdgroup",
+            "Alias": "kdgroup",
+            "Type": "System.String"
+          },
+          "3": {
+            "Name": "kdsubgroup",
+            "Index": -1,
+            "NameInSource": "kdsubgroup",
+            "Alias": "kdsubgroup",
+            "Type": "System.String"
+          },
+          "4": {
+            "Name": "stockcode",
+            "Index": -1,
+            "NameInSource": "stockcode",
+            "Alias": "stockcode",
+            "Type": "System.String"
+          },
+          "5": {
+            "Name": "loccode",
+            "Index": -1,
+            "NameInSource": "loccode",
+            "Alias": "loccode",
+            "Type": "System.String"
+          },
+          "6": {
+            "Name": "desc_barang",
+            "Index": -1,
+            "NameInSource": "desc_barang",
+            "Alias": "desc_barang",
+            "Type": "System.String"
+          },
+          "7": {
+            "Name": "qtysppbminta",
+            "Index": -1,
+            "NameInSource": "qtysppbminta",
+            "Alias": "qtysppbminta",
+            "Type": "System.String"
+          },
+          "8": {
+            "Name": "qtypo",
+            "Index": -1,
+            "NameInSource": "qtypo",
+            "Alias": "qtypo",
+            "Type": "System.String"
+          },
+          "9": {
+            "Name": "qtybbm",
+            "Index": -1,
+            "NameInSource": "qtybbm",
+            "Alias": "qtybbm",
+            "Type": "System.String"
+          },
+          "10": {
+            "Name": "qtybbmkecil",
+            "Index": -1,
+            "NameInSource": "qtybbmkecil",
+            "Alias": "qtybbmkecil",
+            "Type": "System.String"
+          },
+          "11": {
+            "Name": "satkecil",
+            "Index": -1,
+            "NameInSource": "satkecil",
+            "Alias": "satkecil",
+            "Type": "System.String"
+          },
+          "12": {
+            "Name": "satminta",
+            "Index": -1,
+            "NameInSource": "satminta",
+            "Alias": "satminta",
+            "Type": "System.String"
+          },
+          "13": {
+            "Name": "keterangan",
+            "Index": -1,
+            "NameInSource": "keterangan",
+            "Alias": "keterangan",
+            "Type": "System.String"
+          },
+          "14": {
+            "Name": "inputby",
+            "Index": -1,
+            "NameInSource": "inputby",
+            "Alias": "inputby",
+            "Type": "System.String"
+          },
+          "15": {
+            "Name": "updatedate",
+            "Index": -1,
+            "NameInSource": "updatedate",
+            "Alias": "updatedate",
+            "Type": "System.String"
+          },
+          "16": {
+            "Name": "updateby",
+            "Index": -1,
+            "NameInSource": "updateby",
+            "Alias": "updateby",
+            "Type": "System.String"
+          },
+          "17": {
+            "Name": "approvaldate",
+            "Index": -1,
+            "NameInSource": "approvaldate",
+            "Alias": "approvaldate",
+            "Type": "System.String"
+          },
+          "18": {
+            "Name": "approvalby",
+            "Index": -1,
+            "NameInSource": "approvalby",
+            "Alias": "approvalby",
+            "Type": "System.String"
+          },
+          "19": {
+            "Name": "nodokref",
+            "Index": -1,
+            "NameInSource": "nodokref",
+            "Alias": "nodokref",
+            "Type": "System.String"
+          },
+          "20": {
+            "Name": "nodoktmp",
+            "Index": -1,
+            "NameInSource": "nodoktmp",
+            "Alias": "nodoktmp",
+            "Type": "System.String"
+          },
+          "21": {
+            "Name": "fromstock",
+            "Index": -1,
+            "NameInSource": "fromstock",
+            "Alias": "fromstock",
+            "Type": "System.String"
+          },
+          "22": {
+            "Name": "nmbarang",
+            "Index": -1,
+            "NameInSource": "nmbarang",
+            "Alias": "nmbarang",
+            "Type": "System.String"
+          },
+          "23": {
+            "Name": "nmlengkap",
+            "Index": -1,
+            "NameInSource": "nmlengkap",
+            "Alias": "nmlengkap",
+            "Type": "System.String"
+          },
+          "24": {
+            "Name": "bag_dept",
+            "Index": -1,
+            "NameInSource": "bag_dept",
+            "Alias": "bag_dept",
+            "Type": "System.String"
+          },
+          "25": {
+            "Name": "subbag_dept",
+            "Index": -1,
+            "NameInSource": "subbag_dept",
+            "Alias": "subbag_dept",
+            "Type": "System.String"
+          },
+          "26": {
+            "Name": "jabatan",
+            "Index": -1,
+            "NameInSource": "jabatan",
+            "Alias": "jabatan",
+            "Type": "System.String"
+          },
+          "27": {
+            "Name": "nik_atasan",
+            "Index": -1,
+            "NameInSource": "nik_atasan",
+            "Alias": "nik_atasan",
+            "Type": "System.String"
+          },
+          "28": {
+            "Name": "nmdept",
+            "Index": -1,
+            "NameInSource": "nmdept",
+            "Alias": "nmdept",
+            "Type": "System.String"
+          },
+          "29": {
+            "Name": "nmsubdept",
+            "Index": -1,
+            "NameInSource": "nmsubdept",
+            "Alias": "nmsubdept",
+            "Type": "System.String"
+          },
+          "30": {
+            "Name": "nmlvljabatan",
+            "Index": -1,
+            "NameInSource": "nmlvljabatan",
+            "Alias": "nmlvljabatan",
+            "Type": "System.String"
+          },
+          "31": {
+            "Name": "nmjabatan",
+            "Index": -1,
+            "NameInSource": "nmjabatan",
+            "Alias": "nmjabatan",
+            "Type": "System.String"
+          },
+          "32": {
+            "Name": "nmatasan",
+            "Index": -1,
+            "NameInSource": "nmatasan",
+            "Alias": "nmatasan",
+            "Type": "System.String"
+          },
+          "33": {
+            "Name": "nmatasan2",
+            "Index": -1,
+            "NameInSource": "nmatasan2",
+            "Alias": "nmatasan2",
+            "Type": "System.String"
+          },
+          "34": {
+            "Name": "nmsatkecil",
+            "Index": -1,
+            "NameInSource": "nmsatkecil",
+            "Alias": "nmsatkecil",
+            "Type": "System.String"
+          },
+          "35": {
+            "Name": "nmsatminta",
+            "Index": -1,
+            "NameInSource": "nmsatminta",
+            "Alias": "nmsatminta",
+            "Type": "System.String"
+          },
+          "36": {
+            "Name": "ketstatus",
+            "Index": -1,
+            "NameInSource": "ketstatus",
+            "Alias": "ketstatus",
+            "Type": "System.String"
+          },
+          "37": {
+            "Name": "qtysppbkecil",
+            "Index": -1,
+            "NameInSource": "qtysppbkecil",
+            "Alias": "qtysppbkecil",
+            "Type": "System.Byte"
+          },
+          "38": {
+            "Name": "qtypokecil",
+            "Index": -1,
+            "NameInSource": "qtypokecil",
+            "Alias": "qtypokecil",
+            "Type": "System.Byte"
+          },
+          "39": {
+            "Name": "inputdate",
+            "Index": -1,
+            "NameInSource": "inputdate",
+            "Alias": "inputdate",
+            "Type": "System.DateTime"
+          },
+          "40": {
+            "Name": "lvl_jabatan",
+            "Index": -1,
+            "NameInSource": "lvl_jabatan",
+            "Alias": "lvl_jabatan",
+            "Type": "System.Char"
+          },
+          "41": {
+            "Name": "nik",
+            "Index": -1,
+            "NameInSource": "nik",
+            "Alias": "nik",
+            "Type": "System.Double"
+          },
+          "42": {
+            "Name": "status",
+            "Index": -1,
+            "NameInSource": "status",
+            "Alias": "status",
+            "Type": "System.Char"
+          },
+          "43": {
+            "Name": "nik_atasan2",
+            "Index": -1,
+            "NameInSource": "nik_atasan2",
+            "Alias": "nik_atasan2",
+            "Type": "System.Double"
+          },
+          "44": {
+            "Name": "id",
+            "Index": -1,
+            "NameInSource": "id",
+            "Alias": "id",
+            "Type": "System.Byte"
+          },
+          "45": {
+            "Name": "qtyrefonhand",
+            "Index": -1,
+            "NameInSource": "qtyrefonhand",
+            "Alias": "qtyrefonhand",
+            "Type": "System.Byte"
+          }
+        },
+        "NameInSource": "FSPPB.detail"
+      },
+      "2": {
+        "Ident": "StiDataTableSource",
+        "Name": "master",
+        "Alias": "master",
+        "Columns": {
+          "0": {
+            "Name": "branch",
+            "Index": -1,
+            "NameInSource": "branch",
+            "Alias": "branch",
+            "Type": "System.String"
+          },
+          "1": {
+            "Name": "nodok",
+            "Index": -1,
+            "NameInSource": "nodok",
+            "Alias": "nodok",
+            "Type": "System.String"
+          },
+          "2": {
+            "Name": "nodokref",
+            "Index": -1,
+            "NameInSource": "nodokref",
+            "Alias": "nodokref",
+            "Type": "System.String"
+          },
+          "3": {
+            "Name": "loccode",
+            "Index": -1,
+            "NameInSource": "loccode",
+            "Alias": "loccode",
+            "Type": "System.String"
+          },
+          "4": {
+            "Name": "keterangan",
+            "Index": -1,
+            "NameInSource": "keterangan",
+            "Alias": "keterangan",
+            "Type": "System.String"
+          },
+          "5": {
+            "Name": "inputby",
+            "Index": -1,
+            "NameInSource": "inputby",
+            "Alias": "inputby",
+            "Type": "System.String"
+          },
+          "6": {
+            "Name": "updatedate",
+            "Index": -1,
+            "NameInSource": "updatedate",
+            "Alias": "updatedate",
+            "Type": "System.String"
+          },
+          "7": {
+            "Name": "updateby",
+            "Index": -1,
+            "NameInSource": "updateby",
+            "Alias": "updateby",
+            "Type": "System.String"
+          },
+          "8": {
+            "Name": "approvalby",
+            "Index": -1,
+            "NameInSource": "approvalby",
+            "Alias": "approvalby",
+            "Type": "System.String"
+          },
+          "9": {
+            "Name": "nodoktmp",
+            "Index": -1,
+            "NameInSource": "nodoktmp",
+            "Alias": "nodoktmp",
+            "Type": "System.String"
+          },
+          "10": {
+            "Name": "hangusdate",
+            "Index": -1,
+            "NameInSource": "hangusdate",
+            "Alias": "hangusdate",
+            "Type": "System.String"
+          },
+          "11": {
+            "Name": "hangusby",
+            "Index": -1,
+            "NameInSource": "hangusby",
+            "Alias": "hangusby",
+            "Type": "System.String"
+          },
+          "12": {
+            "Name": "canceldate",
+            "Index": -1,
+            "NameInSource": "canceldate",
+            "Alias": "canceldate",
+            "Type": "System.String"
+          },
+          "13": {
+            "Name": "cancelby",
+            "Index": -1,
+            "NameInSource": "cancelby",
+            "Alias": "cancelby",
+            "Type": "System.String"
+          },
+          "14": {
+            "Name": "nmlengkap",
+            "Index": -1,
+            "NameInSource": "nmlengkap",
+            "Alias": "nmlengkap",
+            "Type": "System.String"
+          },
+          "15": {
+            "Name": "bag_dept",
+            "Index": -1,
+            "NameInSource": "bag_dept",
+            "Alias": "bag_dept",
+            "Type": "System.String"
+          },
+          "16": {
+            "Name": "subbag_dept",
+            "Index": -1,
+            "NameInSource": "subbag_dept",
+            "Alias": "subbag_dept",
+            "Type": "System.String"
+          },
+          "17": {
+            "Name": "jabatan",
+            "Index": -1,
+            "NameInSource": "jabatan",
+            "Alias": "jabatan",
+            "Type": "System.String"
+          },
+          "18": {
+            "Name": "nik_atasan",
+            "Index": -1,
+            "NameInSource": "nik_atasan",
+            "Alias": "nik_atasan",
+            "Type": "System.String"
+          },
+          "19": {
+            "Name": "nmdept",
+            "Index": -1,
+            "NameInSource": "nmdept",
+            "Alias": "nmdept",
+            "Type": "System.String"
+          },
+          "20": {
+            "Name": "nmsubdept",
+            "Index": -1,
+            "NameInSource": "nmsubdept",
+            "Alias": "nmsubdept",
+            "Type": "System.String"
+          },
+          "21": {
+            "Name": "nmlvljabatan",
+            "Index": -1,
+            "NameInSource": "nmlvljabatan",
+            "Alias": "nmlvljabatan",
+            "Type": "System.String"
+          },
+          "22": {
+            "Name": "nmjabatan",
+            "Index": -1,
+            "NameInSource": "nmjabatan",
+            "Alias": "nmjabatan",
+            "Type": "System.String"
+          },
+          "23": {
+            "Name": "nmatasan",
+            "Index": -1,
+            "NameInSource": "nmatasan",
+            "Alias": "nmatasan",
+            "Type": "System.String"
+          },
+          "24": {
+            "Name": "nmatasan2",
+            "Index": -1,
+            "NameInSource": "nmatasan2",
+            "Alias": "nmatasan2",
+            "Type": "System.String"
+          },
+          "25": {
+            "Name": "ketstatus",
+            "Index": -1,
+            "NameInSource": "ketstatus",
+            "Alias": "ketstatus",
+            "Type": "System.String"
+          },
+          "26": {
+            "Name": "status",
+            "Index": -1,
+            "NameInSource": "status",
+            "Alias": "status",
+            "Type": "System.Char"
+          },
+          "27": {
+            "Name": "approvaldate",
+            "Index": -1,
+            "NameInSource": "approvaldate",
+            "Alias": "approvaldate",
+            "Type": "System.DateTime"
+          },
+          "28": {
+            "Name": "nik_atasan2",
+            "Index": -1,
+            "NameInSource": "nik_atasan2",
+            "Alias": "nik_atasan2",
+            "Type": "System.Double"
+          },
+          "29": {
+            "Name": "inputdate",
+            "Index": -1,
+            "NameInSource": "inputdate",
+            "Alias": "inputdate",
+            "Type": "System.DateTime"
+          },
+          "30": {
+            "Name": "nik",
+            "Index": -1,
+            "NameInSource": "nik",
+            "Alias": "nik",
+            "Type": "System.Double"
+          },
+          "31": {
+            "Name": "lvl_jabatan",
+            "Index": -1,
+            "NameInSource": "lvl_jabatan",
+            "Alias": "lvl_jabatan",
+            "Type": "System.Char"
+          }
+        },
+        "NameInSource": "FSPPB.master"
+      }
+    },
+    "Databases": {
+      "0": {
+        "Ident": "StiJsonDatabase",
+        "Name": "FSPPB",
+        "Alias": "FSPPB",
+        "PathData": "D:\\Stuff E\\Master Program\\Stimulsoft\\sample mrt report\\PPB17100036  (untuk form sppb).json"
+      }
+    }
+  },
+  "Pages": {
+    "0": {
+      "Ident": "StiPage",
+      "Name": "Page1",
+      "Guid": "a2cfaf3f3a424f94b06d9c96b72da27c",
+      "Interaction": {
+        "Ident": "StiInteraction"
+      },
+      "Border": "All;;2;;;;;solid:Black",
+      "Brush": "solid:",
+      "Components": {
+        "0": {
+          "Ident": "StiGroupHeaderBand",
+          "Name": "GroupHeaderBand1",
+          "ClientRectangle": "0,0.4,19,3",
+          "Interaction": {
+            "Ident": "StiBandInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiImage",
+              "Name": "Image1",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.6,0.6,2.2,1.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "Stretch": true,
+              "File": "D:\\Stuff E\\Master Program\\Stimulsoft\\sample mrt report\\nusa-unggul-sarana-adicipta-pt_fb.png",
+              "Image": "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"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text1",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "3,0.6,14,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{branch.branchname}"
+              },
+              "VertAlignment": "Center",
+              "Font": ";14;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text2",
+              "Guid": "ae80a7e8ff7d44fa896da989dd82f5e8",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "3,1.2,14,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{branch.address}"
+              },
+              "VertAlignment": "Center",
+              "Font": ";12;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text3",
+              "Guid": "eacd627062c34ced967716194f2a3300",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "3,1.8,14,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Phone: {branch.phone1} | Fax: {branch.fax}"
+              },
+              "VertAlignment": "Center",
+              "Font": ";12;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            }
+          }
+        },
+        "1": {
+          "Ident": "StiDataBand",
+          "Name": "DataBand1",
+          "ClientRectangle": "0,4.2,19,3.2",
+          "Interaction": {
+            "Ident": "StiBandInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text4",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.6,0.6,2.4,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Bagian"
+              },
+              "VertAlignment": "Center",
+              "Font": ";11;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text5",
+              "Guid": "90ffd54a73bc4935801b5eb1fc5ba4ee",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "3,0.6,9,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ": {master.bag_dept}"
+              },
+              "VertAlignment": "Center",
+              "Font": ";11;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text6",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "3.4,1.4,12.4,1",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "PERMOHONAN Pembelian/Penggantian"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";14;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text27",
+              "Guid": "1011bda9e115474c9ccc84b8189ec203",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "4.4,2.4,10.2,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "<b>Number</b> : {master.nodok}   |   <b>Tanggal</b> : {master.inputdate}"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";9;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression",
+              "TextQuality": "Wysiwyg",
+              "AllowHtmlTags": true
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text7",
+              "Guid": "e365ee4811c24f28964ec2f018b14d41",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.6,0.2,2.4,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Pemohon"
+              },
+              "VertAlignment": "Center",
+              "Font": ";11;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "5": {
+              "Ident": "StiText",
+              "Name": "Text8",
+              "Guid": "a4996f70cf694af58ccd2164608c6515",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "3,0.2,9,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ": {master.nmlengkap}"
+              },
+              "VertAlignment": "Center",
+              "Font": ";11;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            }
+          },
+          "DataSourceName": "master"
+        },
+        "2": {
+          "Ident": "StiDataBand",
+          "Name": "DataBand2",
+          "ClientRectangle": "0,8.2,19,0.8",
+          "Interaction": {
+            "Ident": "StiBandInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text9",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.6,0.2,1,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "NO"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";12;Bold;",
+              "Border": "All;;;;;;;solid:Black",
+              "Brush": "solid:216,216,216",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text10",
+              "Guid": "dd119ffed6ba47b3a23cca8290fa2ec5",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "12.6,0.2,5.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Keterangan"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";12;Bold;",
+              "Border": "All;;;;;;;solid:Black",
+              "Brush": "solid:216,216,216",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text11",
+              "Guid": "1deaa4507a9541c79c5528b5f4a38dcf",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "10,0.2,2.6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "SATUAN"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";12;Bold;",
+              "Border": "All;;;;;;;solid:Black",
+              "Brush": "solid:216,216,216",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text12",
+              "Guid": "6133f2b750a842f28dd37e8c727f3604",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "7.2,0.2,2.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "QTY"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";12;Bold;",
+              "Border": "All;;;;;;;solid:Black",
+              "Brush": "solid:216,216,216",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text13",
+              "Guid": "6c5223899ad64bc5b9882c8363b743f0",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "1.6,0.2,5.6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Nama Barang"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";12;Bold;",
+              "Border": "All;;;;;;;solid:Black",
+              "Brush": "solid:216,216,216",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            }
+          }
+        },
+        "3": {
+          "Ident": "StiDataBand",
+          "Name": "DataBand4",
+          "ClientRectangle": "0,9.8,19,0.6",
+          "Interaction": {
+            "Ident": "StiBandInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text14",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.6,0,1,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{detail.id}"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";9;;",
+              "Border": "All;;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text15",
+              "Guid": "e506bf251a8147649a69e88ab83eea79",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "1.6,0,5.6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": " {detail.desc_barang}"
+              },
+              "VertAlignment": "Center",
+              "Font": ";9;;",
+              "Border": "All;;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text16",
+              "Guid": "cab0e67ad16b492894f43cc9392f30a4",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "7.2,0,2.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{detail.qtysppbminta}"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";9;;",
+              "Border": "All;;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text17",
+              "Guid": "71246b40dab441eea7a6d937ce494ff3",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "10,0,2.6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{detail.nmsatminta}"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";9;;",
+              "Border": "All;;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text18",
+              "Guid": "4d0a4188884240a3bd520a1346a1e408",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "12.6,0,5.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{detail.keterangan}"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";9;;",
+              "Border": "All;;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            }
+          },
+          "DataSourceName": "detail"
+        },
+        "4": {
+          "Ident": "StiDataBand",
+          "Name": "DataBand3",
+          "ClientRectangle": "0,11.2,19,5.6",
+          "Interaction": {
+            "Ident": "StiBandInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text19",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.6,0.8,6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Demak, ............................."
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";12;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text20",
+              "Guid": "c2f12e09ccf04a3296f51c3f1d3cfa95",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.6,2.2,6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Dibuat oleh,"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";12;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text21",
+              "Guid": "dd8b59b1981643aa9d1a94c0d812e7ce",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.6,4.6,6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "( ....................................... )"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";12;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text22",
+              "Guid": "ba45cbc2e21d4cb8a133ec468657b703",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "6.6,4.6,5.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "( ....................................... )"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";12;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text23",
+              "Guid": "807183d2f8484d9b8e3ae7ef2e3c346c",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "12.4,4.6,6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "( ....................................... )"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";12;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "5": {
+              "Ident": "StiText",
+              "Name": "Text24",
+              "Guid": "6c51fdcd68f642e5b02c8fa5e47806bc",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "6.6,2.2,5.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Diketahui oleh,"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";12;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "6": {
+              "Ident": "StiText",
+              "Name": "Text25",
+              "Guid": "2b2d76b2f3854527ab524a5c72a41b61",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "12.4,2.2,6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Disetujui oleh,"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";12;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            }
+          }
+        }
+      },
+      "PaperSize": "A4",
+      "PageWidth": 21.0,
+      "PageHeight": 29.7,
+      "Watermark": {
+        "TextBrush": "solid:50,0,0,0"
+      },
+      "Margins": {
+        "Left": 1.0,
+        "Right": 1.0,
+        "Top": 1.0,
+        "Bottom": 1.0
+      }
+    }
+  }
+}

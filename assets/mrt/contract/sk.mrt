@@ -1,0 +1,1014 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <sk Ref="2" type="Stimulsoft.Report.Dictionary.StiJsonDatabase" isKey="true">
+        <Alias>sk</Alias>
+        <Key />
+        <Name>sk</Name>
+        <PathData>D:\Program Files\Stimulsoft\sk.json</PathData>
+      </sk>
+    </Databases>
+    <DataSources isList="true" count="3">
+      <info Ref="3" type="DataTableSource" isKey="true">
+        <Alias>info</Alias>
+        <Columns isList="true" count="4">
+          <value>nmhari,System.String</value>
+          <value>tgl,System.String</value>
+          <value>bulan,System.String</value>
+          <value>tahun,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>7ec7c19aa303401aa6e84a4c06f93ef3</Key>
+        <Name>info</Name>
+        <NameInSource>sk.info</NameInSource>
+      </info>
+      <pihak1 Ref="4" type="DataTableSource" isKey="true">
+        <Alias>pihak1</Alias>
+        <Columns isList="true" count="3">
+          <value>nmlengkap,System.String</value>
+          <value>nmjabatan,System.String</value>
+          <value>alamatktp,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>c855b189a4b143dea46263cc2a0f368a</Key>
+        <Name>pihak1</Name>
+        <NameInSource>sk.pihak1</NameInSource>
+      </pihak1>
+      <pihak2 Ref="5" type="DataTableSource" isKey="true">
+        <Alias>pihak2</Alias>
+        <Columns isList="true" count="23">
+          <value>nik,System.String</value>
+          <value>nmlengkap,System.String</value>
+          <value>jk,System.String</value>
+          <value>tmptlahir,System.String</value>
+          <value>tgllahir,System.String</value>
+          <value>noktp,System.String</value>
+          <value>nmagama,System.String</value>
+          <value>alamatktp,System.String</value>
+          <value>nmnikah,System.String</value>
+          <value>nmjabatan,System.String</value>
+          <value>department_id,System.String</value>
+          <value>nmdept,System.String</value>
+          <value>subdepartment_id,System.String</value>
+          <value>nmsubdept,System.String</value>
+          <value>nodok,System.String</value>
+          <value>nosk,System.String</value>
+          <value>kdkepegawaian,System.String</value>
+          <value>tgl_mulai,System.String</value>
+          <value>tgl_selesai,System.String</value>
+          <value>tgl_cetak,System.String</value>
+          <value>row_number,System.String</value>
+          <value>counter,System.String</value>
+          <value>nmdept_format,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>799b05f670f24b2cb594f1761fdbd224</Key>
+        <Name>pihak2</Name>
+        <NameInSource>sk.pihak2</NameInSource>
+      </pihak2>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Resources isList="true" count="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <Key>d55266ec3e634a8f865d96682d3077f3</Key>
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="6" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="10">
+        <Panel1 Ref="7" type="Panel" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,2.6,16,1.4</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text1 Ref="8" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,16,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold| Underline</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>SURAT KEPUTUSAN</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+            <Text2 Ref="9" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.6,16,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>Nomor: {pihak2.nosk}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>Panel1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Panel1>
+        <Panel2 Ref="10" type="Panel" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,5.4,16,7.2</ClientRectangle>
+          <Components isList="true" count="14">
+            <Text4 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,3.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>Menimbang</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text4>
+            <Text5 Ref="12" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.4,0,0.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>:</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text5>
+            <Text7 Ref="13" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.7,0,11.8,2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>Undang undang No. 13 tahun 2003 tentang Ketenagakerjaan j.o Undang undang Cipta Kerja No. 11 Tahun 2020 Tentang Ketenagakerjaan.
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+            </Text7>
+            <Text8 Ref="14" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.8,3.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>Mengingat</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text8>
+            <Text9 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.4,1.8,0.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>:</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text9>
+            <Text10 Ref="16" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.6,1.8,0.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>1.</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text10>
+            <Text11 Ref="17" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.2,1.8,11.8,1.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>Undang undang No. 13 tahun 2003 tentang Ketenagakerjaan j.o Undang undang Cipta Kerja No. 11 Tahun 2020 Tentang Ketenagakerjaan.</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+            </Text11>
+            <Text12 Ref="18" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.6,3.4,0.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>2.</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text12>
+            <Text13 Ref="19" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.2,3.4,11.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>Perjanjian Kerja Bersama PT. Sinar Nusantara Industries.</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+            </Text13>
+            <Text39 Ref="20" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.6,4.2,0.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text39</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>3.</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text39>
+            <Text40 Ref="21" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.2,4.2,11.8,1.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text40</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>Perjanjian Kerja Waktu Tidak Tertentu antara PT. Sinar Nusantara Industries dengan karyawan No: {pihak2.nosk} 
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+            </Text40>
+            <Text6 Ref="22" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,6,3.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>Memperhatikan</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text6>
+            <Text26 Ref="23" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.4,6,0.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>:</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text26>
+            <Text27 Ref="24" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.7,6,11.8,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="6" />
+              <Parent isRef="10" />
+              <Text>Hasil evaluasi kinerja, dedikasi dan loyalitas karyawan Ybs terhadap perusahaan.</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+            </Text27>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>Panel2</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Panel2>
+        <Text3 Ref="25" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4,16,0.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text3</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Text>TENTANG</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+          <Type>Expression</Type>
+        </Text3>
+        <Text38 Ref="26" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.6,16,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text38</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Text>PENGANGKATAN KARYAWAN TETAP</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+          <Type>Expression</Type>
+        </Text38>
+        <Image1 Ref="27" type="Image" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0,6.4,1.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <HorAlignment>Center</HorAlignment>
+          <ImageBytes>/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcG
+BwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwM
+DAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCABLAO0DASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD99dS1
+O30bT5ru8uIbW1tkMs00zhI4kAyWZjwAB1Jr5o+KP/BYH4FfDLUZLRfE1z4kuYW2uNEs3uYwc44l
+O2Jh7q5r4Q/4K2ft3a18dvjPrHgPR7+a18D+FLtrF4IXKjVbqJtsssuPvKrgqg5XC7urceLfsvfs
+NfEf9r6a6fwboyS6bYSCG61K8nW3tIHIzt3Hl2xglUViAQSBkV8XjuJa0q7w2AhzNaX3v6Jfmf1N
+wl4EZXSyeOecX4l0YSSlyqUYKKe3PKSfvO/wqzT0u3ofpPpH/Bdj4K6lJiaz8c6eNxXdcaZCRj1/
+dzscH8/avXPhf/wUo+CHxev7Wz0j4gaTHfXjrFFbagkthI8jHAQecqAsTwACckgDqK/OHxL/AMEO
+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</ImageBytes>
+          <Margins>0,0,0,0</Margins>
+          <Name>Image1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Image1>
+        <Panel10 Ref="28" type="Panel" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,13.2,16,7.4</ClientRectangle>
+          <Components isList="true" count="20">
+            <Text30 Ref="29" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,3.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text30</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>Menetapkan</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text30>
+            <Text31 Ref="30" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.4,0,0.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text31</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>:</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text31>
+            <Text33 Ref="31" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.2,1.2,6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text33</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>Nama</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text33>
+            <Text34 Ref="32" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>7.2,1.2,6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text34</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>{pihak2.nmlengkap}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text34>
+            <Text42 Ref="33" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.8,1.2,0.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text42</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>:</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text42>
+            <Text28 Ref="34" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.2,1.8,6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text28</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>NIK</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text28>
+            <Text29 Ref="35" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>7.2,1.8,6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text29</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>{pihak2.nik}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text29>
+            <Text43 Ref="36" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.8,1.8,0.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text43</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>:</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text43>
+            <Text44 Ref="37" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.2,2.4,6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text44</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>Jabatan</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text44>
+            <Text45 Ref="38" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>7.2,2.4,6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text45</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>{pihak2.nmjabatan}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text45>
+            <Text46 Ref="39" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.8,2.4,0.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text46</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>:</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text46>
+            <Text47 Ref="40" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.2,3,6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text47</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>Bagian</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text47>
+            <Text48 Ref="41" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>7.2,3,6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text48</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>{pihak2.nmsubdept}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text48>
+            <Text61 Ref="42" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.8,3,0.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text61</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>:</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text61>
+            <Text32 Ref="43" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.6,0,0.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text32</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>1.</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text32>
+            <Text62 Ref="44" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.2,0,11.8,1.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text62</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>Mengangkat karyawan yang namanya tersebut dibawah ini menjadi Karyawan Tetap.
+</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+            </Text62>
+            <Text63 Ref="45" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.4,4,0.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text63</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>2.</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text63>
+            <Text64 Ref="46" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4,4,11.8,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text64</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>Pengangkatan sebagai karyawan tetap terhitung mulai tanggal ditetapkan.</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+            </Text64>
+            <Text65 Ref="47" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4,5.8,11.8,1.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text65</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>Bahwa apabila dikemudian hari ternyata terdapat kekeliruan dalam Surat Keputusan ini akan diadakan pembetulan/ralat seperlunya.</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+            </Text65>
+            <Text66 Ref="48" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4,5.2,3.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text66</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>&lt;u&gt;Dengan catatan:&lt;/u&gt;</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text66>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>Panel10</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Panel10>
+        <Text95 Ref="49" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>6.4,12.6,3.2,0.4</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text95</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Text>MEMUTUSKAN</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text95>
+        <Text103 Ref="50" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>8.4,29.4,7.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Underline</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text103</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Text>{pihak1.nmlengkap}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+          <Type>DataColumn</Type>
+        </Text103>
+        <Text104 Ref="51" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>8.4,29.8,7.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text104</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Text>{pihak1.nmjabatan}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+          <Type>DataColumn</Type>
+        </Text104>
+        <Panel16 Ref="52" type="Panel" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,20.8,16,7.4</ClientRectangle>
+          <Components isList="true" count="4">
+            <Text96 Ref="53" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>11.4,1.4,4.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text96</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>Ditetapkan di Bati-bati</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+            </Text96>
+            <Text101 Ref="54" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>10,2,6,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text101</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>Pada tanggal : {pihak2.tgl_cetak}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+            </Text101>
+            <Text102 Ref="55" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>8.4,6,7.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text102</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>&lt;b&gt;&lt;u&gt;{pihak1.nmlengkap}&lt;/u&gt;&lt;/b&gt;</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text102>
+            <Text14 Ref="56" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>8.4,6.8,7.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>{pihak1.nmjabatan}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>DataColumn</Type>
+            </Text14>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>Panel16</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Panel16>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>b3b0fb104e4e4e2daa1329b0a92a0c31</Guid>
+      <Margins>2.54,2.54,0.5,0.5</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="57" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Angle>30</Angle>
+        <Font>Arial,100</Font>
+        <ImageTiling>True</ImageTiling>
+        <ImageTransparency>229</ImageTransparency>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>9/25/2024 8:40:09 AM</ReportChanged>
+  <ReportCreated>6/10/2023 11:48:07 AM</ReportCreated>
+  <ReportFile>D:\Laragon\www\DEVHRMSSNI\assets\mrt\contract\sk.mrt</ReportFile>
+  <ReportGuid>dd9ac9864b264728bd8e4f69dffac616</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2020.2.3.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

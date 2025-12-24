@@ -1,0 +1,215 @@
+<link href="<?php echo base_url('assets/css/datepicker.css');?>" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+            $(function() {
+                $("#example1").dataTable({
+					"ordering": false
+				});
+				/*    var table = $('#example1').DataTable({
+					   lengthMenu: [ [2, 4, 8, -1], [2, 4, 8, "All"] ],
+					   pageLength: 4
+					}); */
+				$("#example3").dataTable();
+				$("#example4").dataTable();
+				$(".inputfill").selectize();
+				$('.tglYM').datepicker({
+				    format: "yyyy-mm",
+					viewMode: "months", 
+					minViewMode: "months"
+				});
+				
+
+			  });
+</script>
+<style> selectize css
+.selectize-input {
+    overflow: visible;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+.selectize-input.dropdown-active {
+    min-height: 30px;
+    line-height: normal;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+.selectize-dropdown, .selectize-input, .selectize-input input {
+    min-height: 30px;
+    line-height: normal;
+}
+.loading .selectize-dropdown-content:after {
+    content: 'loading...';
+    height: 30px;
+    display: block;
+    text-align: center;
+}
+</style>
+<div class="pull-right">Versi: <?php echo $version; ?></div>
+<!--div class="nav-tabs-custom"-->
+<legend><?php echo $title.trim($dtlnik['nmlengkap']);?></legend>
+<h4><?php echo $periode;?></h4>
+
+<?php echo $message;?>
+
+<div class="row">
+<a href="<?php echo site_url("pdca/pdca/form_report_pdca")?>"  class="btn btn-default" style="margin:10px; color:#000000;">Kembali</a>
+</div>	
+</br>
+<div class="row">
+<div class="col-sm-12">
+		<div class="row">
+			<div class="col-xs-12">                            
+				<div class="box">
+					<div class="box-header">
+					</div><!-- /.box-header -->	
+					<div class="box-body table-responsive" style='overflow-x:scroll;'>
+						<table id="example1" class="table table-bordered table-striped" >
+							<thead>
+										<tr>											
+											<th>TANGGAL</th>
+											<th>IDBU</th>
+											<th>PLAN</th>
+											<th>QTY/TIME</th>
+											<th>DO</th>
+											<th>%</th>
+											<th>REMARK</th>
+												
+										</tr>
+							</thead>
+							<tbody>
+									<?php $no=0; foreach($list_pdca as $row): $no++;?>
+								<tr>									
+									<td><?php if (date('d-m-Y', strtotime(trim($row->docdate)))=='01-01-1970') { echo ''; } else { echo date('d-m-Y', strtotime(trim($row->docdate))); }?></td>
+									<td><?php echo $row->idbu;?></td>
+									<td><?php echo $row->descplan;?></td>
+									<td align="right"><?php echo $row->qtytime;?></td>
+									<td align="right"><?php echo $row->do_c;?></td>
+									<td align="right"><?php echo $row->percentage;?></td>
+									<td><?php echo $row->remark;?></td>
+									<!--td><?php if (empty($row->docdate)) { echo ''; } else { echo date('d-m-Y', strtotime(trim($row->ajustment_date))); }?></td-->
+									<!--td width="15%">							
+									<a href="<?php 
+									$enc_nik=bin2hex($this->encrypt->encode(trim($row->nik)));
+									$enc_doctype=bin2hex($this->encrypt->encode(trim($row->doctype)));
+									$enc_planperiod=bin2hex($this->encrypt->encode(trim($row->planperiod)));
+									echo site_url("pdca/pdca/form_view_pdca_sub_detail").'/'.$enc_nik.'/'.$enc_doctype.'/'.$enc_planperiod ?>" class="btn btn-default  btn-sm"><i class="fa fa-edit"></i> DETAIL </a>
+								
+									</td---->
+								</tr>
+								<?php endforeach;?>	
+							</tbody>		
+						</table>
+					</div><!-- /.box-body -->
+				</div><!-- /.box -->
+			</div>
+		</div>	
+</div>
+</div><!--/ nav -->	
+
+
+
+<div class="modal fade" id="ChoiceOfLetter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		<h4 class="modal-title" id="myModalLabel"> PILIH JENIS UNTUK INPUT PDCA </h4>
+	  </div>
+<form action="<?php echo site_url('pdca/pdca/list_personal_karyawan')?>" method="post" name="inputformPbk">
+<div class="modal-body">										
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="box box-danger">
+					<div class="box-body">
+						<div class="form-horizontal">	
+							<div class="form-group ">
+								<label class="col-sm-4" for="inputsm">PILIH TIPE PDCA </label>	
+									<div class="col-sm-8">  
+									<select class="form-control input-sm inputfill" name="inputfill"  required>
+									 <option value="ISD"> ISIDENTIL </option> 
+									 <option value="BRK"> BERKALA </option> 
+									 <!--option value="AJUSTMENT"> AJUSTMENT IN</option--> 
+									</select>
+									</div>
+									<input type="hidden" name="rr" id="rr" value="#" class="form-control "  >
+									
+									<!--select class="form-control input-sm "  readonly disabled>
+									 <option value="">---PILIH KODE GROUP--</option> 
+									  <?php foreach($list_scgroup as $sc){?>					  
+									  <option  <?php if (trim($sc->kdgroup)==trim($lb->kdgroup)) { echo 'selected';}?>  value="<?php echo trim($sc->kdgroup);?>" ><?php echo trim($sc->kdgroup).' || '.trim($sc->nmgroup);?></option>						  
+									  <?php }?>
+									</select--->
+							</div>							
+						</div>
+					</div><!-- /.box-body -->													
+				</div><!-- /.box --> 
+			</div>
+		</div>	
+	</div>	
+      <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" id="submit"  class="btn btn-primary">SIMPAN</button>
+      </div>
+	  </form>
+</div></div></div>
+
+
+<div class="modal fade" id="Filter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		<h4 class="modal-title" id="myModalLabel"> FILTER PENCARIAN UNTUK PDCA </h4>
+	  </div>
+<form action="<?php echo site_url('pdca/pdca/form_pdca')?>" method="post" name="inputformPbk">
+<div class="modal-body">										
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="box box-danger">
+					<div class="box-body">
+						<div class="form-horizontal">	
+							<div class="form-group ">
+									<label class="col-sm-4" for="inputsm">PILIH TIPE PDCA </label>	
+									<div class="col-sm-8">  
+										<select class="form-control input-sm inputfill" name="inputfill " required>
+											<option value="ISD"> ISIDENTIL </option> 
+											<option value="BRK"> BERKALA </option> 
+										</select>
+									</div>
+							</div>
+							<div class="form-group ">
+									<label class="col-sm-4" for="inputsm">PILIH PERIODE PDCA </label>	
+									<div class="col-sm-8"> 
+										<input type="input" name="tglYM" id="tglYM" class="form-control input-sm  tglYM"  >
+									</div>
+							</div>		
+							<div class="form-group ">
+									<label class="col-sm-4" for="inputsm">PILIH NAMA KARYAWAN </label>
+									<div class="col-sm-8"> 
+									<select class="form-control input-sm inputfill" name="nik" id="nik">
+										<option value=""><tr><th width="20%">-- NIK |</th><th width="80%">| NAMA KARYAWAN --</th></tr></option> 
+										<?php foreach($list_nik as $sc){?>					  
+										<option value="<?php echo trim($sc->nik);?>" ><tr><th width="20%"><?php echo trim($sc->nik);?>  |</th><th width="80%">| <?php echo trim($sc->nmlengkap);?></th></tr></option>						  
+										<?php }?>
+									</select>
+									</div>
+							</div>									
+						
+					</div><!-- /.box-body -->													
+				</div><!-- /.box --> 
+			</div>
+		</div>	
+	</div>	
+      <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" id="submit"  class="btn btn-primary">SIMPAN</button>
+      </div>
+	  </form>
+</div></div></div>
+
+<script>
+	//Date range picker
+    	$("#tgl").datepicker(); 
+    	$(".tglan").datepicker(); 
+</script>

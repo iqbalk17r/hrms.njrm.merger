@@ -1,0 +1,43 @@
+{
+     "info": {
+        "tglkontrak": "2025-03-18",
+        "tglctk": "2025-06-18",
+        "nmhari": "Rabu",
+        "tgl": "18",
+        "bulan": "Juni",
+        "tahun": "2025",
+        "nmhari2": "Selasa",
+        "tgl2": "18",
+        "bulan2": "Maret",
+        "tahun2": "2025"
+    },
+    "pihak1": {
+        "nmlengkap": "Merry Chrissinda",
+        "nmjabatan": "Direktur",
+        "alamatktp": "Jl. Kupang Indah 10\/10, RT. 03, RW. 05, Kel. Dukuh Kupang, Kec. Dukuh Pakis, Surabaya"
+    },
+    "pihak2": {
+        "nik": "0323.545",
+        "nmlengkap": "ADIB AJI PANGESTU",
+        "jk": "Laki-laki",
+        "tmptlahir": "KAB. DEMAK",
+        "tgllahir": "9 Maret 1997",
+        "noktp": "3321050903970001",
+        "nmagama": "ISLAM",
+        "alamatktp": "SAMPANG, RT 02 \/ RW 01, KEL. SAMPANG, KEC. KARANGTENGAH, KAB. DEMAK",
+        "nmnikah": "MENIKAH 1 TANGGUNGAN",
+        "nmjabatan": "SALES PROYEK",
+        "nmdept": "NUSA PROYEK",
+        "nodok": "STSPG0000029",
+        "kdkepegawaian": "KT",
+        "tgl_mulai": "4 Maret 2025",
+        "tgl_selesai": "-",
+        "tgl_cetak": "17 Maret 2025",
+        "row_number": "1",
+        "nmdept_format": null,
+        "nosk": "313\/NUSA\/PKWTT\/III\/2025",
+        "pkwt_ke": "2",
+        "tanggal_pkwt_terakhir": "07-03-2024",
+        "wilpen": "SEMARANG"
+    }
+}

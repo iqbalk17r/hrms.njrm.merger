@@ -1,0 +1,1207 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <json_pkorekap Ref="2" type="Stimulsoft.Report.Dictionary.StiJsonDatabase" isKey="true">
+        <Alias>json_pkorekap</Alias>
+        <Key>ea6cd299651148f69a1bd3de7e4e526a</Key>
+        <Name>json_pkorekap</Name>
+        <PathData>D:\WEB\apache2\htdocs\hrms.nusa\assets\json\json_pkorekap.json</PathData>
+      </json_pkorekap>
+    </Databases>
+    <DataSources isList="true" count="4">
+      <approval Ref="3" type="DataTableSource" isKey="true">
+        <Alias>approval</Alias>
+        <Columns isList="true" count="3">
+          <value>nik,System.String</value>
+          <value>nama,System.String</value>
+          <value>job,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>8cb89c7ee35e481f82d24b96d82ba134</Key>
+        <Name>approval</Name>
+        <NameInSource>json_pkorekap.approval</NameInSource>
+      </approval>
+      <detail Ref="4" type="DataTableSource" isKey="true">
+        <Alias>detail</Alias>
+        <Columns isList="true" count="13">
+          <value>id,System.String</value>
+          <value>kddok,System.String</value>
+          <value>presentation_date,System.String</value>
+          <value>knowledge,System.String</value>
+          <value>skill,System.String</value>
+          <value>attitude,System.String</value>
+          <value>recommendation,System.String</value>
+          <value>conclusion,System.String</value>
+          <value>inputdate,System.String</value>
+          <value>updatedate,System.String</value>
+          <value>inputby,System.String</value>
+          <value>updateby,System.String</value>
+          <value>nama_panelist,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>9f05b6fb4347434fa80f77e48eff1b4d</Key>
+        <Name>detail</Name>
+        <NameInSource>json_pkorekap.detail</NameInSource>
+      </detail>
+      <infoumum Ref="5" type="DataTableSource" isKey="true">
+        <Alias>infoumum</Alias>
+        <Columns isList="true" count="30">
+          <value>ORIGINAL,nik,nik,nik,System.String,_x0038_cc18b0383524239b083a4b03b8c2600</value>
+          <value>ORIGINAL,nmlengkap,nmlengkap,nmlengkap,System.String,a21ec9efbea7447eb61023c83c9bd6a1</value>
+          <value>ORIGINAL,jk,jk,jk,System.String,_x0034_d0499a7b29c4a8c982b682b4c4bd9f2</value>
+          <value>ORIGINAL,tmptlahir,tmptlahir,tmptlahir,System.String,b0a4a132e7864369aaa697135217644f</value>
+          <value>ORIGINAL,tgllahir,tgllahir,tgllahir,System.String,c58474a3a5624138a79bb37b68901290</value>
+          <value>ORIGINAL,noktp,noktp,noktp,System.String,ebf002f2aa9946e3a7aaeacbb709a3e9</value>
+          <value>ORIGINAL,tglmasukkerja,tglmasukkerja,tglmasukkerja,System.String,_x0038_c72f5369196438e9d90f9b63117257d</value>
+          <value>ORIGINAL,nmagama,nmagama,nmagama,System.String,_x0037_6b45d15d43b4268925239a3464265ef</value>
+          <value>ORIGINAL,alamatktp,alamatktp,alamatktp,System.String,_x0033_1ea77227e044c8dae3b083391e2e967</value>
+          <value>ORIGINAL,nmnikah,nmnikah,nmnikah,System.String,_x0037_69725188d8240128f79fdebce55546e</value>
+          <value>ORIGINAL,nmjabatan,nmjabatan,nmjabatan,System.String,_x0033_5f472e11da34f12b549a51214a3347b</value>
+          <value>ORIGINAL,jabatan_cetak,jabatan_cetak,jabatan_cetak,System.String,effa4dc5a65941e4bc13190479f98d56</value>
+          <value>ORIGINAL,nmdept,nmdept,nmdept,System.String,_x0036_6898d1b3aef40b68386e880c69a0df2</value>
+          <value>ORIGINAL,dept_cetak,dept_cetak,dept_cetak,System.String,_x0030_9b5a316abae4fcfb1c1f9aeacfd53f4</value>
+          <value>ORIGINAL,nodok,nodok,nodok,System.String,_x0036_e5c985e63b44c949b5418b3968b9ee8</value>
+          <value>ORIGINAL,kdkepegawaian,kdkepegawaian,kdkepegawaian,System.String,af14ae58961441d3b9bf6813fab0ef27</value>
+          <value>ORIGINAL,tgl_mulai,tgl_mulai,tgl_mulai,System.String,d704a8ff2d6b4f509edaa9e887f9510c</value>
+          <value>ORIGINAL,tgl_selesai,tgl_selesai,tgl_selesai,System.String,ec50ab4c6bdb4c35bcae6ce8333e5609</value>
+          <value>ORIGINAL,nmkepegawaian,nmkepegawaian,nmkepegawaian,System.String,_x0034_3991f1352364043ac176aee8cd5fc66</value>
+          <value>ORIGINAL,nmatasan,nmatasan,nmatasan,System.String,_x0035_b622b96eea84e459c6d74ed93b412e4</value>
+          <value>ORIGINAL,nmatasan2,nmatasan2,nmatasan2,System.String,_x0033_0a8eeb42686469f8dc8483056a15186</value>
+          <value>ORIGINAL,masakerja,masakerja,masakerja,System.String,_x0039_2ae054889b84ab1ae34bebf4b3d987a</value>
+          <value>ORIGINAL,pendidikan,pendidikan,pendidikan,System.String,c3394e9ca7184e9ea8fe4df558cc7d45</value>
+          <value>ORIGINAL,tgl_cetak,tgl_cetak,tgl_cetak,System.String,f7db82169ede422f9a547b42b2ff7381</value>
+          <value>ORIGINAL,row_number,row_number,row_number,System.String,c34b8234368244ada53633d9dcb0ad46</value>
+          <value>ORIGINAL,selisih_tgl,selisih_tgl,selisih_tgl,System.String,_x0039_1ba948c35d8465b80061256bfa9ad00</value>
+          <value>ORIGINAL,tgl_mulai1,tgl_mulai1,tgl_mulai1,System.String,_x0038_6d738c236a744bdad2f208d9763a3eb</value>
+          <value>ORIGINAL,tgl_selesai1,tgl_selesai1,tgl_selesai1,System.String,_x0037_2a30cf97653454ca171702c15212d7f</value>
+          <value>ORIGINAL,tglmasukkerja1,tglmasukkerja1,tglmasukkerja1,System.String,_x0034_aca1174280e4e18b027a33d5a6f6ee9</value>
+          <value>ORIGINAL,nmsubdept,nmsubdept,nmsubdept,System.String,_x0036_6bdcbc747a24713990107ca7e407e1a</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>68db6ca2824a4b7dbe55e50426b44fde</Key>
+        <Name>infoumum</Name>
+        <NameInSource>json_pkorekap.infoumum</NameInSource>
+      </infoumum>
+      <recomendations Ref="6" type="DataTableSource" isKey="true">
+        <Alias>recomendations</Alias>
+        <Columns isList="true" count="2">
+          <value>nama,System.String</value>
+          <value>status,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>c2391a3045c6480baaf6113d5b56a71b</Key>
+        <Name>recomendations</Name>
+        <NameInSource>json_pkorekap.recomendations</NameInSource>
+      </recomendations>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Resources isList="true" count="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <Key>47615949c00b4ff9bce4ce8917f82292</Key>
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="7" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <Panel4 Ref="8" type="Panel" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <CanGrow>True</CanGrow>
+          <ClientRectangle>0.6,0.2,20,27.4</ClientRectangle>
+          <Components isList="true" count="22">
+            <Panel5 Ref="9" type="Panel" isKey="true">
+              <Border>None;Black;5;Solid;False;6;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,3.6,20,3</ClientRectangle>
+              <Components isList="true" count="1">
+                <Panel3 Ref="10" type="Panel" isKey="true">
+                  <Border>None;Black;5;Solid;False;6;Black</Border>
+                  <Brush>Transparent</Brush>
+                  <CanGrow>True</CanGrow>
+                  <ClientRectangle>0,0,20,3</ClientRectangle>
+                  <Components isList="true" count="22">
+                    <Text19 Ref="11" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>0,0.8,3.8,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text19</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>Bagian</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text19>
+                    <Text20 Ref="12" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>7.8,0.8,11,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text20</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>{infoumum.nmdept}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text20>
+                    <Text21 Ref="13" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>0,1.6,3.8,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text21</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>Dioreientasi sebagai</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text21>
+                    <Text22 Ref="14" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>7.8,1.2,11,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text22</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>{infoumum.nmsubdept}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>DataColumn</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text22>
+                    <Text18 Ref="15" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <CanGrow>True</CanGrow>
+                      <ClientRectangle>7.8,0,11,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text18</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>{infoumum.nmlengkap} </Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text18>
+                    <Text24 Ref="16" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>0,1.2,3.8,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text24</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>Sub Bagian</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text24>
+                    <Text26 Ref="17" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>7.8,2,9.4,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text26</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>{infoumum.tglmasukkerja1}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text26>
+                    <Text25 Ref="18" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>7.8,1.6,11,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text25</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>{infoumum.nmjabatan}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>DataColumn</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text25>
+                    <Text17 Ref="19" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>0,0,3.8,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text17</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>Nama</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text17>
+                    <Text27 Ref="20" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>0,0.4,3.8,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text27</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>NIK</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text27>
+                    <Text28 Ref="21" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>0,2.4,5,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text28</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>Tanggal Presentasi</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text28>
+                    <Text29 Ref="22" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <CanGrow>True</CanGrow>
+                      <ClientRectangle>7.8,0.4,11,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text29</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>{infoumum.nik}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text29>
+                    <Text30 Ref="23" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>7.8,2.4,11,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text30</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>{detail.presentation_date}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text30>
+                    <Text16 Ref="24" type="Text" isKey="true">
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>7.2,0,0.4,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,11</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text16</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>: </Text>
+                      <TextBrush>Black</TextBrush>
+                    </Text16>
+                    <Text33 Ref="25" type="Text" isKey="true">
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>7.2,1.6,0.4,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,11</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text33</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>: </Text>
+                      <TextBrush>Black</TextBrush>
+                    </Text33>
+                    <Text34 Ref="26" type="Text" isKey="true">
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>7.2,2.4,0.4,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,11</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text34</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>: </Text>
+                      <TextBrush>Black</TextBrush>
+                    </Text34>
+                    <Text103 Ref="27" type="Text" isKey="true">
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>7.2,0,0.4,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,11</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text103</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>: </Text>
+                      <TextBrush>Black</TextBrush>
+                    </Text103>
+                    <Text104 Ref="28" type="Text" isKey="true">
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>7.2,0.4,0.4,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,11</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text104</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>: </Text>
+                      <TextBrush>Black</TextBrush>
+                    </Text104>
+                    <Text105 Ref="29" type="Text" isKey="true">
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>7.2,0.8,0.4,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,11</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text105</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>: </Text>
+                      <TextBrush>Black</TextBrush>
+                    </Text105>
+                    <Text106 Ref="30" type="Text" isKey="true">
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>7.2,1.2,0.4,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,11</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text106</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>: </Text>
+                      <TextBrush>Black</TextBrush>
+                    </Text106>
+                    <Text107 Ref="31" type="Text" isKey="true">
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>7.2,2,0.4,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,11</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text107</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>: </Text>
+                      <TextBrush>Black</TextBrush>
+                    </Text107>
+                    <Text23 Ref="32" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>0,2,3.8,0.4</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,12</Font>
+                      <Margins>10,0,0,0</Margins>
+                      <Name>Text23</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="10" />
+                      <Text>Diorientasi sejak</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Text23>
+                  </Components>
+                  <Conditions isList="true" count="0" />
+                  <Name>Panel3</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="9" />
+                </Panel3>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Name>Panel5</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+            </Panel5>
+            <Text128 Ref="33" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0,7.2,5.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,11,Bold</Font>
+              <Margins>10,0,0,0</Margins>
+              <Name>Text128</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>HASIL ANALISA EVALUASI</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text128>
+            <Panel8 Ref="34" type="Panel" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0,20,3.4</ClientRectangle>
+              <Components isList="true" count="21">
+                <Text130 Ref="35" type="Text" isKey="true">
+                  <Border>Top, Left, Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>10.4,1,3.8,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,11</Font>
+                  <Margins>5,0,0,0</Margins>
+                  <Name>Text130</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>No. Dokumen</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text130>
+                <Text131 Ref="36" type="Text" isKey="true">
+                  <Border>Top, Right, Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>15,1,5,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,11</Font>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text131</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text> F.72/HRGA/01/06</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text131>
+                <Text132 Ref="37" type="Text" isKey="true">
+                  <Border>Top, Left, Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>10.4,1.6,3.8,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,11</Font>
+                  <Margins>5,0,0,0</Margins>
+                  <Name>Text132</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>Revisi</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text132>
+                <Text133 Ref="38" type="Text" isKey="true">
+                  <Border>Top, Right, Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>15,1.6,5,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,11</Font>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text133</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text> 00</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text133>
+                <Text134 Ref="39" type="Text" isKey="true">
+                  <Border>Top, Right, Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>15,2.2,5,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,11</Font>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text134</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text> 03 Desember 2024
+</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text134>
+                <Text135 Ref="40" type="Text" isKey="true">
+                  <Border>Top, Left, Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>10.4,2.2,3.8,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,11</Font>
+                  <Margins>5,0,0,0</Margins>
+                  <Name>Text135</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>Tanggal
+</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text135>
+                <Text136 Ref="41" type="Text" isKey="true">
+                  <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>14.2,1.6,0.8,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,12,Bold</Font>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text136</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>:</Text>
+                  <TextBrush>Black</TextBrush>
+                  <VertAlignment>Center</VertAlignment>
+                </Text136>
+                <Text137 Ref="42" type="Text" isKey="true">
+                  <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>14.2,2.2,0.8,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,12,Bold</Font>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text137</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>:</Text>
+                  <TextBrush>Black</TextBrush>
+                  <VertAlignment>Center</VertAlignment>
+                </Text137>
+                <Text138 Ref="43" type="Text" isKey="true">
+                  <Border>All;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>0,2.2,10.4,1.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,11,Bold</Font>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text138</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>PT. NUSANTARA JAYA RAYA MUJUR</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text138>
+                <Text139 Ref="44" type="Text" isKey="true">
+                  <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>14.2,1,0.8,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,12,Bold</Font>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text139</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>:</Text>
+                  <TextBrush>Black</TextBrush>
+                  <VertAlignment>Center</VertAlignment>
+                </Text139>
+                <Text140 Ref="45" type="Text" isKey="true">
+                  <Border>Top, Right, Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>15,2.8,5,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,11</Font>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text140</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text> 01</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text140>
+                <Text141 Ref="46" type="Text" isKey="true">
+                  <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>14.2,2.8,0.8,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,12,Bold</Font>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text141</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>:</Text>
+                  <TextBrush>Black</TextBrush>
+                  <VertAlignment>Center</VertAlignment>
+                </Text141>
+                <Text142 Ref="47" type="Text" isKey="true">
+                  <Border>Top, Left, Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>10.4,2.8,3.8,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,11</Font>
+                  <Margins>5,0,0,0</Margins>
+                  <Name>Text142</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>Terbitan
+</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text142>
+                <Image3 Ref="48" type="Image" isKey="true">
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>1.6,1,1.6,1.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <ImageBytes>iVBORw0KGgoAAAANSUhEUgAAADwAAAArCAMAAAAT8RtjAAAAolBMVEVHcEwBYEsBYEtRgVhmgjsB
+YUsHZE8PaFQCYUwFYk4EYk0DYU3YrwsOZ1MDYU3btiQDYUwDYUwBYEsBYEsMZVEFYk3XrgYCYEsc
+cFwDYk3XrgYJZVADYUwEYU0ldWMQaVUJZFDXrgYPZlIIZE8KZVHWrADXrQLXrQMGY0/XrwnWrADX
+rgXWrADXrgbXrgYGY07WrQHWrACYtZ7WrQEBYEvWrADJoMYuAAAANHRSTlMA9foBA+cwIps7e7ES
+EMYLz+681hlDulcH3VxwpWcOupJJCk5c1a7Ihxz5ifI0eCia/gng+KJx1QAAAv1JREFUSMeNVtli
+qkAMBYZ9kx1ZiyJKrXVp8f9/7cLMAEOwt82b8RyTyXIix2FDpaYFIvcX28qhwiKtWrVd3jGKYInb
+mKYJflHWvYT3Df02Od6EjpijMbj3a9Q0zX3H0C1doki/IG7N7yZLZvbn6Yntcn+fuOqMFPTt4LE7
+xhJ55DbP0Y4m9eksUjj0nqJbmErSMaPnbCkpqiwtkP6NK70l2SWhd2eGfCKh2yVSyDjNXbq6DAM/
+GO7zvMM9AmE6g9N44FJxk04smeStJADp/kSO1uQVslu7cnGV9gWnXdoA6XA3mIyEK5auCyYaqxxR
+DpPJh+6bx5n7uJI2H4QFjg/7p0iAzBd4SL4n8seG9Nlaljsve2fWrdhoYNPYF8rtrWbb6uPnle3k
+E2w853zWZy6a6TGKjvdPZjHiOUt/3IKa+qTDXsGp8fmwcgh9bRDYyDFzVZl8hM0Po07YXVJYL6Ug
+IF+re8aH3+1hT1Dx5AW6vH/BxuOcKIxHvA2hC/ohptPgeroWQLI1VMVYvKZ0elc8ATKbtpT31XCZ
+f/n2C7mnx6o/8u2CTfLrd3Jf6qCubDr3SSX/jxz4kEz0uKXxk2x8vOWsyPWAqRBkIxTEHglvh2RY
+8FY7bB1LY94naPvawHQeyyUiIqizckyS85SXg7GPHdz5XOHEjOQhxeMMKMYk+jG4GO8m3gpFxRyn
+MkbpENQSQ26MQrgH5mJ8nJrvJkoHOirg4naqNU/rqCPjsojpoPqPx+NMNF+GItS1CJyBvgv0MbsL
+uBiytNYrC/wij0Mjk9Xe69BDVAGyoP8k+umDITc4dCj8UfSX0vvA0qsJfxR988XFkN3fRb/64WKg
+F6IPL5AQ4rSv64vxQvQ5UETbgp16PiMivuCSuzXsn0BHbMNcjHNK99ZZXRaks1Vst+Nwzq++j6of
+siUjWyROf3E6oS3n0T6SW/d9nS6GeEgAt4+tGdIQnffiLbtTu3sURdfPhehXBOnrsxx8yVmetyHU
+eSSK8F8hkg95rtYk7D9TUxOlsZSPmgAAAABJRU5ErkJggg==</ImageBytes>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Image3</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <VertAlignment>Center</VertAlignment>
+                </Image3>
+                <Image4 Ref="49" type="Image" isKey="true">
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>3.4,1.2,4,0.8</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <ImageBytes>iVBORw0KGgoAAAANSUhEUgAAAI0AAAAUCAMAAACH6U4cAAAAjVBMVEVHcEwCYEsCYUwBYEsBYEsF
+Y04BYEsDYUwEYUwBYEsDYUwCYUwJZE8OZ1MWalYHY04MZVEHY08CYUwHY08DYUwHY04BYEsCYEsX
+bFgGY09qm44CYEwKZVEFYk4NZlIUbFgDYU0SalYWbVkZb1wQaVU2gXBSkoQZb1xGi3tRkoNPkYJS
+k4RMj4ABYEsCYUxykef7AAAALXRSTlMAn+mv+mJN31j+1fMaJwMHC0K9D8UwzYQhdwFqOZgUio9M
+b6CwFAfNiXx+gX8UW8MSAAADyElEQVRIx9WW15bjKBBAEUpGKAcrWWrb22FmdtH/f95WAMnT3X7b
+M+csLwaqKC6VZCH+lyP/I7c0VdTRTWUVXXAyRNHAoqKKqneaDdHdf4mq0h0CXack0ijK3KTj827Y
+Ax1oTLtJGpfiIMhgacWiD5SccXIPjLyAzdYYn3UjrXSI14yx2oxRuo6skTFQW5vyfDEqrvBZr8ac
+V1H4RrkRnFChkkrFF+FM0pDt2PDOlJ2NkidL4xlDFOLFGDxdBWCU3xSC6K9JrL5xQ1ckeEtgHkRs
+DaVncFQmjYlTUZ7NMfCZE95grmI3aYdncXpc+PlBY/zmCc0GNPdtt3Dm8Nw0LpZpp9muxVOaIcZZ
+sn6m2dgfDenL7IHGjE9pRNOisTkMPWldMy10Jk53GqMjR1N4bdsibQK/6L5QmcOTSCNBII3LB7wP
+smB+pJHVU5oUTm53rKquYn8OCZ3hrGAak6SWRhRFUdawc8qLAvRzvkAtO41fFsUJb6FQXVG4pyor
+m/rtGc0b+iYeo3Qvg5MyKgE1Lz9ozLWTzl0iJxpWxkAlIDqnO414uGWFQMnzHipLY16e5g2l2RbE
+/sxZg68NTsAYZw80evyeBgO1oO2bo0nGcUSFurBYfm9T7KCRyTOa1FdWJxlRkOFrV7CwhQ80Rgff
+0RB6hWlPSf+QxSp0gZo77UKFNHVs9ky46J3mji7Dgr5TWhp7PwTKeKLSXJdIo2or/0qDgTqv2BLi
+4TearV5doLJ30Jedo+lntdOUEAJNvSqHdqZOtvf2foI67crOeP35Q7IFWs7eMxoKzT9/f9ikx6UK
+0FKduV4R//j1wWVtaQp/p8lx2gsbESrMHJN/Smc4qTva3mBYZxNNyE3lK837qyFtYysaadrLGGAR
+ouLCtlBel45GdPFesyGI9Jy+dTX7Ar4DSZ+tTAdeC9URewgV04iT/pYGC80NLBuuKWph6Is0PsQU
+EKYRiMs0VNFB/CHt43P0iUyuCxZ1PJDvZAIjoAsszfvyLc2I16Cy5rIhmkmcAs4j/CWxtAGxNKW/
+97Ob3nlfy9/5zUItV0dN0wxnaqGWhlviZxpqgy+g3Fw5VJbGOoc6o4/iGePQMM3V+ZRo8tGV2Ctm
+WtEf3vZTMe8fnZ4ucDTTDX31iaYL3Je2Yk9aGqpL2WG2cZ3gGwMIVeh5Hm5MMFnst+vixVLK+l7a
+b35fw1LqdgSKCPRD/tuyeN51FTNsYMiLEZb8XZ7udm8AlZ6sND2Zr0Bws0uvG64gpiNFf9z+ZUxZ
+13XNw1+yDkf6H//Rm6bp086/BAu60bjCs8MAAAAASUVORK5CYII=</ImageBytes>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Image4</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <VertAlignment>Center</VertAlignment>
+                </Image4>
+                <Text143 Ref="50" type="Text" isKey="true">
+                  <Border>All;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>10.4,0,9.6,1</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,12,Bold</Font>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text143</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>REKAP HASIL EVALUASI DAN PRESENTASI</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text143>
+                <Text144 Ref="51" type="Text" isKey="true">
+                  <Border>All;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>0,0,10.4,1</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,18,Bold</Font>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text144</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>FORMULIR</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text144>
+                <Text13 Ref="52" type="Text" isKey="true">
+                  <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>14.2,1.6,0.8,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,12,Bold</Font>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text13</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>:</Text>
+                  <TextBrush>Black</TextBrush>
+                  <VertAlignment>Center</VertAlignment>
+                </Text13>
+                <Text14 Ref="53" type="Text" isKey="true">
+                  <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>14.2,2.2,0.8,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,12,Bold</Font>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text14</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>:</Text>
+                  <TextBrush>Black</TextBrush>
+                  <VertAlignment>Center</VertAlignment>
+                </Text14>
+                <Text6 Ref="54" type="Text" isKey="true">
+                  <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>14.2,1,0.8,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,12,Bold</Font>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text6</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>:</Text>
+                  <TextBrush>Black</TextBrush>
+                  <VertAlignment>Center</VertAlignment>
+                </Text6>
+                <Text15 Ref="55" type="Text" isKey="true">
+                  <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+                  <Brush>EmptyBrush</Brush>
+                  <ClientRectangle>14.2,2.8,0.8,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,12,Bold</Font>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text15</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="34" />
+                  <Text>:</Text>
+                  <TextBrush>Black</TextBrush>
+                  <VertAlignment>Center</VertAlignment>
+                </Text15>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Name>Panel8</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+            </Panel8>
+            <Text145 Ref="56" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0,8,5.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,11,Bold| Italic</Font>
+              <Margins>10,0,0,0</Margins>
+              <Name>Text145</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>A. Knowledge (Pengetahuan)</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text145>
+            <Text158 Ref="57" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0.6,8.8,18.8,1.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text158</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>{detail.knowledge}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+            </Text158>
+            <Text161 Ref="58" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0,10.2,5.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,11,Bold| Italic</Font>
+              <Margins>10,0,0,0</Margins>
+              <Name>Text161</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>B. Skill (Keterampilan)</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text161>
+            <Text60 Ref="59" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.2,18,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,11,Bold</Font>
+              <Margins>10,0,0,0</Margins>
+              <Name>Text60</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>KESIMPULAN</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text60>
+            <Text3 Ref="60" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0.6,10.8,18.8,1.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>{detail.skill}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+            </Text3>
+            <Text4 Ref="61" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0,12.2,5.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,11,Bold| Italic</Font>
+              <Margins>10,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>C. Attitude (Perilaku)</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text4>
+            <Text5 Ref="62" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0.6,12.8,18.8,1.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>{detail.attitude}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+            </Text5>
+            <Text7 Ref="63" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.2,14.2,3.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,11,Bold</Font>
+              <Margins>10,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>REKOMENDASI</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text7>
+            <Text8 Ref="64" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0.6,18.8,18.6,1.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>{detail.conclusion}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>DataColumn</Type>
+            </Text8>
+            <Text39 Ref="65" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>14.8,23.2,4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,11</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text39</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>( {approval.nama} )</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text39>
+            <Text12 Ref="66" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>15.6,21.4,2.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,11</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>Disetujui oleh,</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text12>
+            <Text38 Ref="67" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>9.8,23.2,4.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,11</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text38</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>( {detail.nama_panelist} )</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text38>
+            <Text40 Ref="68" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>10.8,23.8,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,11</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text40</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>Development Staff</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text40>
+            <Text41 Ref="69" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>15.4,23.8,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,11</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text41</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>HRGA Supervisor</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text41>
+            <Text1 Ref="70" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>11.2,21.4,2.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,11</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>Dibuat Oleh,</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text1>
+            <BarCode1 Ref="71" type="Stimulsoft.Report.BarCodes.StiBarCode" isKey="true">
+              <AutoScale>True</AutoScale>
+              <BackColor>Transparent</BackColor>
+              <BarCodeType Ref="72" type="Stimulsoft.Report.BarCodes.StiQRCodeBarCodeType" isKey="true" />
+              <ClientRectangle>11.6,22,1.6,1.2</ClientRectangle>
+              <Code>"Diapprove oleh System"
+"Pada" {detail.inputdate}</Code>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold,Pixel</Font>
+              <ForeColor>Black</ForeColor>
+              <Name>BarCode1</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+            </BarCode1>
+            <BarCode2 Ref="73" type="Stimulsoft.Report.BarCodes.StiBarCode" isKey="true">
+              <AutoScale>True</AutoScale>
+              <BackColor>Transparent</BackColor>
+              <BarCodeType Ref="74" type="Stimulsoft.Report.BarCodes.StiQRCodeBarCodeType" isKey="true" />
+              <ClientRectangle>16,22,1.6,1.2</ClientRectangle>
+              <Code>"Diapprove oleh System"
+"Pada" {detail.inputdate}</Code>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold,Pixel</Font>
+              <ForeColor>Black</ForeColor>
+              <Name>BarCode2</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+            </BarCode2>
+            <Text10 Ref="75" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.8,21,4.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+              <Text>Surabaya, {detail.presentation_date}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text10>
+            <Panel1 Ref="76" type="Panel" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.6,14.8,19,2.8</ClientRectangle>
+              <Components isList="true" count="1">
+                <DataBand1 Ref="77" type="DataBand" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <BusinessObjectGuid isNull="true" />
+                  <ClientRectangle>0,0.4,19,0.6</ClientRectangle>
+                  <Components isList="true" count="3">
+                    <Text2 Ref="78" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>0,0,7.6,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,11</Font>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text2</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="77" />
+                      <Text>{recomendations.nama}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                    </Text2>
+                    <Text11 Ref="79" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>8.8,0,8.2,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,11</Font>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text11</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="77" />
+                      <Text>{recomendations.status}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>DataColumn</Type>
+                    </Text11>
+                    <Text31 Ref="80" type="Text" isKey="true">
+                      <Brush>EmptyBrush</Brush>
+                      <ClientRectangle>8.2,0,0.6,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,11,Bold</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text31</Name>
+                      <Page isRef="7" />
+                      <Parent isRef="77" />
+                      <Text>:</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                    </Text31>
+                  </Components>
+                  <Conditions isList="true" count="0" />
+                  <DataRelationName isNull="true" />
+                  <DataSourceName>recomendations</DataSourceName>
+                  <Filters isList="true" count="0" />
+                  <Name>DataBand1</Name>
+                  <Page isRef="7" />
+                  <Parent isRef="76" />
+                  <Sort isList="true" count="0" />
+                </DataBand1>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Name>Panel1</Name>
+              <Page isRef="7" />
+              <Parent isRef="8" />
+            </Panel1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>Panel4</Name>
+          <Page isRef="7" />
+          <Parent isRef="7" />
+          <ShiftMode>None</ShiftMode>
+        </Panel4>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>0247e7c1af5048118c77a79b4dfa4521</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Page1</Name>
+      <PageHeight>28.2</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="81" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Angle>0</Angle>
+        <Font>Arial,12,Regular,Point,False,0</Font>
+        <TextBrush>[237:28:36]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>10/3/2025 3:04:42 PM</ReportChanged>
+  <ReportCreated>3/14/2025 2:32:35 PM</ReportCreated>
+  <ReportFile>D:\Project\PHP\hrms.nusa\assets\mrt\pkorekap.mrt</ReportFile>
+  <ReportGuid>1b67bac9374d468e889b47c3ef837dd2</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2020.2.3.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

@@ -1,0 +1,30 @@
+create table IF NOT EXISTS sc_his.dinas
+(
+    nik               varchar not null,
+    nodok             varchar not null,
+    tgl_dok           date,
+    nmatasan          varchar,
+    tgl_mulai         date,
+    tgl_selesai       date,
+    status            varchar,
+    keperluan         text,
+    tujuan_kota       varchar,
+    input_date        timestamp,
+    input_by          varchar,
+    approval_date     timestamp,
+    approval_by       varchar,
+    delete_date       timestamp,
+    delete_by         varchar,
+    update_by         varchar,
+    update_date       timestamp,
+    cancel_by         varchar,
+    cancel_date       timestamp,
+    kdkategori        varchar,
+    jam_mulai         time,
+    jam_selesai       time,
+    transportasi      varchar,
+    jenis_tujuan      varchar,
+    no_telp           varchar,
+    tipe_transportasi varchar
+);
+

@@ -1,0 +1,62 @@
+DO
+$$
+BEGIN
+    CREATE SCHEMA IF NOT EXISTS sc_rep;
+    IF NOT EXISTS (SELECT column_name FROM information_schema.columns WHERE table_schema = 'sc_rep' AND table_name = 'pomst' ) THEN
+        create table sc_rep.pomst (
+          fc_branch char (6)  not null ,
+          fc_pono char (12)  not null ,
+          fd_podate timestamp not null ,
+          fc_operator char (8)  not null ,
+          fc_postatus char (1)  not null ,
+          fc_potipe char (15)  not null ,
+          fc_employee char (8)  null ,
+          fc_shiptype char (12)  null ,
+          fc_shipterm char (6)  null ,
+          fd_shipdate timestamp null ,
+          fn_itempo numeric(4, 0) null ,
+          fn_itemappreq numeric(4, 0) null ,
+          fn_itemappved numeric(4, 0) null ,
+          fn_itemappdelv numeric(4, 0) null ,
+          fn_itempodelv numeric(4, 0) not null ,
+          fn_itempodel numeric(4, 0) null ,
+          fd_agepo timestamp null ,
+          fc_suppcode char (6)  not null ,
+          fc_custcode char (6)  null ,
+          fc_shipto char (2)  not null ,
+          fn_totalvol numeric(12, 2) null ,
+          fm_ttlbrutto money not null ,
+          fm_ttldisc money null ,
+          fm_ttlnetto money not null ,
+          fm_ttldpp money not null ,
+          fm_ttlppn money not null ,
+          fv_approvedby1 varchar (8)  null ,
+          fv_approvedby2 varchar (8)  null ,
+          fc_flagprint char (1)  null ,
+          ft_note text  null ,
+          fn_ppn numeric(4, 2) null ,
+          fc_idbu char (1)  null ,
+          fc_ordertipe char (2)  null ,
+          fc_payto char (2)  null ,
+          fc_taxref char (2)  null ,
+          fc_oappn char (3)  null ,
+          fn_oaxppn numeric(4, 2) not null ,
+          fm_oattlbrutto money not null ,
+          fm_oattlnetto money not null ,
+          fm_oattldpp money not null ,
+          fm_oattlppn money not null ,
+          fn_printed numeric(4, 0) null ,
+          fc_inputby char (8)  null ,
+          fd_inputdate timestamp null ,
+          fc_updateby char (8)  null ,
+          fd_updatedate timestamp null ,
+          fc_ponotemp char (12)  null ,
+          fc_cancelby char (8)  null ,
+          fd_canceldate timestamp null ,
+          fc_hangusby char (8)  null ,
+          fd_hangusdate timestamp null ,
+          constraint pomst_pkey primary key (fc_branch,fc_pono)
+    );
+    END IF;
+END
+$$

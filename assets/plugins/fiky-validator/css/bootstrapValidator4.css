@@ -1,0 +1,52 @@
+/**
+ * BootstrapValidator (http://bootstrapvalidator.com)
+ * The best jQuery plugin to validate form fields. Designed to use with Bootstrap 3
+ *
+ * @author      http://twitter.com/nghuuphuoc
+ * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
+ * @license     MIT
+ */
+
+.bv-form .help-block {
+    margin-bottom: 0;
+}
+.bv-form .tooltip-inner {
+    text-align: left;
+}
+.nav-tabs li.bv-tab-success > a {
+    color: #109d10;
+}
+.nav-tabs li.bv-tab-error > a {
+    color: #FF0000;
+}
+div.form-group.has-feedback.has-error {
+    color: #FF0000;
+}
+
+div.form-group.has-feedback.has-success {
+    color: #109d10;
+}
+
+div.form-group.has-feedback.has-error > input {
+    border-color: #FF0000;
+}
+
+div.form-group.has-feedback.has-success > input  {
+    border-color: #109d10;
+}
+
+div.form-group.has-feedback.has-error > select {
+    border-color: #FF0000;
+}
+
+div.form-group.has-feedback.has-success > select  {
+    border-color: #109d10;
+}
+
+div.form-group.has-feedback.has-error > textarea {
+    border-color: #b70d0d;
+}
+
+div.form-group.has-feedback.has-success > textarea  {
+    border-color: #109d10;
+}

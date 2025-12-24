@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlFileSource">
+    <option name="sources">
+      <map>
+        <entry key="$PROJECT_DIR$/application/migrations/sql/00024.20240108.22.Cuti-Karyawan/+up/003.sc_trx.adjust_employee_leave.sql" value="4411146f-75c9-408d-a7a2-3890443f877e" />
+      </map>
+    </option>
+  </component>
+</project>

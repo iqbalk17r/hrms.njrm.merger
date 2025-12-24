@@ -1,0 +1,521 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class M_karyawan extends CI_Model {
+
+	var $table = 'sc_tmp.karyawan';
+	var $tablemst = 'sc_mst.karyawan';
+	var $column = array('nik','nmlengkap','nmdept','nmjabatan');
+	var $order = array('nik' => 'asc');
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->database();
+	}
+
+	private function _get_datatables_query()
+	{
+
+		$this->db->select("nmjabatan,nmdept,a.*, a.tglmasukkerja as tglmasuk,case when a.tjborong='t' then 'YA' when a.tjborong='f' or a.tjborong is null then 'TIDAK' end as tjborong1,d.desc_cabang",FALSE);
+		$this->db->from('(select * from sc_mst.karyawan where tglkeluarkerja is null) a');
+		$this->db->join('sc_mst.departmen b','a.bag_dept=b.kddept','left');
+		$this->db->join('sc_mst.jabatan c','a.bag_dept=c.kddept and a.jabatan=c.kdjabatan and a.subbag_dept=c.kdsubdept','left');
+		$this->db->join('sc_mst.kantorwilayah d','a.kdcabang=d.kdcabang','left');
+		$this->db->where('a.tglkeluarkerja',NULL);
+
+		//
+		$i = 0;
+	
+		foreach ($this->column as $item) 
+		{
+			if($_POST['search']['value'])
+			//($i===0) ? $this->db->like("upper(cast(" . strtoupper($item) . " as varchar))", strtoupper($_POST['search']['value'])) : $this->db->or_like("upper(cast(" . strtoupper($item) . " as varchar))", strtoupper($_POST['search']['value']));
+			$this->db->or_like("upper(cast(" . strtoupper($item) . " as varchar))", strtoupper($_POST['search']['value']));
+			$this->db->where('a.tglkeluarkerja',NULL);
+
+			$column[$i] = $item;
+			$i++;
+		}
+		
+		if(isset($_POST['order']))
+		{
+			$this->db->order_by($column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+		} 
+		else if(isset($this->order))
+		{
+			$order = $this->order;
+			$this->db->order_by(key($order), $order[key($order)]);
+		}
+
+	}
+	
+	function list_karyawan(){
+		return $this->db->query("select  trim(a.nik) as nik,trim(a.nmlengkap) as nmlengkap,trim(a.callname) as callname,trim(a.jk) as jk,trim(b.namanegara) as neglahir,trim(c.namaprov) as provlahir,trim(d.namakotakab) as kotalahir,
+                                        to_char(a.tgllahir,'dd-mm-yyyy') as tgllahir,trim(a.kd_agama) as kd_agama,a.stswn,a.stsfisik,trim(a.ketfisik) as ketfisik,trim(a.noktp) as noktp,a.tgl_ktp,a.ktp_seumurhdp,a.ktpdikeluarkan,to_char(a.tgldikeluarkan,'dd-mm-yyyy') as tgldikeluarkan,
+                                        trim(a.status_pernikahan) as status_pernikahan,trim(a.gol_darah) as gol_darah,trim(e.namanegara) as negktp,trim(f.namaprov) as provktp,trim(g.namakotakab) as kotaktp,
+                                        trim(h.namakec) as kecktp,trim(i.namakeldesa) as kelktp,trim(a.alamatktp) as alamatktp,trim(j.namanegara) as negtinggal,trim(k.namaprov) as provtinggal,trim(l.namakotakab) as kotatinggal,
+                                        trim(m.namakec) as kectinggal,trim(n.namakeldesa) as keltinggal,a.alamattinggal,a.nohp1,a.nohp2,a.npwp,to_char(a.tglnpwp,'dd-mm-yyyy') as tglnpwp,trim(a.bag_dept) as bag_dept,trim(a.subbag_dept) subbag_dept,
+                                        trim(a.jabatan) as jabatan,trim(a.lvl_jabatan) as lvl_jabatan,trim(a.grade_golongan) as grade_golongan,trim(a.nik_atasan) as nik_atasan,trim(a.nik_atasan2) as nik_atasan2,trim(a.status_ptkp) as status_ptkp,
+                                        a.besaranptkp,to_char(a.tglmasukkerja,'dd-mm-yyyy') as tglmasukkerja,a.tglkeluarkerja,a.masakerja,trim(a.statuskepegawaian) as statuskepegawaian,trim(a.grouppenggajian) as grouppenggajian,
+                                        a.gajipokok,a.gajibpjs,trim(a.namabank) as namabank,a.namapemilikrekening,
+                                        a.norek,trim(a.tjshift) as tjshift,a.idabsen,a.email,a.bolehcuti,a.sisacuti,a.inputdate,a.inputby,a.updatedate,a.updateby,a.idmesin,a.cardnumber,a.tjlembur,a.tjborong,
+                                        case when a.tjborong='t' then 'YA' when a.tjborong='f' or a.tjborong is null then 'TIDAK' end as tjborong1,
+                                        case when a.tjshift='t' then 'YA' when a.tjshift='f' or a.tjshift is null then 'TIDAK' end as tjshift1,
+                                        case when a.tjlembur='t' then 'YA' when a.tjlembur='f' or a.tjlembur is null then 'TIDAK' end as tjlembur1,nmdept,nmsubdept,nmjabatan,r.nmlengkap as atasan1,s.nmlengkap as atasan2,a.kdcabang,age(a.tglmasukkerja) as masakerja,a.nokk,t.nmagama,t2.nmnikah,t3.desc_cabang as nmcabang,a.image,a.status,
+                                        a.costcenter,a.tj_tetap,a.gajitetap,a.gajinaker,a.kdregu,t4.nmregu,q1.nmlvljabatan,t21.nmnikah as nmstatus_ptkp
+                                        from sc_mst.karyawan a
+                                        left outer join sc_mst.negara b on b.kodenegara=a.neglahir
+                                        left outer join sc_mst.provinsi c on c.kodeprov=a.provlahir
+                                        left outer join sc_mst.kotakab d on d.kodekotakab=a.kotalahir 
+                                        left outer join sc_mst.negara e on e.kodenegara=a.negktp
+                                        left outer join sc_mst.provinsi f on f.kodeprov=a.provktp
+                                        left outer join sc_mst.kotakab g on g.kodekotakab=a.kotaktp
+                                        left outer join sc_mst.kec h on h.kodekec=a.kecktp
+                                        left outer join sc_mst.keldesa i on i.kodekeldesa=a.kelktp 
+                                        left outer join sc_mst.negara j on j.kodenegara=a.negtinggal
+                                        left outer join sc_mst.provinsi k on k.kodeprov=a.provtinggal
+                                        left outer join sc_mst.kotakab l on l.kodekotakab=a.kotatinggal
+                                        left outer join sc_mst.kec m on m.kodekec=a.kectinggal
+                                        left outer join sc_mst.keldesa n on n.kodekeldesa=a.keltinggal 
+                                        left outer join sc_mst.departmen o on o.kddept=a.bag_dept
+                                        left outer join sc_mst.subdepartmen p on p.kdsubdept=a.subbag_dept and p.kddept=a.bag_dept
+                                        left outer join sc_mst.jabatan q on q.kdjabatan=a.jabatan and q.kdsubdept=a.subbag_dept and q.kddept=a.bag_dept
+                                        left outer join sc_mst.lvljabatan q1 on a.lvl_jabatan=q1.kdlvl
+                                        left outer join sc_mst.karyawan r on r.nik=a.nik_atasan
+                                        left outer join sc_mst.karyawan s on s.nik=a.nik_atasan2 
+                                        left outer join sc_mst.agama t on t.kdagama=a.kd_agama 
+                                        left outer join sc_mst.status_nikah t2 on t2.kdnikah=a.status_pernikahan 
+                                        left outer join sc_mst.status_nikah t21 on t21.kdnikah=a.status_ptkp 
+                                        left outer join sc_mst.kantorwilayah t3 on t3.kdcabang=a.kdcabang 
+                                        left outer join sc_mst.regu t4 on a.kdregu=t4.kdregu
+                                        where coalesce(a.statuskepegawaian,'') != 'KO'
+                                        order by a.nmlengkap asc");
+	}
+
+
+    function q_list_karyawan_profile($param){
+        return $this->db->query("select trim(coalesce(nik                ::text,'')) as nik                ,
+                                        trim(coalesce(nmlengkap          ::text,'')) as nmlengkap          ,
+                                        trim(coalesce(callname           ::text,'')) as callname           ,
+                                        trim(coalesce(jk                 ::text,'')) as jk                 ,
+                                        trim(coalesce(neglahir           ::text,'')) as neglahir           ,
+                                        trim(coalesce(provlahir          ::text,'')) as provlahir          ,
+                                        trim(coalesce(kotalahir          ::text,'')) as kotalahir          ,
+                                        trim(coalesce(tgllahir           ::text,'')) as tgllahir           ,
+                                        trim(coalesce(kd_agama           ::text,'')) as kd_agama           ,
+                                        trim(coalesce(stswn              ::text,'')) as stswn              ,
+                                        trim(coalesce(stsfisik           ::text,'')) as stsfisik           ,
+                                        trim(coalesce(ketfisik           ::text,'')) as ketfisik           ,
+                                        trim(coalesce(noktp              ::text,'')) as noktp              ,
+                                        trim(coalesce(tgl_ktp            ::text,'')) as tgl_ktp            ,
+                                        trim(coalesce(ktp_seumurhdp      ::text,'')) as ktp_seumurhdp      ,
+                                        trim(coalesce(ktpdikeluarkan     ::text,'')) as ktpdikeluarkan     ,
+                                        trim(coalesce(tgldikeluarkan     ::text,'')) as tgldikeluarkan     ,
+                                        trim(coalesce(status_pernikahan  ::text,'')) as status_pernikahan  ,
+                                        trim(coalesce(gol_darah          ::text,'')) as gol_darah          ,
+                                        trim(coalesce(negktp             ::text,'')) as negktp             ,
+                                        trim(coalesce(provktp            ::text,'')) as provktp            ,
+                                        trim(coalesce(kotaktp            ::text,'')) as kotaktp            ,
+                                        trim(coalesce(kecktp             ::text,'')) as kecktp             ,
+                                        trim(coalesce(kelktp             ::text,'')) as kelktp             ,
+                                        trim(coalesce(alamatktp          ::text,'')) as alamatktp          ,
+                                        trim(coalesce(negtinggal         ::text,'')) as negtinggal         ,
+                                        trim(coalesce(provtinggal        ::text,'')) as provtinggal        ,
+                                        trim(coalesce(kotatinggal        ::text,'')) as kotatinggal        ,
+                                        trim(coalesce(kectinggal         ::text,'')) as kectinggal         ,
+                                        trim(coalesce(keltinggal         ::text,'')) as keltinggal         ,
+                                        trim(coalesce(alamattinggal      ::text,'')) as alamattinggal      ,
+                                        trim(coalesce(nohp1              ::text,'')) as nohp1              ,
+                                        trim(coalesce(nohp2              ::text,'')) as nohp2              ,
+                                        trim(coalesce(npwp               ::text,'')) as npwp               ,
+                                        trim(coalesce(tglnpwp            ::text,'')) as tglnpwp            ,
+                                        trim(coalesce(bag_dept           ::text,'')) as bag_dept           ,
+                                        trim(coalesce(subbag_dept        ::text,'')) as subbag_dept        ,
+                                        trim(coalesce(jabatan            ::text,'')) as jabatan            ,
+                                        trim(coalesce(lvl_jabatan        ::text,'')) as lvl_jabatan        ,
+                                        trim(coalesce(grade_golongan     ::text,'')) as grade_golongan     ,
+                                        trim(coalesce(nik_atasan         ::text,'')) as nik_atasan         ,
+                                        trim(coalesce(nik_atasan2        ::text,'')) as nik_atasan2        ,
+                                        trim(coalesce(status_ptkp        ::text,'')) as status_ptkp        ,
+                                        trim(coalesce(besaranptkp        ::text,'')) as besaranptkp        ,
+                                        trim(coalesce(tglmasukkerja      ::text,'')) as tglmasukkerja      ,
+                                        trim(coalesce(tglkeluarkerja     ::text,'')) as tglkeluarkerja     ,
+                                        trim(coalesce(masakerja          ::text,'')) as masakerja          ,
+                                        trim(coalesce(statuskepegawaian  ::text,'')) as statuskepegawaian  ,
+                                        trim(coalesce(grouppenggajian    ::text,'')) as grouppenggajian    ,
+                                        trim(coalesce(gajipokok          ::text,'')) as gajipokok          ,
+                                        trim(coalesce(gajibpjs           ::text,'')) as gajibpjs           ,
+                                        trim(coalesce(namabank           ::text,'')) as namabank           ,
+                                        trim(coalesce(namapemilikrekening::text,'')) as namapemilikrekening,
+                                        trim(coalesce(norek              ::text,'')) as norek              ,
+                                        trim(coalesce(tjshift            ::text,'')) as tjshift            ,
+                                        trim(coalesce(idabsen            ::text,'')) as idabsen            ,
+                                        trim(coalesce(email              ::text,'')) as email              ,
+                                        trim(coalesce(bolehcuti          ::text,'')) as bolehcuti          ,
+                                        trim(coalesce(sisacuti           ::text,'')) as sisacuti           ,
+                                        trim(coalesce(inputdate          ::text,'')) as inputdate          ,
+                                        trim(coalesce(inputby            ::text,'')) as inputby            ,
+                                        trim(coalesce(updatedate         ::text,'')) as updatedate         ,
+                                        trim(coalesce(updateby           ::text,'')) as updateby           ,
+                                        trim(coalesce(idmesin            ::text,'')) as idmesin            ,
+                                        trim(coalesce(cardnumber         ::text,'')) as cardnumber         ,
+                                        trim(coalesce(tjlembur           ::text,'')) as tjlembur           ,
+                                        trim(coalesce(tjborong           ::text,'')) as tjborong           ,
+                                        trim(coalesce(tjborong1          ::text,'')) as tjborong1          ,
+                                        trim(coalesce(tjshift1           ::text,'')) as tjshift1           ,
+                                        trim(coalesce(tjlembur1          ::text,'')) as tjlembur1          ,
+                                        trim(coalesce(nmdept             ::text,'')) as nmdept             ,
+                                        trim(coalesce(nmsubdept          ::text,'')) as nmsubdept          ,
+                                        trim(coalesce(nmjabatan          ::text,'')) as nmjabatan          ,
+                                        trim(coalesce(atasan1            ::text,'')) as atasan1            ,
+                                        trim(coalesce(atasan2            ::text,'')) as atasan2            ,
+                                        trim(coalesce(kdcabang           ::text,'')) as kdcabang           ,
+                                        trim(coalesce(nokk               ::text,'')) as nokk               ,
+                                        trim(coalesce(nmagama            ::text,'')) as nmagama            ,
+                                        trim(coalesce(nmnikah            ::text,'')) as nmnikah            ,
+                                        trim(coalesce(nmcabang           ::text,'')) as nmcabang           ,
+                                        trim(coalesce(image              ::text,'')) as image              ,
+                                        trim(coalesce(status             ::text,'')) as status             ,
+                                        trim(coalesce(costcenter         ::text,'')) as costcenter         ,
+                                        trim(coalesce(tj_tetap           ::text,'')) as tj_tetap           ,
+                                        trim(coalesce(gajitetap          ::text,'')) as gajitetap          ,
+                                        trim(coalesce(gajinaker          ::text,'')) as gajinaker          ,
+                                        trim(coalesce(kdregu             ::text,'')) as kdregu             ,
+                                        trim(coalesce(nmregu             ::text,'')) as nmregu             ,
+                                        trim(coalesce(nmlvljabatan       ::text,'')) as nmlvljabatan       ,
+                                        trim(coalesce(nmstatus_ptkp      ::text,'')) as nmstatus_ptkp      ,
+                                        trim(coalesce(nmkelamin      ::text,'')) as nmkelamin              ,
+                                        trim(coalesce(nmkepegawaian      ::text,'')) as nmkepegawaian
+                                        from (select  trim(a.nik) as nik,trim(a.nmlengkap) as nmlengkap,trim(a.callname) as callname,trim(a.jk) as jk,trim(b.namanegara) as neglahir,trim(c.namaprov) as provlahir,trim(d.namakotakab) as kotalahir,
+                                        to_char(a.tgllahir,'dd-mm-yyyy') as tgllahir,trim(a.kd_agama) as kd_agama,a.stswn,a.stsfisik,trim(a.ketfisik) as ketfisik,trim(a.noktp) as noktp,a.tgl_ktp,a.ktp_seumurhdp,a.ktpdikeluarkan,to_char(a.tgldikeluarkan,'dd-mm-yyyy') as tgldikeluarkan,
+                                        trim(a.status_pernikahan) as status_pernikahan,trim(a.gol_darah) as gol_darah,trim(e.namanegara) as negktp,trim(f.namaprov) as provktp,trim(g.namakotakab) as kotaktp,
+                                        trim(h.namakec) as kecktp,trim(i.namakeldesa) as kelktp,trim(a.alamatktp) as alamatktp,trim(j.namanegara) as negtinggal,trim(k.namaprov) as provtinggal,trim(l.namakotakab) as kotatinggal,
+                                        trim(m.namakec) as kectinggal,trim(n.namakeldesa) as keltinggal,a.alamattinggal,a.nohp1,a.nohp2,a.npwp,to_char(a.tglnpwp,'dd-mm-yyyy') as tglnpwp,trim(a.bag_dept) as bag_dept,trim(a.subbag_dept) subbag_dept,
+                                        trim(a.jabatan) as jabatan,trim(a.lvl_jabatan) as lvl_jabatan,trim(a.grade_golongan) as grade_golongan,trim(a.nik_atasan) as nik_atasan,trim(a.nik_atasan2) as nik_atasan2,trim(a.status_ptkp) as status_ptkp,
+                                        a.besaranptkp,to_char(a.tglmasukkerja,'dd-mm-yyyy') as tglmasukkerja,a.tglkeluarkerja,trim(a.statuskepegawaian) as statuskepegawaian,trim(a.grouppenggajian) as grouppenggajian,
+                                        a.gajipokok,a.gajibpjs,trim(a.namabank) as namabank,a.namapemilikrekening,
+                                        a.norek,trim(a.tjshift) as tjshift,a.idabsen,a.email,a.bolehcuti,a.sisacuti,a.inputdate,a.inputby,a.updatedate,a.updateby,a.idmesin,a.cardnumber,a.tjlembur,a.tjborong,
+                                        case when a.tjborong='t' then 'YA' when a.tjborong='f' or a.tjborong is null then 'TIDAK' end as tjborong1,
+                                        case when a.tjshift='t' then 'YA' when a.tjshift='f' or a.tjshift is null then 'TIDAK' end as tjshift1,
+                                        case when a.tjlembur='t' then 'YA' when a.tjlembur='f' or a.tjlembur is null then 'TIDAK' end as tjlembur1,nmdept,nmsubdept,nmjabatan,r.nmlengkap as atasan1,s.nmlengkap as atasan2,a.kdcabang,age(a.tglmasukkerja) as masakerja,a.nokk,t.nmagama,t2.nmnikah,t3.desc_cabang as nmcabang,a.image,a.status,
+                                        a.costcenter,a.tj_tetap,a.gajitetap,a.gajinaker,a.kdregu,t4.nmregu,q1.nmlvljabatan,t21.nmnikah as nmstatus_ptkp,
+                                        case when trim(a.jk)='P' then 'PEREMPUAN' when trim(a.jk)='L' then 'LAKI-LAKI'  else a.jk end as nmkelamin,t5.nmkepegawaian
+                                        from sc_mst.karyawan a
+                                        left outer join sc_mst.negara b on b.kodenegara=a.neglahir
+                                        left outer join sc_mst.provinsi c on c.kodeprov=a.provlahir
+                                        left outer join sc_mst.kotakab d on d.kodekotakab=a.kotalahir 
+                                        left outer join sc_mst.negara e on e.kodenegara=a.negktp
+                                        left outer join sc_mst.provinsi f on f.kodeprov=a.provktp
+                                        left outer join sc_mst.kotakab g on g.kodekotakab=a.kotaktp
+                                        left outer join sc_mst.kec h on h.kodekec=a.kecktp
+                                        left outer join sc_mst.keldesa i on i.kodekeldesa=a.kelktp 
+                                        left outer join sc_mst.negara j on j.kodenegara=a.negtinggal
+                                        left outer join sc_mst.provinsi k on k.kodeprov=a.provtinggal
+                                        left outer join sc_mst.kotakab l on l.kodekotakab=a.kotatinggal
+                                        left outer join sc_mst.kec m on m.kodekec=a.kectinggal
+                                        left outer join sc_mst.keldesa n on n.kodekeldesa=a.keltinggal 
+                                        left outer join sc_mst.departmen o on o.kddept=a.bag_dept
+                                        left outer join sc_mst.subdepartmen p on p.kdsubdept=a.subbag_dept and p.kddept=a.bag_dept
+                                        left outer join sc_mst.jabatan q on q.kdjabatan=a.jabatan and q.kdsubdept=a.subbag_dept and q.kddept=a.bag_dept
+                                        left outer join sc_mst.lvljabatan q1 on a.lvl_jabatan=q1.kdlvl
+                                        left outer join sc_mst.karyawan r on r.nik=a.nik_atasan
+                                        left outer join sc_mst.karyawan s on s.nik=a.nik_atasan2 
+                                        left outer join sc_mst.agama t on t.kdagama=a.kd_agama 
+                                        left outer join sc_mst.status_nikah t2 on t2.kdnikah=a.status_pernikahan 
+                                        left outer join sc_mst.status_nikah t21 on t21.kdnikah=a.status_ptkp 
+                                        left outer join sc_mst.kantorwilayah t3 on t3.kdcabang=a.kdcabang 
+                                        left outer join sc_mst.regu t4 on a.kdregu=t4.kdregu 
+                                        left outer join sc_mst.status_kepegawaian t5 on a.statuskepegawaian=t5.kdkepegawaian ) as x
+                                        where coalesce(statuskepegawaian,'') != 'KO' $param
+                                        order by nmlengkap asc");
+    }
+
+
+    function q_list_karyawan_excel(){
+        return $this->db->query("select ''''||trim(coalesce(nik                ::text,'')) as nik                ,
+                                       ''''||trim(coalesce(nmlengkap          ::text,'')) as nmlengkap          ,
+                                       ''''||trim(coalesce(callname           ::text,'')) as callname           ,
+                                       ''''||trim(coalesce(jk                 ::text,'')) as jk                 ,
+                                       ''''||trim(coalesce(neglahir           ::text,'')) as neglahir           ,
+                                       ''''||trim(coalesce(provlahir          ::text,'')) as provlahir          ,
+                                       ''''||trim(coalesce(kotalahir          ::text,'')) as kotalahir          ,
+                                       ''''||trim(coalesce(tgllahir           ::text,'')) as tgllahir           ,
+                                       ''''||trim(coalesce(kd_agama           ::text,'')) as kd_agama           ,
+                                       ''''||trim(coalesce(stswn              ::text,'')) as stswn              ,
+                                       ''''||trim(coalesce(stsfisik           ::text,'')) as stsfisik           ,
+                                       ''''||trim(coalesce(ketfisik           ::text,'')) as ketfisik           ,
+                                       ''''||trim(coalesce(noktp              ::text,'')) as noktp              ,
+                                       ''''||trim(coalesce(tgl_ktp            ::text,'')) as tgl_ktp            ,
+                                       ''''||trim(coalesce(ktp_seumurhdp      ::text,'')) as ktp_seumurhdp      ,
+                                       ''''||trim(coalesce(ktpdikeluarkan     ::text,'')) as ktpdikeluarkan     ,
+                                       ''''||trim(coalesce(tgldikeluarkan     ::text,'')) as tgldikeluarkan     ,
+                                       ''''||trim(coalesce(status_pernikahan  ::text,'')) as status_pernikahan  ,
+                                       ''''||trim(coalesce(gol_darah          ::text,'')) as gol_darah          ,
+                                       ''''||trim(coalesce(negktp             ::text,'')) as negktp             ,
+                                       ''''||trim(coalesce(provktp            ::text,'')) as provktp            ,
+                                       ''''||trim(coalesce(kotaktp            ::text,'')) as kotaktp            ,
+                                       ''''||trim(coalesce(kecktp             ::text,'')) as kecktp             ,
+                                       ''''||trim(coalesce(kelktp             ::text,'')) as kelktp             ,
+                                       ''''||trim(coalesce(alamatktp          ::text,'')) as alamatktp          ,
+                                       ''''||trim(coalesce(negtinggal         ::text,'')) as negtinggal         ,
+                                       ''''||trim(coalesce(provtinggal        ::text,'')) as provtinggal        ,
+                                       ''''||trim(coalesce(kotatinggal        ::text,'')) as kotatinggal        ,
+                                       ''''||trim(coalesce(kectinggal         ::text,'')) as kectinggal         ,
+                                       ''''||trim(coalesce(keltinggal         ::text,'')) as keltinggal         ,
+                                       ''''||trim(coalesce(alamattinggal      ::text,'')) as alamattinggal      ,
+                                       ''''||trim(coalesce(nohp1              ::text,'')) as nohp1              ,
+                                       ''''||trim(coalesce(nohp2              ::text,'')) as nohp2              ,
+                                       ''''||trim(coalesce(npwp               ::text,'')) as npwp               ,
+                                       ''''||trim(coalesce(tglnpwp            ::text,'')) as tglnpwp            ,
+                                       ''''||trim(coalesce(bag_dept           ::text,'')) as bag_dept           ,
+                                       ''''||trim(coalesce(subbag_dept        ::text,'')) as subbag_dept        ,
+                                       ''''||trim(coalesce(jabatan            ::text,'')) as jabatan            ,
+                                       ''''||trim(coalesce(lvl_jabatan        ::text,'')) as lvl_jabatan        ,
+                                       ''''||trim(coalesce(grade_golongan     ::text,'')) as grade_golongan     ,
+                                       ''''||trim(coalesce(nik_atasan         ::text,'')) as nik_atasan         ,
+                                       ''''||trim(coalesce(nik_atasan2        ::text,'')) as nik_atasan2        ,
+                                       ''''||trim(coalesce(status_ptkp        ::text,'')) as status_ptkp        ,
+                                       ''''||trim(coalesce(besaranptkp        ::text,'')) as besaranptkp        ,
+                                       ''''||trim(coalesce(tglmasukkerja      ::text,'')) as tglmasukkerja      ,
+                                       ''''||trim(coalesce(tglkeluarkerja     ::text,'')) as tglkeluarkerja     ,
+                                       ''''||trim(coalesce(masakerja          ::text,'')) as masakerja          ,
+                                       ''''||trim(coalesce(statuskepegawaian  ::text,'')) as statuskepegawaian  ,
+                                       ''''||trim(coalesce(grouppenggajian    ::text,'')) as grouppenggajian    ,
+                                       ''''||trim(coalesce(gajipokok          ::text,'')) as gajipokok          ,
+                                       ''''||trim(coalesce(gajibpjs           ::text,'')) as gajibpjs           ,
+                                       ''''||trim(coalesce(namabank           ::text,'')) as namabank           ,
+                                       ''''||trim(coalesce(namapemilikrekening::text,'')) as namapemilikrekening,
+                                       ''''||trim(coalesce(norek              ::text,'')) as norek              ,
+                                       ''''||trim(coalesce(tjshift            ::text,'')) as tjshift            ,
+                                       ''''||trim(coalesce(idabsen            ::text,'')) as idabsen            ,
+                                       ''''||trim(coalesce(email              ::text,'')) as email              ,
+                                       ''''||trim(coalesce(bolehcuti          ::text,'')) as bolehcuti          ,
+                                       ''''||trim(coalesce(sisacuti           ::text,'')) as sisacuti           ,
+                                       ''''||trim(coalesce(inputdate          ::text,'')) as inputdate          ,
+                                       ''''||trim(coalesce(inputby            ::text,'')) as inputby            ,
+                                       ''''||trim(coalesce(updatedate         ::text,'')) as updatedate         ,
+                                       ''''||trim(coalesce(updateby           ::text,'')) as updateby           ,
+                                       ''''||trim(coalesce(idmesin            ::text,'')) as idmesin            ,
+                                       ''''||trim(coalesce(cardnumber         ::text,'')) as cardnumber         ,
+                                       ''''||trim(coalesce(tjlembur           ::text,'')) as tjlembur           ,
+                                       ''''||trim(coalesce(tjborong           ::text,'')) as tjborong           ,
+                                       ''''||trim(coalesce(tjborong1          ::text,'')) as tjborong1          ,
+                                       ''''||trim(coalesce(tjshift1           ::text,'')) as tjshift1           ,
+                                       ''''||trim(coalesce(tjlembur1          ::text,'')) as tjlembur1          ,
+                                       ''''||trim(coalesce(nmdept             ::text,'')) as nmdept             ,
+                                       ''''||trim(coalesce(nmsubdept          ::text,'')) as nmsubdept          ,
+                                       ''''||trim(coalesce(nmjabatan          ::text,'')) as nmjabatan          ,
+                                       ''''||trim(coalesce(atasan1            ::text,'')) as atasan1            ,
+                                       ''''||trim(coalesce(atasan2            ::text,'')) as atasan2            ,
+                                       ''''||trim(coalesce(kdcabang           ::text,'')) as kdcabang           ,
+                                       ''''||trim(coalesce(nokk               ::text,'')) as nokk               ,
+                                       ''''||trim(coalesce(nmagama            ::text,'')) as nmagama            ,
+                                       ''''||trim(coalesce(nmnikah            ::text,'')) as nmnikah            ,
+                                       ''''||trim(coalesce(nmcabang           ::text,'')) as nmcabang           ,
+                                       ''''||trim(coalesce(image              ::text,'')) as image              ,
+                                       ''''||trim(coalesce(status             ::text,'')) as status             ,
+                                       ''''||trim(coalesce(costcenter         ::text,'')) as costcenter         ,
+                                       ''''||trim(coalesce(tj_tetap           ::text,'')) as tj_tetap           ,
+                                       ''''||trim(coalesce(gajitetap          ::text,'')) as gajitetap          ,
+                                       ''''||trim(coalesce(gajinaker          ::text,'')) as gajinaker          ,
+                                       ''''||trim(coalesce(kdregu             ::text,'')) as kdregu             ,
+                                       ''''||trim(coalesce(nmregu             ::text,'')) as nmregu             ,
+                                       ''''||trim(coalesce(nmlvljabatan       ::text,'')) as nmlvljabatan       ,
+                                       ''''||trim(coalesce(nmstatus_ptkp      ::text,'')) as nmstatus_ptkp      ,
+                                       ''''||trim(coalesce(nmkelamin      ::text,'')) as nmkelamin              ,
+                                       ''''||trim(coalesce(nmkepegawaian      ::text,'')) as nmkepegawaian
+                                        from (select  trim(a.nik) as nik,trim(a.nmlengkap) as nmlengkap,trim(a.callname) as callname,trim(a.jk) as jk,trim(b.namanegara) as neglahir,trim(c.namaprov) as provlahir,trim(d.namakotakab) as kotalahir,
+                                        to_char(a.tgllahir,'dd-mm-yyyy') as tgllahir,trim(a.kd_agama) as kd_agama,a.stswn,a.stsfisik,trim(a.ketfisik) as ketfisik,trim(a.noktp) as noktp,a.tgl_ktp,a.ktp_seumurhdp,a.ktpdikeluarkan,to_char(a.tgldikeluarkan,'dd-mm-yyyy') as tgldikeluarkan,
+                                        trim(a.status_pernikahan) as status_pernikahan,trim(a.gol_darah) as gol_darah,trim(e.namanegara) as negktp,trim(f.namaprov) as provktp,trim(g.namakotakab) as kotaktp,
+                                        trim(h.namakec) as kecktp,trim(i.namakeldesa) as kelktp,trim(a.alamatktp) as alamatktp,trim(j.namanegara) as negtinggal,trim(k.namaprov) as provtinggal,trim(l.namakotakab) as kotatinggal,
+                                        trim(m.namakec) as kectinggal,trim(n.namakeldesa) as keltinggal,a.alamattinggal,a.nohp1,a.nohp2,a.npwp,to_char(a.tglnpwp,'dd-mm-yyyy') as tglnpwp,trim(a.bag_dept) as bag_dept,trim(a.subbag_dept) subbag_dept,
+                                        trim(a.jabatan) as jabatan,trim(a.lvl_jabatan) as lvl_jabatan,trim(a.grade_golongan) as grade_golongan,trim(a.nik_atasan) as nik_atasan,trim(a.nik_atasan2) as nik_atasan2,trim(a.status_ptkp) as status_ptkp,
+                                        a.besaranptkp,to_char(a.tglmasukkerja,'dd-mm-yyyy') as tglmasukkerja,a.tglkeluarkerja,trim(a.statuskepegawaian) as statuskepegawaian,trim(a.grouppenggajian) as grouppenggajian,
+                                        a.gajipokok,a.gajibpjs,trim(a.namabank) as namabank,a.namapemilikrekening,
+                                        a.norek,trim(a.tjshift) as tjshift,a.idabsen,a.email,a.bolehcuti,a.sisacuti,a.inputdate,a.inputby,a.updatedate,a.updateby,a.idmesin,a.cardnumber,a.tjlembur,a.tjborong,
+                                        case when a.tjborong='t' then 'YA' when a.tjborong='f' or a.tjborong is null then 'TIDAK' end as tjborong1,
+                                        case when a.tjshift='t' then 'YA' when a.tjshift='f' or a.tjshift is null then 'TIDAK' end as tjshift1,
+                                        case when a.tjlembur='t' then 'YA' when a.tjlembur='f' or a.tjlembur is null then 'TIDAK' end as tjlembur1,nmdept,nmsubdept,nmjabatan,r.nmlengkap as atasan1,s.nmlengkap as atasan2,a.kdcabang,age(a.tglmasukkerja) as masakerja,a.nokk,t.nmagama,t2.nmnikah,t3.desc_cabang as nmcabang,a.image,a.status,
+                                        a.costcenter,a.tj_tetap,a.gajitetap,a.gajinaker,a.kdregu,t4.nmregu,q1.nmlvljabatan,t21.nmnikah as nmstatus_ptkp,
+                                        case when trim(a.jk)='P' then 'PEREMPUAN' when trim(a.jk)='L' then 'LAKI-LAKI'  else a.jk end as nmkelamin,t5.nmkepegawaian
+                                        from sc_mst.karyawan a
+                                        left outer join sc_mst.negara b on b.kodenegara=a.neglahir
+                                        left outer join sc_mst.provinsi c on c.kodeprov=a.provlahir
+                                        left outer join sc_mst.kotakab d on d.kodekotakab=a.kotalahir 
+                                        left outer join sc_mst.negara e on e.kodenegara=a.negktp
+                                        left outer join sc_mst.provinsi f on f.kodeprov=a.provktp
+                                        left outer join sc_mst.kotakab g on g.kodekotakab=a.kotaktp
+                                        left outer join sc_mst.kec h on h.kodekec=a.kecktp
+                                        left outer join sc_mst.keldesa i on i.kodekeldesa=a.kelktp 
+                                        left outer join sc_mst.negara j on j.kodenegara=a.negtinggal
+                                        left outer join sc_mst.provinsi k on k.kodeprov=a.provtinggal
+                                        left outer join sc_mst.kotakab l on l.kodekotakab=a.kotatinggal
+                                        left outer join sc_mst.kec m on m.kodekec=a.kectinggal
+                                        left outer join sc_mst.keldesa n on n.kodekeldesa=a.keltinggal 
+                                        left outer join sc_mst.departmen o on o.kddept=a.bag_dept
+                                        left outer join sc_mst.subdepartmen p on p.kdsubdept=a.subbag_dept and p.kddept=a.bag_dept
+                                        left outer join sc_mst.jabatan q on q.kdjabatan=a.jabatan and q.kdsubdept=a.subbag_dept and q.kddept=a.bag_dept
+                                        left outer join sc_mst.lvljabatan q1 on a.lvl_jabatan=q1.kdlvl
+                                        left outer join sc_mst.karyawan r on r.nik=a.nik_atasan
+                                        left outer join sc_mst.karyawan s on s.nik=a.nik_atasan2 
+                                        left outer join sc_mst.agama t on t.kdagama=a.kd_agama 
+                                        left outer join sc_mst.status_nikah t2 on t2.kdnikah=a.status_pernikahan 
+                                        left outer join sc_mst.status_nikah t21 on t21.kdnikah=a.status_ptkp 
+                                        left outer join sc_mst.kantorwilayah t3 on t3.kdcabang=a.kdcabang 
+                                        left outer join sc_mst.regu t4 on a.kdregu=t4.kdregu 
+                                        left outer join sc_mst.status_kepegawaian t5 on a.statuskepegawaian=t5.kdkepegawaian ) as x
+                                        where coalesce(statuskepegawaian,'') != 'KO'
+                                        order by nmlengkap asc");
+    }
+
+	function list_karyresgn(){
+		return $this->db->query("select a.*,a.nik,a.nmlengkap,b.nmjabatan,c.nmdept from sc_mst.karyawan a
+		left outer join sc_mst.jabatan b on a.jabatan=b.kdjabatan and a.subbag_dept=b.kdsubdept
+		left outer join sc_mst.departmen c on a.bag_dept=c.kddept where coalesce(a.statuskepegawaian,'')='KO' order by a.tglkeluarkerja desc");
+	}	
+
+	function q_finger(){
+		return $this->db->query("select * from sc_mst.fingerprint order by kodecabang asc");
+	}
+
+	function q_kanwil(){
+		return $this->db->query("select * from sc_mst.kantorwilayah order by desc_cabang asc");
+	}
+
+	function list_karyborong(){
+		return $this->db->query("select a.*,a.nik,a.nmlengkap,b.nmjabatan,c.nmdept from sc_mst.karyawan a
+		left outer join sc_mst.jabatan b on a.jabatan=b.kdjabatan
+		left outer join sc_mst.departmen c on a.bag_dept=c.kddept where a.tjborong='t' and a.statuskepegawaian<>'KO'");
+	}
+
+	
+	function cek_exist($nik){
+		return $this->db->query("select * from sc_mst.karyawan where nik='$nik'")->num_rows();
+	}
+	
+	function get_datatables()
+	{
+		$this->_get_datatables_query();
+		if($_POST['length'] != -1)
+		$this->db->limit($_POST['length'],$_POST['start']);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	function count_filtered()
+	{
+		$this->_get_datatables_query();
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+
+	public function count_all()
+	{
+		$this->db->from($this->table);
+		return $this->db->count_all_results();
+	}
+
+	public function get_dtl_id($id)
+	{				
+		return $this->db->query("select a.image,trim(a.nik) as nik,trim(a.nmlengkap) as nmlengkap,trim(a.callname) as callname,trim(a.jk) as jk,trim(b.namanegara) as neglahir,trim(c.namaprov) as provlahir,trim(d.namakotakab) as kotalahir,
+									to_char(a.tgllahir,'dd-mm-yyyy') as tgllahir,trim(a.kd_agama) as kdagama,a.stswn,a.stsfisik,trim(a.ketfisik) as ketfisik,trim(a.noktp) as noktp,a.tgl_ktp,a.ktp_seumurhdp,a.ktpdikeluarkan,to_char(a.tgldikeluarkan,'dd-mm-yyyy') as tgldikeluarkan,
+									trim(a.status_pernikahan) as status_pernikahan,trim(a.gol_darah) as goldarah,trim(e.namanegara) as negktp,trim(f.namaprov) as provktp,trim(g.namakotakab) as kotaktp,
+									trim(h.namakec) as kecktp,trim(i.namakeldesa) as kelktp,trim(a.alamatktp) as alamatktp,trim(j.namanegara) as negtinggal,trim(k.namaprov) as provtinggal,trim(l.namakotakab) as kotatinggal,
+									trim(m.namakec) as kectinggal,trim(n.namakeldesa) as keltinggal,a.alamattinggal,a.nohp1,a.nohp2,a.npwp,to_char(a.tglnpwp,'dd-mm-yyyy') as tglnpwp,trim(a.bag_dept) as bag_dept,trim(a.subbag_dept) subbag_dept,
+									trim(a.jabatan) as jabatan,trim(a.lvl_jabatan) as lvl_jabatan,trim(a.grade_golongan) as grade_golongan,trim(a.nik_atasan) as nik_atasan,trim(a.nik_atasan2) as nik_atasan2,trim(a.status_ptkp) as status_ptkp,
+									a.besaranptkp,to_char(a.tglmasukkerja,'dd-mm-yyyy') as tglmasukkerja,a.tglkeluarkerja,a.masakerja,trim(a.statuskepegawaian) as statuskepegawaian,trim(a.grouppenggajian) as grouppenggajian,
+									a.gajipokok,a.gajibpjs,trim(a.namabank) as namabank,a.namapemilikrekening,
+									a.norek,trim(a.tjshift) as tjshift,a.idabsen,a.email,a.bolehcuti,a.sisacuti,a.inputdate,a.inputby,a.updatedate,a.updateby,a.idmesin,a.cardnumber,a.tjlembur,a.tjborong,
+									case when a.tjborong='t' then 'YA' when a.tjborong='f' or a.tjborong is null then 'TIDAK' end as tjborong1,
+									case when a.tjshift='t' then 'YA' when a.tjshift='f' or a.tjshift is null then 'TIDAK' end as tjshift1,
+									case when a.tjlembur='t' then 'YA' when a.tjlembur='f' or a.tjlembur is null then 'TIDAK' end as tjlembur1,nmdept,nmsubdept,nmjabatan,r.nmlengkap as atasan1,s.nmlengkap as atasan2,a.kdcabang,age(a.tglmasukkerja) as masakerja,a.nokk,t.nmagama,t2.nmnikah,t3.desc_cabang as nmcabang
+									from sc_mst.karyawan a
+									left outer join sc_mst.negara b on b.kodenegara=a.neglahir
+									left outer join sc_mst.provinsi c on c.kodeprov=a.provlahir
+									left outer join sc_mst.kotakab d on d.kodekotakab=a.kotalahir 
+									left outer join sc_mst.negara e on e.kodenegara=a.negktp
+									left outer join sc_mst.provinsi f on f.kodeprov=a.provktp
+									left outer join sc_mst.kotakab g on g.kodekotakab=a.kotaktp
+									left outer join sc_mst.kec h on h.kodekec=a.kecktp
+									left outer join sc_mst.keldesa i on i.kodekeldesa=a.kelktp 
+									left outer join sc_mst.negara j on j.kodenegara=a.negtinggal
+									left outer join sc_mst.provinsi k on k.kodeprov=a.provtinggal
+									left outer join sc_mst.kotakab l on l.kodekotakab=a.kotatinggal
+									left outer join sc_mst.kec m on m.kodekec=a.kectinggal
+									left outer join sc_mst.keldesa n on n.kodekeldesa=a.keltinggal 
+									left outer join sc_mst.departmen o on o.kddept=a.bag_dept
+									left outer join sc_mst.subdepartmen p on p.kdsubdept=a.subbag_dept and p.kddept=a.bag_dept
+									left outer join sc_mst.jabatan q on q.kdjabatan=a.jabatan and q.kdsubdept=a.subbag_dept and q.kddept=a.bag_dept
+									left outer join sc_mst.karyawan r on r.nik=a.nik_atasan
+									left outer join sc_mst.karyawan s on s.nik=a.nik_atasan2 
+									left outer join sc_mst.agama t on t.kdagama=a.kd_agama 
+									left outer join sc_mst.status_nikah t2 on t2.kdnikah=a.status_pernikahan 
+									left outer join sc_mst.kantorwilayah t3 on t3.kdcabang=a.kdcabang where a.nik='$id'");			
+	}
+	
+	public function get_by_id($id)
+	{				
+		return $this->db->query(" select branch,trim(nik) as nik,trim(nmlengkap) as nmlengkap,trim(callname) as callname,trim(jk) as jk,trim(neglahir) as neglahir,trim(provlahir) as provlahir,trim(kotalahir) as kotalahir,
+						to_char(tgllahir,'dd-mm-yyyy') as tgllahir,trim(kd_agama) as kdagama,stswn,stsfisik,trim(ketfisik) as ketfisik,trim(noktp) as noktp,tgl_ktp,ktp_seumurhdp,ktpdikeluarkan,to_char(tgldikeluarkan,'dd-mm-yyyy') as tgldikeluarkan,
+						trim(status_pernikahan) as status_pernikahan,trim(gol_darah) as goldarah,trim(negktp) as negktp,trim(provktp) as provktp,trim(kotaktp) as kotaktp,
+						trim(kecktp) as kecktp,trim(kelktp) as kelktp,trim(alamatktp) as alamatktp,trim(negtinggal) as negtinggal,trim(provtinggal) as provtinggal,trim(kotatinggal) as kotatinggal,
+						trim(kectinggal) as kectinggal,trim(keltinggal) as keltinggal,alamattinggal,nohp1,nohp2,npwp,tglnpwp,trim(bag_dept) as bag_dept,trim(subbag_dept) subbag_dept,
+						trim(jabatan) as jabatan,trim(lvl_jabatan) as lvl_jabatan,trim(grade_golongan) as grade_golongan,trim(nik_atasan) as nik_atasan,trim(nik_atasan2) as nik_atasan2,trim(status_ptkp) as status_ptkp,
+						besaranptkp,to_char(tglmasukkerja,'dd-mm-yyyy') as tglmasukkerja,to_char(tglkeluarkerja,'dd-mm-yyyy') as tglkeluarkerja,masakerja,trim(statuskepegawaian) as statuskepegawaian,trim(grouppenggajian) as grouppenggajian,
+						gajipokok,gajibpjs,gajinaker,trim(namabank) as namabank,namapemilikrekening,
+						norek,trim(tjshift) as tjshift,idabsen,email,bolehcuti,sisacuti,inputdate,inputby,updatedate,updateby,image,idmesin,cardnumber,tjlembur,tjborong,trim(kdcabang) as kdcabang,trim(nokk) as nokk from sc_mst.karyawan where nik='$id'");			
+	}
+
+	public function save($data) 
+	{
+		return $this->db->insert($this->table, $data);
+		//return $this->db->insert_id();
+	}
+	
+	public function save_foto($nip,$info) 
+	{
+		$this->db->where('nik',$nip);
+		$this->db->update($this->tablemst, $info);		
+	}
+
+	public function update($where, $data)
+	{
+		$this->db->update($this->tablemst, $data, $where);
+		return $this->db->affected_rows();
+	}
+
+	public function delete_by_id($id)
+	{
+		//$this->db->where('nik', $id);
+		return $this->db->query("update sc_mst.karyawan set status='D' where nik='$id'");
+	}
+	
+	function list_ptkp(){
+		return $this->db->query("select * from sc_mst.status_nikah order by kdnikah");
+	}
+	
+	function q_besaranptkp($status_ptkp){
+		return $this->db->query("select cast(besaranpertahun as numeric(18,0)) from sc_mst.ptkp where kodeptkp='$status_ptkp'");
+	
+	}
+
+    function q_regu(){
+        return $this->db->query("select * from sc_mst.regu order by nmregu");
+
+    }
+
+    function q_master_branch(){
+        return $this->db->query("select 
+                                        coalesce(trim(branch	::text),'') as 	branch		,
+                                        coalesce(trim(branchname::text),'') as 	branchname	,
+                                        coalesce(trim(address	::text),'') as 	address		,
+                                        coalesce(trim(phone1	::text),'') as 	phone1		,
+                                        coalesce(trim(phone2	::text),'') as 	phone2		,
+                                        coalesce(trim(fax		::text),'') as 	fax			,
+                                        coalesce(trim(cdefault  ::text),'') as  cdefault  
+                                        from sc_mst.branch where cdefault='YES'
+        ");
+    }
+
+}

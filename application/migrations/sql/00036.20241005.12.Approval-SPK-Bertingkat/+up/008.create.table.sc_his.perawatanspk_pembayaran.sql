@@ -1,0 +1,21 @@
+CREATE TABLE sc_his.perawatanspk_pembayaran (
+	nodok bpchar(20) NOT NULL,
+	nodokref bpchar(20) NOT NULL,
+	id int4,
+	tgl date NULL,
+	tipe_pembayaran VARCHAR NULL,
+	keterangan bpchar(100) NULL,
+	nservis numeric(18, 2) NULL,
+	ndiskon numeric(18, 2) NULL,
+	ndpp numeric(18, 2) NULL,
+	nppn numeric(18, 2) NULL,
+	nnetto numeric(18, 2) NULL,
+	jnsperawatan bpchar(20) NULL,
+	inputdate timestamp NULL,
+	inputby bpchar(20) NULL,
+	updatedate timestamp NULL,
+	updateby varchar(20) NULL,
+	status bpchar(12) NULL,
+	nodoktmp bpchar(20) NOT NULL,
+	CONSTRAINT perawatanspk_pembayaran_his_pkey PRIMARY KEY (nodok, nodokref, id)
+);

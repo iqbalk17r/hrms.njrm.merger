@@ -1,0 +1,59 @@
+{
+    "master": [
+        {
+            "branch": "SBYNSA",
+            "branchname": "PT NUSA UNGGUL SARANA ADICIPTA",
+            "address": "JL. Margomulyo Indah II Blok A No.15, Surabaya",
+            "phone1": "(031) 7491856",
+            "phone2": "",
+            "fax": "(031) 7480188"
+        }
+    ],
+    "detail": [
+        {
+            "nodok": "PSPK18010003",
+            "nodokref": "PAS18010006",
+            "descbarang": "",
+            "kdgroup": "KDN",
+            "kdsubgroup": "KTR",
+            "stockcode": "MHKM1BA3JEJ053792",
+            "kdbengkel": "AUTO2000-HR",
+            "kdsubbengkel": "AUTO2000-HR.0001",
+            "nmbengkel": "AUTO2000 HR MUHAMMAD",
+            "upbengkel": "BPK. SAPTO",
+            "jnsperawatan": "",
+            "jnsperawatanref": "AA",
+            "tgldok": "24-01-2018",
+            "tglawal": "24-01-2018",
+            "tglakhir": "24-01-2018",
+            "keterangan": "1. SERVICE BERKALA\r\n2. GANTI OLIE YANG DIPERLUKAN\r\n3. SAAT 3500-4000 RPM DAN KECEPATAN KENDARAAN ANTARA 100 S\/D 120 TERDENGAR BUNYI SWUING GIIIIING",
+            "status": "A",
+            "inputdate": "18-01-2018",
+            "inputby": "0512.071",
+            "updatedate": "18-01-2018",
+            "updateby": "YUDIN",
+            "nmbarang": "TOYOTA AVANZA",
+            "kdgudang": "SBYMRG",
+            "addbengkel": "HR MUHAMMAD SURABAYA",
+            "city": "SURABAYA",
+            "phone1": "1",
+            "phone2": "1",
+            "nopol": "L 1652 YD",
+            "branch_address": "JL. Margomulyo Indah II Blok A No.15, Surabaya",
+            "branch_phone1": "(031) 7491856",
+            "branch_phone2": "",
+            "branch_fax": "(031) 7480188",
+            "nikmohon": "0512.071",
+            "nmmohon": "SUMANTRI",
+            "km_awal": "92000",
+            "km_akhir": "0",
+            "ttlservis": "0.00",
+            "ttldiskon": "0",
+            "ttldpp": "0",
+            "ttlppn": "0",
+            "ttlppnbm": "0",
+            "ttlnetto": "0",
+            "typeservis": ""
+        }
+    ]
+}

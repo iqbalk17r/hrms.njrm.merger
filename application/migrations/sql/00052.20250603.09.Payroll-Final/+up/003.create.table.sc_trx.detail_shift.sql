@@ -1,0 +1,26 @@
+create table if not exists sc_trx.detail_shift
+(
+    nodok             char(12) not null,
+    nik               char(12) not null,
+    tpshift           char(6),
+    tgl_kerja         date,
+    kdjam_kerja       char(6),
+    jam_mulai         time,
+    jam_selesai       time,
+    jam_mulai_absen   time,
+    jam_selesai_absen time,
+    status            char(3),
+    keterangan        text,
+    input_date        timestamp,
+    approval_date     timestamp,
+    input_by          char(20),
+    approval_by       char(20),
+    delete_by         char(20),
+    cancel_by         char(20),
+    update_date       timestamp,
+    delete_date       timestamp,
+    cancel_date       timestamp,
+    update_by         varchar(20),
+    nominal           numeric(18, 2),
+    urut              serial
+);

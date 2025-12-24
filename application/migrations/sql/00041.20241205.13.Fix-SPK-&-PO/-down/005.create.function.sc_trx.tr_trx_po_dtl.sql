@@ -1,0 +1,79 @@
+-- DROP FUNCTION sc_trx.tr_trx_po_dtl();
+
+CREATE OR REPLACE FUNCTION sc_trx.tr_trx_po_dtl()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+DECLARE 
+	--author by fiky: 12/08/2017
+	--update by fiky: 12/08/2017
+     vr_nomor char(12); 
+     vr_cekprefix char(4);
+     vr_nowprefix char(4); 
+     vr_countdtl numeric;  
+     vr_countdtl_rbbk numeric;  
+     vr_countdtl_cbbk numeric;  
+     vr_countdtl_sbbk numeric;  
+
+BEGIN		
+	IF tg_op = 'INSERT' THEN
+		/*	IF(left(new.nodokref,3)='PPB' and  coalesce(new.status,'') not in ('C','H','D')) THEN
+				update sc_trx.sppb_dtl set qtypo=coalesce(qtypo,0)+coalesce(new.qtyminta,0)
+				where nodok=new.nodokref and loccode=new.loccode and nik=new.nik and desc_barang=trim(new.desc_barang) ;
+			ELSEIF (left(new.nodokref,3)='PBK' and  coalesce(new.status,'') not in ('C','H','D')) THEN
+				update sc_trx.stpbk_dtl set qtypo=coalesce(qtypo,0)+coalesce(new.qtyminta,0)
+				where nodok=new.nodokref and kdgroup=new.kdgroup and kdsubgroup=new.kdsubgroup and stockcode=new.stockcode and loccode=new.loccode and nik=new.nik;
+			END IF;
+		*/
+		RETURN new;
+	ELSEIF tg_op = 'UPDATE' THEN
+				--select * from sc_trx.po_dtlref
+
+				IF EXISTS(select * from sc_trx.po_mst where nodok=new.nodok and status not in ('A','C','H','I','D','E')) THEN
+					vr_countdtl:=count(*)::numeric FROM sc_trx.po_dtl WHERE kdgroup=new.kdgroup and kdsubgroup=new.kdsubgroup and stockcode=new.stockcode and (STATUS='P' or status='U' or status='S') and nodok=new.nodok;
+					vr_countdtl_rbbk:=count(*)::numeric FROM sc_trx.po_dtl WHERE kdgroup=new.kdgroup and kdsubgroup=new.kdsubgroup and stockcode=new.stockcode and STATUS='U' and coalesce(qtyminta,0)=coalesce(qtyreceipt,0) and nodok=new.nodok;
+					vr_countdtl_cbbk:=count(*)::numeric FROM sc_trx.po_dtl WHERE kdgroup=new.kdgroup and kdsubgroup=new.kdsubgroup and stockcode=new.stockcode and coalesce(qtyreceipt,0)=0 and nodok=new.nodok;
+					vr_countdtl_sbbk:=count(*)::numeric FROM sc_trx.po_dtl WHERE kdgroup=new.kdgroup and kdsubgroup=new.kdsubgroup and stockcode=new.stockcode and STATUS='S' and nodok=new.nodok;
+					--select count(*)::numeric FROM SC_TRX.SPPB_DTL WHERE STATUS='U' and qtysppbminta=qtypo ;
+					/* UPDATE U=FULL TRX JIKA BARANG SAMA - SAMA PENUH */
+
+					IF (vr_countdtl=vr_countdtl_rbbk) then
+						update SC_TRX.po_mst SET STATUS='U' where  NODOK=NEW.NODOK AND coalesce(STATUS,'N')<>'C';
+					ELSEIF(vr_countdtl_cbbk=vr_countdtl	) THEN
+						update SC_TRX.po_mst SET STATUS='P' where  NODOK=NEW.NODOK AND coalesce(STATUS,'N')<>'C';
+					ELSEIF(vr_countdtl_sbbk>0 OR vr_countdtl_rbbk<vr_countdtl) THEN
+						update SC_TRX.po_mst SET STATUS='S' where  NODOK=NEW.NODOK AND coalesce(STATUS,'N')<>'C';
+					END IF; 
+
+					--select * from sc_trx.stbbm_dtlref
+					--select * from sc_trx.po_dtl
+
+					/*update status U untuk permintaan yang sudah terpenuhi */
+					update sc_trx.po_dtl set status='U'
+					where nodok=new.nodok and kdgroup=new.kdgroup and kdsubgroup=new.kdsubgroup and 
+					loccode=new.loccode and stockcode=new.stockcode and coalesce(qtyminta,0)=coalesce(new.qtyreceipt,0) and coalesce(qtyreceipt,0)>0  and coalesce(STATUS,'N') NOT IN ('U','C');-- and (status='P' or status='S');
+
+					update SC_TRX.po_dtl set status='S'
+					where nodok=new.nodok and kdgroup=new.kdgroup and kdsubgroup=new.kdsubgroup and 
+					loccode=new.loccode and stockcode=new.stockcode and qtyminta>new.qtyreceipt and new.qtyreceipt>0 and coalesce(STATUS,'N') NOT IN ('S','C');-- and (status='U' OR STATUS='P');
+
+					update SC_TRX.po_dtl set status='P'
+					where nodok=new.nodok and kdgroup=new.kdgroup and kdsubgroup=new.kdsubgroup and 
+					loccode=new.loccode and stockcode=new.stockcode and new.qtyreceipt=0 and coalesce(STATUS,'N') NOT IN ('P','C');--- and (status='U' or status='S' );
+				END IF;
+		RETURN new;
+	ELSEIF tg_op = 'DELETE' THEN
+		/*	IF(left(old.nodokref,3)='PPB' and coalesce(old.status,'') not in ('H')) THEN
+				update sc_trx.sppb_dtl set qtypo=coalesce(qtypo,0)-coalesce(old.qtyminta,0)
+				where nodok=old.nodokref and loccode=old.loccode and NIK=old.nik and desc_barang=trim(old.desc_barang) ;
+			ELSEIF (left(old.nodokref,3)='PBK' and coalesce(old.status,'') not in ('C','H','D')) THEN
+				update sc_trx.stpbk_dtl set qtypo=coalesce(qtypo,0)-coalesce(old.qtyminta,0)
+				where nodok=old.nodokref and kdgroup=old.kdgroup and kdsubgroup=old.kdsubgroup and stockcode=old.stockcode and loccode=old.loccode and nik=old.nik;
+			END IF;
+		*/	
+		RETURN old;	
+	END IF;
+	
+END;
+$function$
+;

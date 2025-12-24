@@ -1,0 +1,38 @@
+2023-08-22 14:20:54
+
+BEGIN EXECUTING "application/migrations/00016_bbm_sewa_kendaraan.php"...
+
+	BEGIN EXECUTING "application/migrations/sql/00016.20230822.24.BBM-Sewa-Kendaraan/+up/001.data.sc_mst.menuprg.sql"...
+
+		[SUCCESS]
+
+	FINISH
+
+	BEGIN EXECUTING "application/migrations/sql/00016.20230822.24.BBM-Sewa-Kendaraan/+up/002.create.table.sc_trx.bbmtrx.sql"...
+
+		[SUCCESS]
+
+	FINISH
+
+	BEGIN EXECUTING "application/migrations/sql/00016.20230822.24.BBM-Sewa-Kendaraan/+up/003.create.table.sc_trx.sewakendaraaan.sql"...
+
+		[SUCCESS]
+
+	FINISH
+
+	BEGIN EXECUTING "application/migrations/sql/00016.20230822.24.BBM-Sewa-Kendaraan/+up/004.alter.sc_tmp.pr_hitung_rekap_bbm.sql"...
+
+		[SUCCESS]
+
+	FINISH
+
+	BEGIN EXECUTING "application/migrations/sql/00016.20230822.24.BBM-Sewa-Kendaraan/+up/005.alter.sc_tmp.pr_hitung_rekap_sewakendaraan.sql"...
+
+		[SUCCESS]
+
+	FINISH
+
+FINISH EXECUTE "application/migrations/00016_bbm_sewa_kendaraan.php"...
+
+-----------------------------------------------------------------------------------------------------------------------------
+

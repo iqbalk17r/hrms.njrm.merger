@@ -1,0 +1,56 @@
+{
+    "master": [
+        {
+            "branch": "SBYNSA",
+            "branchname": "PT NUSA UNGGUL SARANA ADICIPTA",
+            "address": "JL. MARGOMULYO INDAH II BLOK A NO. 15 SURABAYA",
+            "phone1": "(031) 7491856",
+            "phone2": "",
+            "fax": "(031) 7480188"
+        }
+    ],
+    "detail": [
+        {
+            "nodok": "PAS18010004",
+            "dokref": "",
+            "kdgroup": "KDN",
+            "kdsubgroup": "KTR",
+            "stockcode": "MHKA4DB3JGJ064400",
+            "descbarang": "",
+            "nikpakai": "0917.282",
+            "nikmohon": "1115.184",
+            "jnsperawatan": "BK",
+            "tgldok": "03-01-2018",
+            "tglinput": "03-01-2018",
+            "keterangan": "TIDAK BISA TERBANG",
+            "laporanpk": "",
+            "laporanpsp": "",
+            "laporanksp": "",
+            "status": "P",
+            "inputdate": "2018-01-03 14:21:41",
+            "inputby": "1115.184",
+            "updatedate": "",
+            "updateby": "",
+            "nmbarang": "AGYA 1.0 G",
+            "numberitem": "S 1594 NI",
+            "userpakai": "0917.282",
+            "nmlengkap": "ALIF LUTFI MULYA PRATAMA",
+            "bag_dept": "IT",
+            "subbag_dept": "I1",
+            "jabatan": "SQA",
+            "kdcabang": "SBYMRG",
+            "nmdept": "IT GROUP",
+            "nmsubdept": "QUALITY ASURANCE",
+            "jabpengguna": "STAFF QUALITY ASURANCE",
+            "nmpemohon": "FIKY ASHARIZA",
+            "jabpemohon": "PROGRAMMER",
+            "spk": "0",
+            "nmspk": "TIDAK",
+            "nmstatus": "DISETUJUI\/PRINT",
+            "km_awal": "100",
+            "km_akhir": "0",
+            "nopol": "S 1594 NI",
+            "nmatasan1": "GILRANDY SEPTIANSYAH"
+        }
+    ]
+}

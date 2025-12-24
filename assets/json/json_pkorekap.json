@@ -1,0 +1,85 @@
+{
+    "infoumum": [
+        {
+            "nik": "0225.649    ",
+            "nmlengkap": "John Doe",
+            "jk": "Laki-laki",
+            "tmptlahir": "KAB. GRESIK",
+            "tgllahir": "2002-04-26",
+            "noktp": "xxxxxxxxxxxxxxxxxxx                                  ",
+            "tglmasukkerja": "2025-02-10",
+            "nmagama": "ISLAM",
+            "alamatktp": "jln merr surabaya",
+            "nmnikah": "BELUM MENIKAH",
+            "nmjabatan": "IT Operational",
+            "jabatan_cetak": "IT Operational",
+            "nmdept": "IT",
+            "dept_cetak": "IT",
+            "nodok": "STSPG0000234",
+            "kdkepegawaian": "P1    ",
+            "tgl_mulai": "2025-02-10",
+            "tgl_selesai": "2025-08-09",
+            "nmkepegawaian": "PKWT 1",
+            "nmatasan": "Gilrandy s",
+            "nmatasan2": "Sumantri",
+            "masakerja": "3 bulan 17 hari",
+            "pendidikan": "S1    ",
+            "tgl_cetak": "2025-05-27",
+            "row_number": "1",
+            "selisih_tgl": "6 bulan",
+            "tgl_mulai1": "10 Februari 2025",
+            "tgl_selesai1": "9 Agustus 2025",
+            "tglmasukkerja1": "10 Februari 2025"
+        }
+    ],
+    "detail": [
+        {
+            "id": "5",
+            "kddok": "STSPG0000234",
+            "presentation_date": "1 Mei 2025",
+            "knowledge": "1",
+            "skill": "2",
+            "attitude": "3",
+            "recommendation": "4",
+            "conclusion": "5",
+            "inputdate": "2025-05-26 19:06:17",
+            "updatedate": null,
+            "inputby": "0321.438",
+            "updateby": null,
+            "nama_panelist": "Sheila Rahma Yunita"
+        }
+    ],
+    "approval": [
+        {
+            "nik": "0321.438",
+            "nama": "Sheila Rahma Yunita",
+            "job": "HRGA"
+        }
+    ],
+    "recomendations": [
+        {
+            "nama": "Sheila Rahma Yunita",
+            "status": "Direkomendasikan"
+        },
+        {
+            "nama": "Gilrandy Septiansyah",
+            "status": "Direkomendasikan dengan catatan monitoring"
+        },
+        {
+            "nama": "So,chandra Husodo,ir",
+            "status": "Direkomendasikan"
+        },
+        {
+            "nama": "Sumantri",
+            "status": "Direkomendasikan"
+        },
+        {
+            "nama": "test",
+            "status": "Tidak Direkomendasikan"
+        },
+        {
+            "nama": "test",
+            "status": "Tidak Direkomendasikan"
+        }
+    ]
+}
