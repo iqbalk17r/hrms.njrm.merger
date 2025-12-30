@@ -13,7 +13,7 @@
 
 <script type="text/javascript">
     function isNumberKey(evt) {
-        var e = evt || window.event; // for trans-browser compatibility
+        var e = evt || window.event;
         var charCode = e.which || e.keyCode;
         if (charCode > 31 && (charCode < 47 || charCode > 57))
             return false;
@@ -21,13 +21,40 @@
         return true;
     }
 
+    // ✅ TAMBAHKAN INI: fungsi untuk parsing "12.345,00" → 12345
+    function parseRupiah(str) {
+        if (!str) return 0;
+        // Hapus semua titik (ribuan), ganti koma jadi titik, lalu jadi angka
+        let clean = str.toString().replace(/\./g, '').replace(',', '.');
+        return parseFloat(clean) || 0;
+    }
+
+    function formatRupiah(num) {
+        let str = Math.round(num).toString();
+        if (str === "NaN") str = "0";
+        return str.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ",00";
+    }
+
     function calculateTotal() {
-        setTimeout(function() {
-            var hargasatuan = $('#hargasatuan').val().toString().replace(",00", "").replace(".", "");
-            var liters = $('#liters').val().replace(",", ".");
-            var ttlvalue = +(hargasatuan * liters).toFixed(0) + ',00';
-            $('#ttlvalue').val(ttlvalue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-        });
+        console.log("Menghitung total...");
+
+        const hargasatuanStr = $('#hargasatuan').val();
+        const litersStr = $('#liters').val();
+
+        const harga = parseRupiah(hargasatuanStr);
+        const liter = parseRupiah(litersStr);
+
+        console.log("Harga:", harga, "Liter:", liter);
+
+        if (isNaN(harga) || isNaN(liter)) {
+            $('#ttlvalue').val('0,00');
+            return;
+        }
+
+        const total = harga * liter;
+        console.log("Total:", total);
+
+        $('#ttlvalue').val(formatRupiah(total));
     }
 </script>
 </br>
@@ -104,15 +131,18 @@
                                         }
                                     }
                                 }).on('change', function() {
-                                    if($('#bahanbakar').val() != '') {
-                                        var hargasatuan = $('#bahanbakar')[0].selectize.options[$('#bahanbakar').val()].hargasatuan;
-                                        $('#hargasatuan').val(hargasatuan.toString().replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-                                    } else {
-                                        $('#hargasatuan').val('0,00');
-                                    }
-                                    calculateTotal();
-                                });
-                                $("#bahanbakar").addClass("selectize-hidden-accessible");
+                                if ($('#bahanbakar').val() != '') {
+                                    var hargasatuan = $('#bahanbakar')[0].selectize.options[$('#bahanbakar').val()].hargasatuan;
+                                    // Pastikan angka bulat, lalu format tanpa desimal
+                                    var num = Math.round(hargasatuan);
+                                    var formatted = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                                    $('#hargasatuan').val(formatted);
+                                } else {
+                                    $('#hargasatuan').val('0');
+                                }
+                                calculateTotal();
+                            });
+                            $("#bahanbakar").addClass("selectize-hidden-accessible");
                             </script>
                             <div class="form-group">
                                 <label for="inputsm">Harga Satuan</label>

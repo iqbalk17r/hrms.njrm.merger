@@ -1001,5 +1001,71 @@ class M_uang_makan extends CI_Model{
         ");
     }
 
+	public function generate_meal_allowance($kdcabang, $awal, $akhir){
+        $userid = trim($this->session->userdata('nik'));
+        $this->db->query("
+            SELECT sc_trx.pr_bypass_deduction('$awal', '$akhir', '$kdcabang', '$userid');
+        ");
+    }
+
+	function q_uangmakan_regu_njrm($kdcabang, $awal, $akhir, $callplan, $borong) {
+        return $this->db->query("
+            SELECT 
+                ROW_NUMBER() OVER () AS no, 
+                a.nik, 
+                a.tgl, 
+                CASE 
+                    WHEN GROUPING(b.nmlengkap) = 0 THEN b.nmlengkap 
+                    ELSE 'GRAND TOTAL UANG MAKAN' 
+                END AS nmlengkap, 
+                b.callplan, 
+                c.nmdept, 
+                e.nmjabatan, 
+                TO_CHAR(a.tgl, 'TMDAY, DD-MM-YYYY') AS tglhari, 
+                a.checkin, 
+                a.checkout, 
+                CASE 
+                    WHEN GROUPING(b.nmlengkap) = 0 AND GROUPING(a.keterangan) = 0 AND (a.checkin IS NOT NULL OR a.checkout IS NOT NULL)
+                    THEN CONCAT(LPAD(a.checkin::TEXT, 8), ' | ', a.checkout::TEXT)
+                END AS checktime, 
+                CASE
+                   WHEN GROUPING(b.nmlengkap) = 0 AND GROUPING(a.keterangan) = 0
+                       THEN ff.rest_time END                             AS rest_time,
+                a.rencanacallplan, 
+                a.realisasicallplan,
+                CASE 
+                    WHEN GROUPING(b.nmlengkap) = 0 AND GROUPING(a.keterangan) = 0 THEN a.keterangan 
+                    WHEN GROUPING(b.nmlengkap) = 0 AND GROUPING(a.keterangan) = 1 THEN 'TOTAL' 
+                END AS keterangan, COALESCE(SUM(a.nominal), 0) AS nominalrp,
+                COALESCE(SUM(a.bbm),0) AS bbm,
+                COALESCE(SUM(a.sewa_kendaraan),0) AS sewa_kendaraan,
+                COALESCE( SUM(a.bbm), 0) + COALESCE( SUM(a.sewa_kendaraan), 0) + COALESCE( SUM(a.nominal), 0) AS subtotal,
+                GROUPING(b.nmlengkap) AS group_nmlengkap, 
+                GROUPING(a.keterangan) AS group_keterangan
+                FROM sc_trx.uangmakan a 
+                LEFT JOIN sc_mst.karyawan b ON a.nik = b.nik
+                LEFT JOIN sc_mst.departmen c ON b.bag_dept = c.kddept 
+                LEFT JOIN sc_mst.subdepartmen d ON b.bag_dept = d.kddept AND b.subbag_dept = d.kdsubdept 
+                LEFT JOIN sc_mst.jabatan e ON b.bag_dept = e.kddept AND b.jabatan = e.kdjabatan AND b.subbag_dept = e.kdsubdept
+                LEFT JOIN LATERAL(
+                        select
+                            CASE
+                                WHEN jam_istirahat_out is not null OR jam_istirahat_in is not null then CONCAT(jam_istirahat_in,' | ',jam_istirahat_out)
+                                ELSE null
+                            END as rest_time
+                        FROM sc_trx.transready tr
+                         WHERE tr.nik = a.nik AND tr.tgl = a.tgl
+                ) ff ON TRUE
+                WHERE kdcabang = '$kdcabang' AND a.tgl::DATE BETWEEN '$awal' AND '$akhir' AND b.tjborong = '$borong'
+                    /*AND b.callplan = '$callplan' */ 
+                GROUP BY GROUPING SETS (
+                    (a.nik, a.tgl, b.nmlengkap, b.callplan, c.nmdept, e.nmjabatan, a.checkin, a.checkout, a.rencanacallplan, a.realisasicallplan, a.keterangan,a.nominal, a.bbm, a.sewa_kendaraan, ff.rest_time), 
+                    (a.nik, b.nmlengkap), 
+                    ()
+                )
+            ORDER BY b.nmlengkap, a.tgl
+        ");
+    }
+
 
 }

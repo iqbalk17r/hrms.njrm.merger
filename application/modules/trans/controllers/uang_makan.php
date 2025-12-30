@@ -63,8 +63,15 @@ class Uang_makan extends MX_Controller
 //        $this->db->query("select sc_tmp.pr_hitung_rekap_um('$kdcabang','$awal', '$akhir')");
 //        $this->db->query("select sc_tmp.pr_hitung_rekap_bbm('$kdcabang','$awal', '$akhir')");
 //        $this->db->query("select sc_tmp.pr_hitung_rekap_sewakendaraan('$kdcabang','$awal', '$akhir')");
-        $data['list_um'] = $this->m_uang_makan->q_uangmakan_regu($kdcabang, $awal, $akhir, $callplan, $borong)->result();
-        $this->db->trans_commit();
+
+        $cabang_regu = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+        if (in_array($kdcabang, $cabang_regu, true)) {
+            $data['list_um'] = $this->m_uang_makan->q_uangmakan_regu_njrm($kdcabang, $awal, $akhir, $callplan, $borong)->result();
+            $this->db->trans_commit();
+        } else {
+            $data['list_um'] = $this->m_uang_makan->q_uangmakan_regu($kdcabang, $awal, $akhir, $callplan, $borong)->result();
+            $this->db->trans_commit();
+        }
 
         $this->template->display('trans/uang_makan/view_absensi', $data);
     }
@@ -100,10 +107,18 @@ class Uang_makan extends MX_Controller
             $passpg = base64_decode($dtl_opt['c_passpg']);
             $this->m_uang_makan->insert_rencana_kunjungan($host, $dbname, $userpg, $passpg, $awal, $akhir);
         }
-        $this->db->query("select sc_tmp.pr_hitung_rekap_um('$kdcabang','$awal', '$akhir')");
-        $data['list_um'] = $this->m_uang_makan->q_uangmakan_regu($kdcabang, $awal, $akhir, $callplan, $borong)->result();
-        $this->db->trans_commit();
 
+        $cabang_regu = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+
+        if (in_array($kdcabang, $cabang_regu, true)) {
+            $this->m_uang_makan->generate_meal_allowance($kdcabang, $awal, $akhir);
+            $data['list_um'] = $this->m_uang_makan->q_uangmakan_regu_njrm($kdcabang, $awal, $akhir, $callplan, $borong)->result();
+            $this->db->trans_commit();
+        } else {
+            $this->db->query("select sc_tmp.pr_hitung_rekap_um('$kdcabang','$awal', '$akhir')");
+            $data['list_um'] = $this->m_uang_makan->q_uangmakan_regu($kdcabang, $awal, $akhir, $callplan, $borong)->result();
+            $this->db->trans_commit();
+        }
         $this->template->display('trans/uang_makan/view_absensi', $data);
     }
 
@@ -128,7 +143,13 @@ class Uang_makan extends MX_Controller
         $jdl = trim($judul['desc_cabang']) . ($borong == "t" ? " (Borong)" : ($callplan == "t" ? " (Callplan)" : ""));
         $data['cabang'] = trim($judul['desc_cabang']) . ($borong == "t" ? " (Borong)" : ($callplan == "t" ? " (Callplan)" : ""));
         $data['callplan'] = $callplan;
-        $data['list_um'] = $this->m_uang_makan->q_uangmakan_regu($kdcabang, $awal, $akhir, $callplan, $borong)->result();
+
+        $cabang_regu = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+        if (in_array($kdcabang, $cabang_regu, true)) {
+            $data['list_um'] = $this->m_uang_makan->q_uangmakan_regu_njrm($kdcabang, $awal, $akhir, $callplan, $borong)->result();
+         } else {
+            $data['list_um'] = $this->m_uang_makan->q_uangmakan_regu($kdcabang, $awal, $akhir, $callplan, $borong)->result();
+        }
 
         $this->pdf->load_view('trans/uang_makan/view_pdf', $data);
         $this->pdf->set_paper('A4', 'potrait');
@@ -184,7 +205,12 @@ class Uang_makan extends MX_Controller
         $jdl = trim($judul['desc_cabang']) . ($borong == "t" ? " (Borong)" : ($callplan == "t" ? " (Callplan)" : ""));
         $tglawal = date("d-m-Y", strtotime($awal));
         $tglakhir = date("d-m-Y", strtotime($akhir));
+        $cabang_regu = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+        if (in_array($kdcabang, $cabang_regu, true)) {
+            $datane = $this->m_uang_makan->q_uangmakan_regu_njrm($kdcabang, $awal, $akhir, $callplan, $borong)->result();
+         } else {
         $datane = $this->m_uang_makan->q_uangmakan_regu($kdcabang, $awal, $akhir, $callplan, $borong);
+        }
         $this->excel_generator->set_query($datane);
 
         if ($callplan == "t") {
