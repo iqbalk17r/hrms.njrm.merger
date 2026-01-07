@@ -104,7 +104,7 @@
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
-            <legend><center>SELAMAT DATANG DI ONLINE SISTEM INFORMASI HR & GA NUSA</center></legend>
+            <legend><center>SELAMAT DATANG DI ONLINE SISTEM INFORMASI HR & GA NUSANTARA</center></legend>
         </div>
     </div>
     <div class="row clearfix">

@@ -1,16 +1,16 @@
 <?php
 class M_instock extends CI_Model{
-	
-	
+
+
 	public function __construct() {
 		parent::__construct();
 		$this->load->database();
 	}
-	
+
 	function q_versidb($kodemenu){
 		return $this->db->query("select * from sc_mst.version where kodemenu='$kodemenu'");
 	}
-	
+
 	function q_kdgroup_param($param){
 		return $this->db->query("select 
 								trim(coalesce(branch    ::text,''))as  branch      ,
@@ -23,7 +23,7 @@ class M_instock extends CI_Model{
 								trim(coalesce(updatedate::text,''))as  updatedate  ,
 								trim(coalesce(updateby  ::text,''))as  updateby  from sc_mst.mgroup where kdgroup is not null $param ");
 	}
-	
+
 	function q_kdsubgroup_param($param){
 		return $this->db->query("select trim(coalesce(branch    ::text,'')) as branch      ,
 								trim(coalesce(kdsubgroup::text,'')) as kdsubgroup  ,
@@ -37,7 +37,7 @@ class M_instock extends CI_Model{
 								trim(coalesce(updatedate::text,'')) as updatedate  ,
 								trim(coalesce(updateby  ::text,'')) as updateby from sc_mst.msubgroup where kdsubgroup is not null $param ");
 	}
-	
+
 	function q_stockcode_param($param){
 		return $this->db->query("select 
 								trim(coalesce(branch        ::text,'')) as  branch        ,
@@ -94,14 +94,11 @@ class M_instock extends CI_Model{
 								trim(coalesce(satkecil      ::text,'')) as  satkecil      ,
 								trim(coalesce(kdsubasuransi ::text,'')) as  kdsubasuransi ,
 								trim(coalesce(lasttrxdate   ::text,'')) as  lasttrxdate   ,
-								trim(coalesce(lasttrxdoc    ::text,'')) as  lasttrxdoc,   
-								trim(
-								coalesce(nmbarang    ::text,'')||'   '||
-								coalesce(nopol    ::text,'')
-								) as  nmbarangfull   
+								trim(coalesce(lasttrxdoc    ::text,'')) as  lasttrxdoc  ,
+								trim(coalesce(nmbarang    ::text,'')||' - '||trim(coalesce(nopol    ::text,''))) as  nmbarangfull     
 								from sc_mst.mbarang where nodok is not null $param ");
 	}
-	
+
 	function q_karyawan($param){
 		return $this->db->query("select coalesce(trim(branch              ::text),'') as branch              ,
 										coalesce(trim(nik                 ::text),'') as nik                 ,
@@ -196,7 +193,7 @@ class M_instock extends CI_Model{
 								where a.tglkeluarkerja is null) as x where nik is not null $param
 								");
 	}
-	
+
 }
 
 

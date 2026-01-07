@@ -526,7 +526,7 @@ class M_permintaan extends CI_Model{
 									left outer join sc_mst.msubsupplier b on a.kdsupplier=b.kdsupplier and a.kdsubsupplier=b.kdsubsupplier
 									left outer join sc_mst.msupplier c on  a.kdgroupsupplier=c.kdgroup and a.kdsupplier=c.kdsupplier 
 									left outer join sc_mst.trxtype d on a.status=d.kdtrx and d.jenistrx='POATK') as x
-									where nodok is not null  $param_trx_mst order by nodok desc,podate desc");
+									where nodok is not null  /*$param_trx_mst*/ order by nodok desc,podate desc");
 	}
 	
 	function q_trx_po_dtl_param($param_trx_dtl){

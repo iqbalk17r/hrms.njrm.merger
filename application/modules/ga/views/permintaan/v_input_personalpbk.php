@@ -468,8 +468,8 @@
 							
 <script type="text/javascript">
 $(function() {
-
-
+	 
+					 
 	 var totalCount, 
         page, 
         perPage = 7;				 

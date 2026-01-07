@@ -835,7 +835,7 @@ class M_uang_makan extends CI_Model{
             INSERT INTO sc_tmp.scheduletolocation
             SELECT *
             FROM dblink (
-                'hostaddr=$host dbname=$dbname user=$dbuser password=$dbpass port=39170',
+                'hostaddr=$host dbname=$dbname user=$dbuser password=$dbpass',
                 'SELECT DISTINCT ON (branch, scheduleid, locationid, locationidlocal)
 				s.branch, s.userid, u.nip AS nik, s.scheduleid, s.scheduledate, 
                 COALESCE(NULLIF(sl.locationid, ''''), c.custcode, '''') AS locationid, 
@@ -1065,6 +1065,78 @@ class M_uang_makan extends CI_Model{
                 )
             ORDER BY b.nmlengkap, a.tgl
         ");
+    }
+	
+	    function q_uangmakan_absensi_old($kdcabang,$awal,$akhir){
+        return $this->db->query("	
+		/*select * from sc_trx.qv_uangmakan where nik in (select trim(nik) from sc_mst.karyawan where kdcabang='$kdcabang') and (to_char(tgl,'yyyy-mm-dd') between '$awal' and '$akhir')*/
+		
+		select *,cast(nominal as money) as nominalrp from (
+												select nik,nmlengkap,nmdept,nmjabatan,tglhari,checktime,keterangan,nominal,rank from (
+														select nik,nmlengkap,nmdept,nmjabatan,tglhari,checktime,keterangan,nominal,rank() OVER (
+																 PARTITION BY nik order by nik
+																 ) from (
+														select nik,nmlengkap,nmdept,nmjabatan,tglhari,checktime,keterangan,nominal from (
+															select a.*,b.nmlengkap,b.kdcabang,c.kddept,c.nmdept,e.nmjabatan,to_char(tgl,'yyyy-mm-dd')||','||
+															case 	 when to_char(tgl, 'Dy')='Mon' then 'Senin'
+																 when to_char(tgl, 'Dy')='Tue' then 'Selasa'
+																 when to_char(tgl, 'Dy')='Wed' then 'Rabu'
+																 when to_char(tgl, 'Dy')='Thu' then 'Kamis'
+																 when to_char(tgl, 'Dy')='Fri' then 'Jumat'
+																 when to_char(tgl, 'Dy')='Sat' then 'Sabtu'
+															else 'Out Date' end as tglhari,case when to_char(checkin,'HH24:MI:SS') is null then '' else to_char(checkin,'HH24:MI:SS') end||'|'||case when to_char(checkout,'HH24:MI:SS') is null then '' else to_char(checkout,'HH24:MI:SS') end as checktime
+															from sc_trx.uangmakan a 
+															left outer join sc_mst.karyawan b on a.nik=b.nik
+															left outer join sc_mst.departmen c on b.bag_dept=c.kddept
+															left outer join sc_mst.subdepartmen d on b.bag_dept=d.kddept and b.subbag_dept=d.kdsubdept
+															left outer join sc_mst.jabatan e on b.bag_dept=e.kddept and b.jabatan=e.kdjabatan and b.subbag_dept=e.kdsubdept
+															where a.nik in (select trim(nik) from sc_mst.karyawan where kdcabang='$kdcabang') and (to_char(tgl,'yyyy-mm-dd') between '$awal' and '$akhir')
+															order by b.nmlengkap,tgl) as t1
+															union all
+															select nik,nmlengkap as nama,null as nmdept,null as nmjabatan,null as tglhari, null as checktime, 'TOTAL' as keterangan,sum(nominal) 
+															from (	select a.*,b.nmlengkap,b.kdcabang,c.kddept,c.nmdept,e.nmjabatan,to_char(tgl,'yyyy-mm-dd')||','||
+																case 	 when to_char(tgl, 'Dy')='Mon' then 'Senin'
+																	 when to_char(tgl, 'Dy')='Tue' then 'Selasa'
+																	 when to_char(tgl, 'Dy')='Wed' then 'Rabu'
+																	 when to_char(tgl, 'Dy')='Thu' then 'Kamis'
+																	 when to_char(tgl, 'Dy')='Fri' then 'Jumat'
+																	 when to_char(tgl, 'Dy')='Sat' then 'Sabtu'
+																else 'Out Date' end as tglhari,case when to_char(checkin,'HH24:MI:SS') is null then '' else to_char(checkin,'HH24:MI:SS') end||'|'||case when to_char(checkout,'HH24:MI:SS') is null then '' else to_char(checkout,'HH24:MI:SS') end as checktime
+																from sc_trx.uangmakan a 
+																left outer join sc_mst.karyawan b on a.nik=b.nik
+																left outer join sc_mst.departmen c on b.bag_dept=c.kddept
+																left outer join sc_mst.subdepartmen d on b.bag_dept=d.kddept and b.subbag_dept=d.kdsubdept
+																left outer join sc_mst.jabatan e on b.bag_dept=e.kddept and b.jabatan=e.kdjabatan and b.subbag_dept=e.kdsubdept
+																where a.nik in (select trim(nik) from sc_mst.karyawan where kdcabang='$kdcabang') and (to_char(tgl,'yyyy-mm-dd') between '$awal' and '$akhir')
+																order by nik,tgl) as t1
+																group by nik,nmdept,nmjabatan,nmlengkap 
+
+																) as t1
+														group by nik,nmlengkap,nmdept,nmjabatan,tglhari,checktime,keterangan,nominal
+														order by nmlengkap,tglhari) as a
+												union all
+													select nik,'GRAND TOTAL UANG MAKAN' as nmlengkap,nmdept,nmjabatan,tglhari,checktime,keterangan,sum(nominal),cast(null as bigint) as rank from (
+														select cast('' as text) as nik,cast('' as text) as nmlengkap,cast('' as text) as nmdept,cast('' as text) as nmjabatan,cast ('' as text) as tglhari,cast( '' as text) as checktime, cast('' as text) as keterangan,sum(nominal) as nominal
+													from (	select a.*,b.nmlengkap,b.kdcabang,c.kddept,c.nmdept,e.nmjabatan,to_char(tgl,'yyyy-mm-dd')||','||
+														case 	 when to_char(tgl, 'Dy')='Mon' then 'Senin'
+															 when to_char(tgl, 'Dy')='Tue' then 'Selasa'
+															 when to_char(tgl, 'Dy')='Wed' then 'Rabu'
+															 when to_char(tgl, 'Dy')='Thu' then 'Kamis'
+															 when to_char(tgl, 'Dy')='Fri' then 'Jumat'
+															 when to_char(tgl, 'Dy')='Sat' then 'Sabtu'
+														else 'Out Date' end as tglhari,case when to_char(checkin,'HH24:MI:SS') is null then '' else to_char(checkin,'HH24:MI:SS') end||'|'||case when to_char(checkout,'HH24:MI:SS') is null then '' else to_char(checkout,'HH24:MI:SS') end as checktime
+														from sc_trx.uangmakan a 
+														left outer join sc_mst.karyawan b on a.nik=b.nik
+														left outer join sc_mst.departmen c on b.bag_dept=c.kddept
+														left outer join sc_mst.subdepartmen d on b.bag_dept=d.kddept and b.subbag_dept=d.kdsubdept
+														left outer join sc_mst.jabatan e on b.bag_dept=e.kddept and b.jabatan=e.kdjabatan and b.subbag_dept=e.kdsubdept
+														where a.nik in (select trim(nik) from sc_mst.karyawan where kdcabang='$kdcabang') and (to_char(tgl,'yyyy-mm-dd') between '$awal' and '$akhir')
+														order by nik,tgl) as t1
+														group by nik,nmdept,nmjabatan,nmlengkap ) as x
+														group by nik,nmlengkap,nmdept,nmjabatan,tglhari,checktime,keterangan ) as x2
+
+	
+								");
     }
 
 

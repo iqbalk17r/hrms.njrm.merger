@@ -19,6 +19,7 @@
 <legend><?php echo $title;?></legend>
 </br>
 
+<?php //var_dump($dtlmst);?>
 
 <div class="row">
 	<div class="col-xs-12">

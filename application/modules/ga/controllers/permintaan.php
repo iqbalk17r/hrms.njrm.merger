@@ -146,14 +146,14 @@ class Permintaan extends MX_Controller{
             $data['message']="<div class='alert alert-danger'>Format Excel Salah</div>";
         else
             $data['message']='';
-            $tgl=explode(' - ',$this->input->post('tgl'));
-            if(!empty($this->input->post('tgl')) or ($this->input->post('tgl'))<>'') {
-                $tgl1= date('Y-m-d',strtotime($tgl[0]));
-                $tgl2= date('Y-m-d',strtotime($tgl[1]));
-                $paramdate=" and to_char(tgldok,'yyyy-mm-dd') between '$tgl1' and '$tgl2' ";
-            } else {
-                $paramdate=" and to_char(tgldok,'yyyymm') = to_char(now(),'yyyymm') ";
-            }
+        $tgl=explode(' - ',$this->input->post('tgl'));
+        if(!empty($this->input->post('tgl')) or ($this->input->post('tgl'))<>'') {
+            $tgl1= date('Y-m-d',strtotime($tgl[0]));
+            $tgl2= date('Y-m-d',strtotime($tgl[1]));
+            $paramdate=" and to_char(tgldok,'yyyy-mm-dd') between '$tgl1' and '$tgl2' ";
+        } else {
+            $paramdate=" and to_char(tgldok,'yyyymm') = to_char(now(),'yyyymm') ";
+        }
 
 
 

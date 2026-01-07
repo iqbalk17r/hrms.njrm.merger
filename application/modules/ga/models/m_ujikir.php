@@ -17,7 +17,7 @@ class M_ujikir extends CI_Model{
 								coalesce(address   ,'')::text as address     ,
 								coalesce(phone1    ,'')::text as phone1      ,
 								coalesce(phone2    ,'')::text as phone2      ,
-								coalesce(fax       ,'')::text as fax from sc_mst.branch where branch='SBYNSA'");
+								coalesce(fax       ,'')::text as fax from sc_mst.branch where branch='NJRBJM'");
     }
     function q_deltrxerror($paramtrxerror){
         return $this->db->query("delete from sc_mst.trxerror where userid is not null $paramtrxerror");

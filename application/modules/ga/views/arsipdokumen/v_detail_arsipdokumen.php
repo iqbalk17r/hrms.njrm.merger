@@ -13,7 +13,7 @@
 				$("#example2").dataTable();
 				$("#example3").dataTable();
 				$("#example4").dataTable();
-
+			
 			//	$("#tglrange").daterangepicker();
                 $('.currency').formatCurrency({symbol: ''});
                 $('.currency').blur(function()
@@ -21,7 +21,7 @@
                     $('.currency').formatCurrency({symbol: ''});
                 });
             });
-
+					
 			//empty string means no validation error
 
 
@@ -40,13 +40,13 @@
 		<button class="btn btn-primary" data-toggle="modal" data-target="#filter">Filter Periode</button>
 	</div--->
 <div><a href="<?php echo site_url('ga/arsipdokumen/form_arsipdokumen');?>" type="button"  style="margin:10px; color:#000000;" class="btn btn-default"/> Kembali</a>
-
-</div>
+	
+</div>	
 </br>
 
 
 <div class="row">
-	<div class="col-xs-12">
+	<div class="col-xs-12">                            
 		<div class="box">
 			  <div class="box-body">
 					<!--<form role="form" action="<?php /*echo site_url('ga/arsipdokumen/save_arsipdokumen');*/?>" method="post">-->
@@ -74,13 +74,7 @@
 							<label for="inputsm">Pemilik Arsip</label>
 							<input type="text" class="form-control input-sm" id="archives_own" style="text-transform:uppercase" name="archives_own" placeholder="Pemilik Arsip" value="<?php echo trim($dtlmst['archives_own']) ;?>" maxlength="30" readonly>
 						  </div>
-                            <div class="form-group">
-                                <label for="uploadFile">Upload Dokumen Lampiran Arsip Scan/Rar</label>
-                                <input type="file" id="att_name" name="att_name" required>
-                                <a href="#" onclick="window.open('<?php echo site_url('assets/files/arsipDokumen').'/'.$dtlmst['att_name'];?>')"><?php echo $dtlmst['att_name'];?></a>
-                            </div>
 						</div> <!---- col 1 -->
-
 						<div class='col-sm-6'>
                         <div class="form-group">
                             <label for="inputsm">Kode Arsip Asli Baru</label>
@@ -92,21 +86,21 @@
                         </div>
                         <div class="form-group">
                             <label for="inputsm">Total Biaya Pembaharuan Arsip</label>
-                            <input type="text" class="form-control input-sm-2 ratakanan fikyseparator" id="ttlvalue" name="ttlvalue" value="<?php echo number_format(round($dtlmst['ttlvalue']),0,',','.');?>"  placeholder="0" maxlength="12" READONLY>
+                            <input type="text" class="form-control input-sm-2 ratakanan currency" id="ttlvalue" name="ttlvalue" value="<?php echo trim($dtlmst['ttlvalue']);?>"  placeholder="0" maxlength="12" readonly>
                         </div>
                         <div class="form-group">
                             <label for="inputsm">Nama Pengurus (Optional)</label>
-                            <input type="text" class="form-control input-sm" id="namapengurus" style="text-transform:uppercase" name="namapengurus" placeholder="Nama Pengurus" value="<?php echo trim($dtlmst['namapengurus']);?>" maxlength="100" readonly>
+                            <input type="text" class="form-control input-sm" id="namapengurus" style="text-transform:uppercase" name="namapengurus" placeholder="Nama Pengurus Kir" value="<?php echo trim($dtlmst['namapengurus']);?>" maxlength="100" readonly>
                         </div>
                         <div class="form-group">
                             <label for="inputsm">Contact Pengurus (Optional)</label>
-                            <input type="number" class="form-control input-sm" id="contactpengurus" style="text-transform:uppercase" name="contactpengurus" placeholder="Contact Pengurus"  value="<?php echo trim($dtlmst['contactpengurus']);?>" maxlength="25" readonly>
+                            <input type="number" class="form-control input-sm" id="contactpengurus" style="text-transform:uppercase" name="contactpengurus" placeholder="Contact Pengurus Kir"  value="<?php echo trim($dtlmst['contactpengurus']);?>" maxlength="25" readonly>
                         </div>
 						<div class="form-group">
 							<label for="inputsm">Keterangan</label>
 							<textarea  class="textarea" name="description" placeholder="Keterangan"   maxlength ="159" style="text-transform: uppercase; width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px ;" disabled><?php echo trim($dtlmst['description']);?></textarea>
                         </div>
-						</div>
+						</div> 
 					</div>
 					</div>
 					<div class="box-footer">
@@ -121,19 +115,19 @@
 
 <script>
 
+  
 
-
-
+	
 	//Date range picker
-    	$("#tgl").datepicker();
-    	$(".tgl").datepicker();
-    	$(".tglan").datepicker();
+    	$("#tgl").datepicker(); 
+    	$(".tgl").datepicker(); 
+    	$(".tglan").datepicker(); 
 				$('.year').datepicker({
 					format: " yyyy",
-					viewMode: "years",
+					viewMode: "years", 
 					minViewMode: "years"
-
+				
 				});
-
+  
 
 </script>

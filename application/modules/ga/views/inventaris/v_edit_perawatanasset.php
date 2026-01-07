@@ -127,7 +127,7 @@
 			<div class='col-sm-6'>
 			<div class="form-group">
 				<label for="inputsm">Tanggal Dokumen</label>
-				<input type="text" class="form-control input-sm tgl" id="tgldok" name="tgldok"  data-date-format="dd-mm-yyyy" value="<?php echo date('d-m-Y', strtotime(trim($dtl_perawatan['tgldok']))); ?>" required> <!--value=?php echo date('d-m-Y', strtotime(trim($ls->tglmasuk)));?-->
+				<input type="text" class="form-control input-sm tgl" id="tgldok" name="tgldok"  data-date-format="dd-mm-yyyy" value="<?php echo date('d-m-Y', strtotime(trim($dtl_perawatan['tgldok']))); ?>" disabled> <!--value=?php echo date('d-m-Y', strtotime(trim($ls->tglmasuk)));?-->
 			</div>
 			<div class="form-group">
 				<label for="inputsm">KM Awal</label>

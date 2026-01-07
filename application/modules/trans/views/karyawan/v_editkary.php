@@ -1202,7 +1202,7 @@
                                         load: function(query, callback) {
                                             $.post(base('trans/karyawan/getIdbu'), {
                                                 search: query,
-                                                perpage: 7,
+                                                perpage: 10,
                                                 page: 1
                                             }).done(function(res) {
                                                 callback(res.group);

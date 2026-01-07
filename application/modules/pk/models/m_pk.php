@@ -1306,7 +1306,7 @@ SQL
 										join sc_trx.status_kepegawaian f on a.kdcontract = f.nodok
 										join sc_mst.status_kepegawaian g on f.kdkepegawaian=g.kdkepegawaian
 										join sc_pk.master_appr h on a.status = h.kdappr
-										$param AND trim(a.status) != 'C' and trim(f.status) = 'B'
+										$param AND trim(a.status) != 'C'-- and trim(f.status) = 'B'
 										order by a.inputdate desc
 			");
 		}

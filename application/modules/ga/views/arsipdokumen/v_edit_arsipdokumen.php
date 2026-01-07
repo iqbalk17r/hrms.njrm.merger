@@ -13,7 +13,7 @@
 				$("#example2").dataTable();
 				$("#example3").dataTable();
 				$("#example4").dataTable();
-
+			
 			//	$("#tglrange").daterangepicker();
                 $('.currency').formatCurrency({symbol: ''});
                 $('.currency').blur(function()
@@ -21,7 +21,7 @@
                     $('.currency').formatCurrency({symbol: ''});
                 });
             });
-
+					
 			//empty string means no validation error
 
 
@@ -30,32 +30,26 @@
 <!--div class="pull-right">Versi: <!?php echo $version; ?></div--->
 </br>
 
-<ol class="breadcrumb">
-    <div class="pull-right"><i style="color:transparent;"><?php echo $t; ?></i> Versi: <?php echo $version; ?></div>
-    <?php foreach ($y as $y1) { ?>
-        <?php if( trim($y1->kodemenu)!=trim($kodemenu)) { ?>
-            <li><a href="<?php echo site_url( trim($y1->linkmenu)) ; ?>"><i class="fa <?php echo trim($y1->iconmenu); ?>"></i> <?php echo  trim($y1->namamenu); ?></a></li>
-        <?php } else { ?>
-            <li class="active"><i class="fa <?php echo trim($y1->iconmenu); ?>"></i> <?php echo trim($y1->namamenu); ?></li>
-        <?php } ?>
-    <?php } ?>
-</ol>
-<h3><?php echo $title; ?></h3>
-<?php echo $message;?>
 
+<legend><?php echo $title;?></legend>
 
-
+<!--?php echo $message;?>
+<div class="row">
+	<!--div class="col-sm-3">
+		<button class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Input Kendaraan</button>
+		<button class="btn btn-primary" data-toggle="modal" data-target="#filter">Filter Periode</button>
+	</div--->
 <div><a href="<?php echo site_url('ga/arsipdokumen/clear_arsipdokumen');?>" type="button"  style="margin:10px; color:#000000;" class="btn btn-default"/> Kembali</a>
-
-</div>
+	
+</div>	
 </br>
 
 
 <div class="row">
-	<div class="col-xs-12">
+	<div class="col-xs-12">                            
 		<div class="box">
 			  <div class="box-body">
-					<form enctype="multipart/form-data" role="form"  action="<?php echo site_url('ga/arsipdokumen/save_arsipdokumen');?>" method="post">
+					<form role="form" action="<?php echo site_url('ga/arsipdokumen/save_arsipdokumen');?>" method="post">
 					<div class='row'>
 						<div class='col-sm-6'>
 						 <div class="form-group">
@@ -80,13 +74,7 @@
 							<label for="inputsm">Pemilik Arsip</label>
 							<input type="text" class="form-control input-sm" id="archives_own" style="text-transform:uppercase" name="archives_own" placeholder="Pemilik Arsip" value="<?php echo trim($dtlmst['archives_own']) ;?>" maxlength="30" readonly>
 						  </div>
-                            <div class="form-group">
-                                <label for="uploadFile">Upload Dokumen Lampiran Arsip Scan/Rar</label>
-                                <input type="file" id="att_name" name="att_name">
-                                <a href="#" onclick="window.open('<?php echo site_url('assets/files/arsipDokumen').'/'.$dtlmst['att_name'];?>')"><?php echo $dtlmst['att_name'];?></a>
-                            </div>
 						</div> <!---- col 1 -->
-
 						<div class='col-sm-6'>
                         <div class="form-group">
                             <label for="inputsm">Kode Arsip Asli Baru</label>
@@ -98,27 +86,27 @@
                         </div>
                         <div class="form-group">
                             <label for="inputsm">Total Biaya Pembaharuan Arsip</label>
-                            <input type="text" class="form-control input-sm-2 ratakanan fikyseparator" id="ttlvalue" name="ttlvalue" value="<?php echo number_format(round($dtlmst['ttlvalue']),0,',','.');?>"  placeholder="0" maxlength="12" required>
+                            <input type="text" class="form-control input-sm-2 ratakanan currency" id="ttlvalue" name="ttlvalue" value="<?php echo trim($dtlmst['ttlvalue']);?>"  placeholder="0" maxlength="12" required>
                         </div>
                         <div class="form-group">
                             <label for="inputsm">Nama Pengurus (Optional)</label>
-                            <input type="text" class="form-control input-sm" id="namapengurus" style="text-transform:uppercase" name="namapengurus" placeholder="Nama Pengurus" value="<?php echo trim($dtlmst['namapengurus']);?>" maxlength="100">
+                            <input type="text" class="form-control input-sm" id="namapengurus" style="text-transform:uppercase" name="namapengurus" placeholder="Nama Pengurus Kir" value="<?php echo trim($dtlmst['namapengurus']);?>" maxlength="100">
                         </div>
                         <div class="form-group">
                             <label for="inputsm">Contact Pengurus (Optional)</label>
-                            <input type="text" class="form-control input-sm" id="contactpengurus" style="text-transform:uppercase" name="contactpengurus" placeholder="Contact Pengurus"  value="<?php echo trim($dtlmst['contactpengurus']);?>" maxlength="25">
+                            <input type="number" class="form-control input-sm" id="contactpengurus" style="text-transform:uppercase" name="contactpengurus" placeholder="Contact Pengurus Kir"  value="<?php echo trim($dtlmst['contactpengurus']);?>" maxlength="25">
                         </div>
 						<div class="form-group">
 							<label for="inputsm">Keterangan</label>
 							<textarea  class="textarea" name="description" placeholder="Keterangan"   maxlength ="159" style="text-transform: uppercase; width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px ;"><?php echo trim($dtlmst['description']);?></textarea>
                         </div>
-						</div>
+						</div> 
 					</div>
 					</div>
 					<div class="box-footer">
 					<button type="submit" class="btn btn-primary">Submit</button>
 				    </div>
-			</form>
+			</form>  
 		</div><!-- /.box -->
 	</div>
 </div>
@@ -127,19 +115,19 @@
 
 <script>
 
+  
 
-
-
+	
 	//Date range picker
-    	$("#tgl").datepicker();
-    	$(".tgl").datepicker();
-    	$(".tglan").datepicker();
+    	$("#tgl").datepicker(); 
+    	$(".tgl").datepicker(); 
+    	$(".tglan").datepicker(); 
 				$('.year').datepicker({
 					format: " yyyy",
-					viewMode: "years",
+					viewMode: "years", 
 					minViewMode: "years"
-
+				
 				});
-
+  
 
 </script>

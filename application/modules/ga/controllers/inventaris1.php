@@ -12,7 +12,7 @@ class Inventaris extends MX_Controller{
 	
 		
 		$this->load->model(array('m_kendaraan','master/m_akses','m_inventaris'));
-        $this->load->library(array('form_validation','template','upload','pdf','encrypt','Excel_generator')); 
+        $this->load->library(array('form_validation','template','upload','pdf','Excel_generator','Fiky_version','Fiky_string','Fiky_menu','Fiky_encryption'));
 	
 		 if(!$this->session->userdata('nik')){
             redirect('dashboard');
@@ -100,38 +100,16 @@ class Inventaris extends MX_Controller{
 		$data['title']="SKEMA BARANG & ASSET";	
 		$dtlbranch=$this->m_akses->q_branch()->row_array();
 		$branch=$dtlbranch['branch'];
-										/* CODE UNTUK VERSI */
-						$kodemenu='I.G.D.1';
-						$versirelease='I.G.D.1/ALPHA.001';
-						$userid=$this->session->userdata('nama');
-						$vdb=$this->m_akses->q_versidb($kodemenu)->row_array();
-						$versidb=$vdb['vrelease'];
-						if($versidb<>$versirelease){
-							$infoversiold= array (
-								'vreleaseold'   => $versidb,
-								'vdateold'      => $vdb['vdate'],
-								'vauthorold'    => $vdb['vauthor'],
-								'vketeranganold'=> $vdb['vketerangan'],
-							);               
-							$this->db->where('kodemenu',$kodemenu);
-							$this->db->update('sc_mst.version',$infoversiold);
-							
-							$infoversi= array (
-								'vrelease'   => $versirelease,
-								'vdate'      => date('2017-07-10 11:18:00'),
-								'vauthor'    => 'FIKY',
-								'vketerangan'=> 'PENAMBAHAN VERSION RELEASE',
-								'update_date' => date('Y-m-d H:i:s'),
-								'update_by'   => $userid,
-							);               
-							$this->db->where('kodemenu',$kodemenu);
-							$this->db->update('sc_mst.version',$infoversi);
-						}
-						$vdb=$this->m_akses->q_versidb($kodemenu)->row_array();
-						$versidb=$vdb['vrelease'];
-						$data['version']=$versidb;
-						/* END CODE UNTUK VERSI */
-								
+
+        /* CODE UNTUK VERSI*/
+        $nama=trim($this->session->userdata('nik'));
+        $kodemenu='I.G.D.1'; $versirelease='I.G.D.1/ALPHA.002'; $releasedate=date('2019-06-28 00:00:00');
+        $versidb=$this->fiky_version->version($kodemenu,$versirelease,$releasedate,$nama);
+        $x=$this->fiky_menu->menus($kodemenu,$versirelease,$releasedate);
+        $data['x'] = $x['rows']; $data['y'] = $x['res']; $data['t'] = $x['xn'];
+        $data['kodemenu']=$kodemenu; $data['version']=$versidb;
+        /* END CODE UNTUK VERSI */
+
 
 		if($this->uri->segment(4)=="bc_failed")
             $data['message']="<div class='alert alert-warning'>Pastikan Isi SMS ada</div>";
@@ -787,9 +765,10 @@ class Inventaris extends MX_Controller{
 
 		$userinfo=$this->m_akses->q_user_check()->row_array();
 		$userhr=$this->m_akses->list_aksesperdepcuti()->num_rows();
+		$usernotin=$this->m_akses->user_notin($nama)->num_rows();
 		$level_akses=strtoupper(trim($userinfo['level_akses']));
 		// or $level_akses=='A'
-		if(($userhr>0 )){
+		if(($userhr>0 or $usernotin>0 )){
 			$param="";
 			$param2="";
 			
@@ -923,41 +902,17 @@ class Inventaris extends MX_Controller{
 	
 	
 	function input_view_perawatanasset(){
-			$data['title']="FORM INPUT PERAWATAN ASSET";
-			$dtlbranch=$this->m_akses->q_branch()->row_array();
-			$branch=$dtlbranch['branch'];
-							/* CODE UNTUK VERSI */
-							$kodemenu='I.G.E.1';
-							$versirelease='I.G.E.1/ALPHA.001';
-							$userid=$this->session->userdata('nama');
-							$vdb=$this->m_akses->q_versidb($kodemenu)->row_array();
-							$versidb=$vdb['vrelease'];
-							if($versidb<>$versirelease){
-								$infoversiold= array (
-									'vreleaseold'   => $versidb,
-									'vdateold'      => $vdb['vdate'],
-									'vauthorold'    => $vdb['vauthor'],
-									'vketeranganold'=> $vdb['vketerangan'],
-								);               
-								$this->db->where('kodemenu',$kodemenu);
-								$this->db->update('sc_mst.version',$infoversiold);
-								
-								$infoversi= array (
-									'vrelease'   => $versirelease,
-									'vdate'      => date('2017-07-10 11:18:00'),
-									'vauthor'    => 'FIKY',
-									'vketerangan'=> 'PENAMBAHAN VERSION RELEASE',
-									'update_date' => date('Y-m-d H:i:s'),
-									'update_by'   => $userid,
-								);               
-								$this->db->where('kodemenu',$kodemenu);
-								$this->db->update('sc_mst.version',$infoversi);
-							}
-							$vdb=$this->m_akses->q_versidb($kodemenu)->row_array();
-							$versidb=$vdb['vrelease'];
-							$data['version']=$versidb;
-							/* END CODE UNTUK VERSI */
-
+        $data['title']="FORM INPUT PERAWATAN ASSET";
+        $dtlbranch=$this->m_akses->q_branch()->row_array();
+        $branch=$dtlbranch['branch'];
+        /* CODE UNTUK VERSI*/
+        $nama=trim($this->session->userdata('nik'));
+        $kodemenu='I.G.E.1'; $versirelease='I.G.E.1/ALPHA.002'; $releasedate=date('2019-06-28 00:00:00');
+        $versidb=$this->fiky_version->version($kodemenu,$versirelease,$releasedate,$nama);
+        $x=$this->fiky_menu->menus($kodemenu,$versirelease,$releasedate);
+        $data['x'] = $x['rows']; $data['y'] = $x['res']; $data['t'] = $x['xn'];
+        $data['kodemenu']=$kodemenu; $data['version']=$versidb;
+        /* END CODE UNTUK VERSI */
 							
 		/* akses approve atasan */
 		$nama=$this->session->userdata('nik');
@@ -968,9 +923,10 @@ class Inventaris extends MX_Controller{
 
 		$userinfo=$this->m_akses->q_user_check()->row_array();
 		$userhr=$this->m_akses->list_aksesperdep()->num_rows();
+		$usernotin=$this->m_akses->user_notin($nama)->num_rows();
 		$level_akses=strtoupper(trim($userinfo['level_akses']));
 		// or $level_akses=='A'
-		if(($userhr>0 )){
+		if(($userhr>0 or $usernotin>0)){
 			$param="";
 			$param2="";
 			
@@ -1001,7 +957,14 @@ class Inventaris extends MX_Controller{
 			$this->template->display('ga/inventaris/v_input_perawatanasset.php',$data);
 	}
 	
-	
+	function load_stock($stockcode){
+        $nama=$this->session->userdata('nik');
+
+        $param1=" and nodok='$stockcode'";
+        $data = $this->m_inventaris->q_mbarang($param1)->row_array();
+        echo json_encode($data, JSON_PRETTY_PRINT);
+    }
+
 	function edit_view_perawatanasset(){
 			$nodok=trim($this->uri->segment(4));
 			$nama=$this->session->userdata('nik');
@@ -1531,37 +1494,14 @@ class Inventaris extends MX_Controller{
 		$nama=$this->session->userdata('nik');	
 		$dtlbranch=$this->m_akses->q_branch()->row_array();
 		$branch=$dtlbranch['branch'];
-						/* CODE UNTUK VERSI */
-						$kodemenu='I.G.E.2';
-						$versirelease='I.G.E.2/ALPHA.001';
-						$userid=$this->session->userdata('nama');
-						$vdb=$this->m_akses->q_versidb($kodemenu)->row_array();
-						$versidb=$vdb['vrelease'];
-						if($versidb<>$versirelease){
-							$infoversiold= array (
-								'vreleaseold'   => $versidb,
-								'vdateold'      => $vdb['vdate'],
-								'vauthorold'    => $vdb['vauthor'],
-								'vketeranganold'=> $vdb['vketerangan'],
-							);               
-							$this->db->where('kodemenu',$kodemenu);
-							$this->db->update('sc_mst.version',$infoversiold);
-							
-							$infoversi= array (
-								'vrelease'   => $versirelease,
-								'vdate'      => date('2017-07-10 11:18:00'),
-								'vauthor'    => 'FIKY',
-								'vketerangan'=> 'PENAMBAHAN VERSION RELEASE',
-								'update_date' => date('Y-m-d H:i:s'),
-								'update_by'   => $userid,
-							);               
-							$this->db->where('kodemenu',$kodemenu);
-							$this->db->update('sc_mst.version',$infoversi);
-						}
-						$vdb=$this->m_akses->q_versidb($kodemenu)->row_array();
-						$versidb=$vdb['vrelease'];
-						$data['version']=$versidb;
-						/* END CODE UNTUK VERSI */
+        /* CODE UNTUK VERSI*/
+        $nama=trim($this->session->userdata('nik'));
+        $kodemenu='I.G.E.2'; $versirelease='I.G.E.2/ALPHA.002'; $releasedate=date('2019-06-28 00:00:00');
+        $versidb=$this->fiky_version->version($kodemenu,$versirelease,$releasedate,$nama);
+        $x=$this->fiky_menu->menus($kodemenu,$versirelease,$releasedate);
+        $data['x'] = $x['rows']; $data['y'] = $x['res']; $data['t'] = $x['xn'];
+        $data['kodemenu']=$kodemenu; $data['version']=$versidb;
+        /* END CODE UNTUK VERSI */
 
 		if($this->uri->segment(4)=="fail_datakembar")
             $data['message']="<div class='alert alert-danger'>Data Sudah Ada Silahkan Edit/Input Baru Dengan Kode Yang Lain</div>";
@@ -1595,26 +1535,26 @@ class Inventaris extends MX_Controller{
 			$cekmstpo_hangus=$this->m_inventaris->q_hisperawatanspk_tmp($param3_1_5)->num_rows(); //hangus
 			$dtledit=$this->m_inventaris->q_hisperawatanspk_tmp($param3_1_R)->row_array(); //edit row array
 			//echo $coba=trim(isset($dtledit['nodoktmp']));
-			$enc_nodok=bin2hex($this->encrypt->encode(trim(isset($dtledit['nodoktmp']))));
-			$enc_nik=bin2hex($this->encrypt->encode($nama));
+			$enc_nodok=$this->fiky_encryption->enkript($dtledit['nodoktmp']);
+			$enc_nik=$this->fiky_encryption->enkript($nama);
 			
 			$data['enc_nik']=bin2hex($this->encrypt->encode($nama));
 			if ($cekmstpo_na>0) { //cek inputan
-					$nodokref=trim($dtledit['nodokref']);
-					redirect("ga/inventaris/inputspk_view/$nodokref");
+					$enc_nodokref=trim($this->fiky_encryption->enkript($dtledit['nodokref']));
+					redirect("ga/inventaris/inputspk_view/$enc_nodokref");
 					
 			} else if ($cekmstpo_ne>0){	//cek edit
 					$nodoktmp=trim($dtledit['nodoktmp']);
-					redirect("ga/inventaris/edit_inputspk/$nodoktmp");
+					redirect("ga/inventaris/edit_inputspk/$enc_nodok");
 					//redirect("ga/inventaris/direct_lost_input");
 			} else if ($cekmstpo_napp>0){	//cek approv
-					redirect("ga/inventaris/approval_po_atk/$enc_nodok");
+					//redirect("ga/inventaris/approval_po_atk/$enc_nodok");
 					//redirect("ga/inventaris/direct_lost_input");
 			} else if ($cekmstpo_cancel>0){	//cek cancel
-					redirect("ga/inventaris/batal_po_atk/$enc_nodok");
+					//redirect("ga/inventaris/batal_po_atk/$enc_nodok");
 					//redirect("ga/inventaris/direct_lost_input");
 			} else if ($cekmstpo_hangus>0){	//cek cancel
-					redirect("ga/inventaris/hangus_po_atk/$enc_nodok");
+					//redirect("ga/inventaris/hangus_po_atk/$enc_nodok");
 					//redirect("ga/inventaris/direct_lost_input");
 			}
 		
@@ -1668,15 +1608,16 @@ class Inventaris extends MX_Controller{
 		$data = array();
 		$no = $_POST['start'];
 		foreach ($list as $lpo) {
-			$enc_nodok=bin2hex($this->encrypt->encode(trim($lpo->nodok)));
 			$no++;
-			$row = array();	
+			$row = array();
+			$enc_nodok = $this->fiky_encryption->enkript(trim($lpo->nodok));
 			$row[] = $no;
 			$row[] = $lpo->nodok;		
-			$row[] = $lpo->nodokref;		
-			$row[] = $lpo->nmbarang;		
-			$row[] = $lpo->nopol;		
-			$row[] = $lpo->nmbengkel;				
+			$row[] = $lpo->nodokref;;
+			$row[] = $lpo->nmbarang;
+			$row[] = $lpo->tgldok;
+			$row[] = $lpo->nopol;
+			$row[] = $lpo->nmbengkel;
 			$row[] = $lpo->nmstatus;				
 			/*$row[] = $lpo->nmsubsupplier;
 			$row[] = $lpo->ketstatus;
@@ -1686,27 +1627,27 @@ class Inventaris extends MX_Controller{
 			$row[] = $lpo->approvalby;
 			if(isset($lpo->approvaldate)) { $row[] = date('d-m-Y', strtotime(trim($lpo->approvaldate))); } else { $row[] ='';} 
 			$row[] = $lpo->keterangan; */
-			if ((trim($lpo->status)!='A') AND (trim($lpo->status)!='P')) {
+			if ((trim($lpo->status)!='A') AND (trim($lpo->status)!='P') AND (trim($lpo->status)!='A1')) {
 			$row[] = 
-			'<a class="btn btn-sm btn-default" href="'.site_url('ga/inventaris/detail_inputspk').'/'.$lpo->nodok.'" title="Detail SPK"><i class="fa fa-bars"></i></a>';
-			} else if (trim($lpo->status)=='P' or trim($lpo->status)=='S') {
+			'<a class="btn btn-sm btn-default" href="'.site_url('ga/inventaris/detail_inputspk').'/'.$enc_nodok.'" title="Detail SPK"><i class="fa fa-bars"></i></a>';
+			} else if ((trim($lpo->status)=='A' and $param_list2==1)/* or $userhr>0 */) {
 			$row[] = '
-			<a class="btn btn-sm btn-default" href="'.site_url('ga/inventaris/detail_inputspk').'/'.$lpo->nodok.'" title="Detail SPK"><i class="fa fa-bars"></i></a>
-			<a class="btn btn-sm btn-warning" href="'.site_url('ga/inventaris/sti_po_final').'/'.trim($lpo->nodok).'" title="Cetak PO"><i class="fa fa-print"></i></a>
-			<a class="btn btn-sm btn-danger" href="'.site_url('ga/inventaris/hangus_po_atk').'/'.$enc_nodok.'" title="Hangus PO"><i class="fa fa-trash-o"></i></a>';
-			} else if ((trim($lpo->status)=='A' and $param_list2==1) or $userhr>0) {
-			$row[] = '
-			<a class="btn btn-sm btn-default" href="'.site_url('ga/inventaris/detail_inputspk').'/'.$lpo->nodok.'" title="Detail SPK"><i class="fa fa-bars"></i></a>
-			<a class="btn btn-sm btn-primary" href="'.site_url('ga/inventaris/edit_inputspk').'/'.$lpo->nodok.'" title="Edit SPK"><i class="fa fa-gear"></i></a>
-			<a class="btn btn-sm btn-warning" href="'.site_url('ga/inventaris/sti_spk_perawatan').'/'.$lpo->nodok.'" title="Cetak SPK"><i class="fa fa-print"></i></a>';
+			<a class="btn btn-sm btn-default" href="'.site_url('ga/inventaris/detail_inputspk').'/'.$enc_nodok.'" title="Detail SPK"><i class="fa fa-bars"></i></a>
+			<a class="btn btn-sm btn-primary" href="'.site_url('ga/inventaris/edit_inputspk').'/'.$enc_nodok.'" title="Edit SPK"><i class="fa fa-gear"></i></a>
+			<a class="btn btn-sm btn-warning" href="'.site_url('ga/inventaris/sti_spk_perawatan').'/'.$enc_nodok.'" title="Cetak SPK"><i class="fa fa-print"></i></a>';
 			
 			
 			} else if (trim($lpo->status)=='A' and $param_list2==0) {
 			$row[] = '
-			<a class="btn btn-sm btn-default" href="'.site_url('ga/inventaris/detail_inputspk').'/'.$lpo->nodok.'" title="Detail SPK"><i class="fa fa-bars"></i></a>
-			<a class="btn btn-sm btn-primary" href="'.site_url('ga/inventaris/edit_inputspk').'/'.$lpo->nodok.'" title="Edit SPK"><i class="fa fa-gear"></i></a>
-			<a class="btn btn-sm btn-warning" href="'.site_url('ga/inventaris/sti_spk_perawatan').'/'.$lpo->nodok.'" title="Cetak SPK"><i class="fa fa-print"></i></a>';
-			}
+			<a class="btn btn-sm btn-default" href="'.site_url('ga/inventaris/detail_inputspk').'/'.$enc_nodok.'" title="Detail SPK"><i class="fa fa-bars"></i></a>
+			<a class="btn btn-sm btn-primary" href="'.site_url('ga/inventaris/edit_inputspk').'/'.$enc_nodok.'" title="Edit SPK"><i class="fa fa-gear"></i></a>
+			<a class="btn btn-sm btn-warning" href="'.site_url('ga/inventaris/sti_spk_perawatan').'/'.$enc_nodok.'" title="Cetak SPK"><i class="fa fa-print"></i></a>';
+			} else if (trim($lpo->status)=='A1') {
+                $row[] = '
+			<a class="btn btn-sm btn-default" href="'.site_url('ga/inventaris/detail_inputspk').'/'.$enc_nodok.'" title="Detail SPK"><i class="fa fa-bars"></i></a>
+			<a class="btn btn-sm btn-danger" href="'.site_url('ga/inventaris/cancel_inputspk').'/'.$enc_nodok.'" title="BATAL SPK" onclick="return confirm(\'Batal spk diwajibkan input ulang karena telah mengalami proses persetujuan, anda yakin?\')"><i class="fa fa-trash-o"></i></a>
+			<a class="btn btn-sm btn-warning" href="'.site_url('ga/inventaris/sti_spk_perawatan').'/'.$enc_nodok.'" title="Cetak SPK"><i class="fa fa-print"></i></a>';
+            }
  	
 			/*
 			<a href="#" data-toggle="modal" data-target="#DTL<?php echo trim($row->nodok);?>" class="btn btn-default  btn-sm"><i class="fa fa-edit"></i> DETAIL </a>
@@ -1719,13 +1660,13 @@ class Inventaris extends MX_Controller{
     
 		$output = array(
 						"draw" => $_POST['draw'],
-						"recordsTotal" => $this->m_inventaris->q_hisperawatanspk($param)->num_rows(),
-						"recordsFiltered" => $this->m_inventaris->q_hisperawatanspk($param)->num_rows(),
+                        //"recordsTotal" => $this->m_inventaris->q_hisperawatanspk($param)->num_rows(),
+                        //"recordsFiltered" => $this->m_inventaris->q_hisperawatanspk($param)->num_rows(),
+						"recordsTotal" => $this->m_inventaris->t_spk_p_count_all(),
+						"recordsFiltered" => $this->m_inventaris->t_spk_p_count_filtered(),
 						"data" => $data,
 				);
-		//output to json format
-		echo json_encode($output);
-				//echo '1342';
+        echo $this->fiky_encryption->jDatatable($output);
 	}
 	
 	
@@ -1733,38 +1674,14 @@ class Inventaris extends MX_Controller{
 		$data['title']="FORM PERAWATAN ASSET INPUT SPK";	
 		$dtlbranch=$this->m_akses->q_branch()->row_array();
 		$branch=$dtlbranch['branch'];
-						/* CODE UNTUK VERSI */
-						$kodemenu='I.G.E.2';
-						$versirelease='I.G.E.2/ALPHA.001';
-						$userid=$this->session->userdata('nama');
-						$vdb=$this->m_akses->q_versidb($kodemenu)->row_array();
-						$versidb=$vdb['vrelease'];
-						if($versidb<>$versirelease){
-							$infoversiold= array (
-								'vreleaseold'   => $versidb,
-								'vdateold'      => $vdb['vdate'],
-								'vauthorold'    => $vdb['vauthor'],
-								'vketeranganold'=> $vdb['vketerangan'],
-							);               
-							$this->db->where('kodemenu',$kodemenu);
-							$this->db->update('sc_mst.version',$infoversiold);
-							
-							$infoversi= array (
-								'vrelease'   => $versirelease,
-								'vdate'      => date('2017-07-10 11:18:00'),
-								'vauthor'    => 'FIKY',
-								'vketerangan'=> 'PENAMBAHAN VERSION RELEASE',
-								'update_date' => date('Y-m-d H:i:s'),
-								'update_by'   => $userid,
-							);               
-							$this->db->where('kodemenu',$kodemenu);
-							$this->db->update('sc_mst.version',$infoversi);
-						}
-						$vdb=$this->m_akses->q_versidb($kodemenu)->row_array();
-						$versidb=$vdb['vrelease'];
-						$data['version']=$versidb;
-						/* END CODE UNTUK VERSI */
-
+        /* CODE UNTUK VERSI*/
+        $nama=trim($this->session->userdata('nik'));
+        $kodemenu='I.G.E.2'; $versirelease='I.G.E.2/ALPHA.002'; $releasedate=date('2019-06-28 00:00:00');
+        $versidb=$this->fiky_version->version($kodemenu,$versirelease,$releasedate,$nama);
+        $x=$this->fiky_menu->menus($kodemenu,$versirelease,$releasedate);
+        $data['x'] = $x['rows']; $data['y'] = $x['res']; $data['t'] = $x['xn'];
+        $data['kodemenu']=$kodemenu; $data['version']=$versidb;
+        /* END CODE UNTUK VERSI */
 		$param=" and status in ('P') and spk=0 ";
 		$data['list_kanwil']=$this->m_inventaris->q_mstkantor()->result();
 		$data['list_perawatan']=$this->m_inventaris->q_hisperawatan($param)->result();
@@ -1834,7 +1751,7 @@ class Inventaris extends MX_Controller{
 	
 	function inputspk_view(){
 		$data['title']='DATA SURAT PERINTAH KERJA DENGAN NOMOR REFERENSI ::  ';
-		$nodok=trim($this->uri->segment(4));
+		$nodok=trim($this->fiky_encryption->dekript($this->uri->segment(4)));
 		$nama=$this->session->userdata('nik');
 
 		if($this->uri->segment(5)=="inp_succes")
@@ -1864,7 +1781,7 @@ class Inventaris extends MX_Controller{
 		$cek_first=$this->m_inventaris->q_hisperawatanspk_tmp($param3_first)->num_rows();
 		$cek_first_nik=$this->m_inventaris->q_hisperawatanspk_tmp($param4_first)->num_rows();
 		$dtl_first=$this->m_inventaris->q_hisperawatanspk_tmp($param3_first)->row_array();
-		$dtl_passet=$this->m_inventaris->q_hisperawatan($param5_first)->row_array();
+		$dtl_passet=$this->m_inventaris->q_hisperawatan_all($param5_first)->row_array();
 		
 		
 		if($cek_first>0){
@@ -1877,6 +1794,10 @@ class Inventaris extends MX_Controller{
 						$info = array (
 						'nodok'     => $nama,
 						'nodokref'   => $nodok,
+						'kdgroup'   => trim($dtl_passet['kdgroup']),
+						'kdsubgroup'   => trim($dtl_passet['kdsubgroup']),
+						'stockcode'   => trim($dtl_passet['stockcode']),
+						'descbarang'   => trim($dtl_passet['nmbarang']),
 						'status'   => 'I',
 						'inputby'   => $nama,
 						'inputdate' => date('Y-m-d H:i:s'),
@@ -1912,6 +1833,7 @@ class Inventaris extends MX_Controller{
 		$dtl_spk=$this->m_inventaris->q_hisperawatanspk_tmp($param2)->row_array();
 		$nodokspk=trim($dtl_spk['nodok']);
 		$data['nodokspk']=trim($dtl_spk['nodok']);
+		$data['nodokref']=trim($dtl_spk['nodokref']);
 		$parama1=" and nodok='$nodokspk'";
 		$data['perawatan_mst_lampiran']=$this->m_inventaris->q_hisperawatan_perawatan_mst_lampiran_tmp($parama1)->result();
 		$data['list_barang']=$this->m_inventaris->q_listbarang()->result();
@@ -1935,6 +1857,8 @@ class Inventaris extends MX_Controller{
             $data['message']="<div class='alert alert-success'>DATA SPK BERHASIL DITAMBAHKAN</div>";
         else if($this->uri->segment(7)=="fail_datakembar")
             $data['message']="<div class='alert alert-danger'>DATA SPK SUDAH ADA SILAHKAN UBAH DATA SPK TERSEBUT </div>";
+        else if($this->uri->segment(5)=="inp_failed")
+            $data['message']="<div class='alert alert-danger'>Ada kesalahan data, Diskon Tidak Boleh Lebih Besar Dari Brutto! </div>";
         else
             $data['message']='';
 		
@@ -1971,6 +1895,8 @@ class Inventaris extends MX_Controller{
             $data['message']="<div class='alert alert-success'>DATA SPK BERHASIL DITAMBAHKAN</div>";
         else if($this->uri->segment(7)=="fail_datakembar")
             $data['message']="<div class='alert alert-danger'>DATA SPK SUDAH ADA SILAHKAN UBAH DATA SPK TERSEBUT </div>";
+        else if($this->uri->segment(5)=="inp_failed")
+            $data['message']="<div class='alert alert-danger'>Ada kesalahan data, Diskon Tidak Boleh Lebih Besar Dari Brutto! </div>";
         else
             $data['message']='';
 		
@@ -2047,14 +1973,18 @@ class Inventaris extends MX_Controller{
 		$tglakhir=date('Y-m-d', strtotime(trim($tgl[1])));
 		if (empty($tglakhir)) { $tglakhir=null; } else {$tglakhir=$tglakhir;} */
 		
-		
-		$id=strtoupper(trim($this->input->post('id')));
+
+
+		$idx=strtoupper(trim($this->input->post('id')));
+		if (empty($idx) or $idx==='') { $id = 0; } else { $id=$idx; }
 		$idfaktur=strtoupper(trim($this->input->post('idfaktur')));
 		$nnetto=strtoupper(trim($this->input->post('nnetto')));
 		$ndpp=strtoupper(trim($this->input->post('ndpp')));
 		$nppn=strtoupper(trim($this->input->post('nppn')));
-		$ndiskon=strtoupper(trim($this->input->post('ndiskon')));
-		$nservis=strtoupper(trim($this->input->post('nservis')));
+		$ndiskonx=str_replace(',','',$this->input->post('ndiskon') );
+        if (empty($ndiskonx) or $ndiskonx==='') { $ndiskon = 0; } else { $ndiskon=$ndiskonx; }
+		$nservisx=str_replace(',','',$this->input->post('nservis') );
+        if (empty($nservisx) or $nservisx==='') { $nservis = 0; } else { $nservis=$nservisx; }
 		$tgl=strtoupper(trim($this->input->post('tgl')));
 		$kdcabang=strtoupper(trim($this->input->post('kdcabang')));
 		$nodok=strtoupper(trim($this->input->post('nodok')));
@@ -2071,8 +2001,15 @@ class Inventaris extends MX_Controller{
 		$keterangan=strtoupper(trim($this->input->post('keterangan')));
 		$strtrimref=$this->encrypt->decode(hex2bin(trim($this->input->post('strtrimref'))));
 		$enc_strtrimref=trim($this->input->post('strtrimref'));
+		$pkp = strtoupper(trim($this->input->post('pkp')));
+		$exppn = strtoupper(trim($this->input->post('exppn')));
+
 		$inputdate=date('Y-m-d H:i:s');
 		$inputby=$nama;
+		$enc_nodoktmp = $this->fiky_encryption->enkript($nodoktmp);
+		$enc_nodokref = $this->fiky_encryption->enkript($nodokref);
+		$enc_nodok = $this->fiky_encryption->enkript($nodok);
+
 		$cekdouble=$this->m_inventaris->cek_spkdouble($nodok)->num_rows();
 		if ($type=='INPUTTMPMSTFAKTUR'){
 			$paramidfaktur=" and idfaktur='$idfaktur' and nodok='$nodok'";
@@ -2080,7 +2017,7 @@ class Inventaris extends MX_Controller{
 			
 			
 			if ($cekdoublefaktur>0) {
-				redirect("ga/inventaris/inputspk_view/$nodokref/fail_datakembar");
+				redirect("ga/inventaris/inputspk_view/$enc_nodokref/fail_datakembar");
 			} else {
 				$info = array (
 							'nodok       ' =>  $nodok       ,
@@ -2102,7 +2039,7 @@ class Inventaris extends MX_Controller{
 					
 					);	
 					$this->db->insert('sc_tmp.perawatan_mst_lampiran',$info);
-					redirect("ga/inventaris/inputspk_view/$nodokref/inp_succes");	
+					redirect("ga/inventaris/inputspk_view/$enc_nodokref/inp_succes");
 			}
 						
 		} else if ($type=='INPUTTMPMSTFAKTUR_E'){
@@ -2126,7 +2063,7 @@ class Inventaris extends MX_Controller{
 				$this->db->where('idfaktur',$idfaktur);
 				$this->db->where('id',$id);
 				$this->db->update('sc_tmp.perawatan_mst_lampiran',$info);
-				redirect("ga/inventaris/inputspk_view/$nodokref/inp_succes");	
+				redirect("ga/inventaris/inputspk_view/$enc_nodokref/inp_succes");
 						
 		}  else if ($type=='EDITTMPMSTFAKTUR_E'){
 				$info = array (
@@ -2148,7 +2085,7 @@ class Inventaris extends MX_Controller{
 				$this->db->where('idfaktur',$idfaktur);
 				$this->db->where('id',$id);
 				$this->db->update('sc_tmp.perawatan_mst_lampiran',$info);
-				redirect("ga/inventaris/edit_inputspk/$nodoktmp/inp_succes");	
+				redirect("ga/inventaris/edit_inputspk/$enc_nodoktmp/inp_succes");
 						
 		} else if ($type=='INPUTEDITTMPMSTFAKTUR'){
 			$paramidfaktur=" and idfaktur='$idfaktur' and nodok='$nodok'";
@@ -2178,7 +2115,7 @@ class Inventaris extends MX_Controller{
 					
 					);	
 					$this->db->insert('sc_tmp.perawatan_mst_lampiran',$info);
-					redirect("ga/inventaris/edit_inputspk/$nodoktmp/inp_succes");	
+					redirect("ga/inventaris/edit_inputspk/$enc_nodoktmp/inp_succes");
 			}
 						
 		} else if ($type=='INPUTDTLFAKTUR'){
@@ -2189,13 +2126,16 @@ class Inventaris extends MX_Controller{
 						'idfaktur    ' =>  $idfaktur    ,
 						'keterangan  ' =>  $keterangan  ,
 						'nservis     ' =>  $nservis     ,
+                        'ndiskon     ' =>  $ndiskon     ,
+                        'pkp' => $pkp,
+                        'exppn' => $exppn,
 						'status' =>  'I',
 						'inputdate   ' =>  $inputdate   ,
 						'inputby     ' =>  $inputby     ,
 						///'ref_type    ' =>  $ref_type    ,
 				
 				);	
-			if ($cekdouble>0) {
+			if ($cekdouble>0  or ($ndiskon > $nservis)) {
 				redirect("ga/inventaris/input_perawatan_mst_lampiran/$enc_strtrimref/inp_failed");
 			} else {
 				$this->db->insert('sc_tmp.perawatan_detail_lampiran',$info);
@@ -2210,13 +2150,16 @@ class Inventaris extends MX_Controller{
 						'idfaktur    ' =>  $idfaktur    ,
 						'keterangan  ' =>  $keterangan  ,
 						'nservis     ' =>  $nservis     ,
+						'ndiskon     ' =>  $ndiskon     ,
+                        'pkp' => $pkp,
+                        'exppn' => $exppn,
 						'status' =>  'E',
 						'inputdate   ' =>  $inputdate   ,
 						'inputby     ' =>  $inputby     ,
 						///'ref_type    ' =>  $ref_type    ,
 				
 				);	
-			if ($cekdouble>0) {
+			if ($cekdouble>0 or ($ndiskon > $nservis)) {
 				redirect("ga/inventaris/edit_perawatan_mst_lampiran/$enc_strtrimref/inp_failed");
 			} else {
 				$this->db->insert('sc_tmp.perawatan_detail_lampiran',$info);
@@ -2227,6 +2170,8 @@ class Inventaris extends MX_Controller{
 				$info = array (
 						'keterangan  ' =>  $keterangan  ,
 						'nservis     ' =>  $nservis     ,
+                        'pkp' => $pkp,
+                        'exppn' => $exppn,
 						'status' =>  'I',
 						'updatedate   ' =>  $inputdate   ,
 						'updateby     ' =>  $inputby     ,
@@ -2270,23 +2215,23 @@ class Inventaris extends MX_Controller{
 		
 			
 		} else if ($type=='DELDTLEDITFAKTUR'){
-
-				$this->db->where('nodok',$nodok);
-				$this->db->where('nodokref',$nodokref);
-				$this->db->where('idfaktur',$idfaktur);
-				$this->db->where('id',$id);
-				$this->db->delete('sc_tmp.perawatan_detail_lampiran');
+				$this->db->query("delete from sc_tmp.perawatan_detail_lampiran where trim(nodok)||trim(nodokref)||trim(idfaktur)='$strtrimref' and id='$id'");
 				redirect("ga/inventaris/edit_perawatan_mst_lampiran/$enc_strtrimref/del_succes");
 		
 			
-		}  else if ($type=='DELTMPMSTFAKTUR'){
+		} else if ($type=='DELDTLINPUTFAKTUR'){
+            $this->db->query("delete from sc_tmp.perawatan_detail_lampiran where trim(nodok)||trim(nodokref)||trim(idfaktur)='$strtrimref' and id='$id'");
+            redirect("ga/inventaris/input_perawatan_mst_lampiran/$enc_strtrimref/del_succes");
+
+
+        }  else if ($type=='DELTMPMSTFAKTUR'){
 
 				$this->db->where('nodok',$nodok);
 				$this->db->where('nodokref',$nodokref);
 				$this->db->where('idfaktur',$idfaktur);
 				$this->db->where('id',$id);
 				$this->db->delete('sc_tmp.perawatan_mst_lampiran');
-				redirect("ga/inventaris/inputspk_view/$nodokref/del_succes");
+				redirect("ga/inventaris/inputspk_view/$enc_nodoktmp/del_succes");
 		
 			
 		}  else if ($type=='DELEDITTMPMSTFAKTUR'){
@@ -2296,7 +2241,7 @@ class Inventaris extends MX_Controller{
 				$this->db->where('idfaktur',$idfaktur);
 				$this->db->where('id',$id);
 				$this->db->delete('sc_tmp.perawatan_mst_lampiran');
-				redirect("ga/inventaris/edit_inputspk/$nodoktmp/del_succes");
+				redirect("ga/inventaris/edit_inputspk/$enc_nodoktmp/del_succes");
 		
 			
 		} else if ($type=='EDITTMP'){
@@ -2400,7 +2345,7 @@ class Inventaris extends MX_Controller{
 					'tglakhir' => $tglakhir, 
 					'km_awal' => $kmawal,       
 					'km_akhir' => $kmakhir,  					
-					'ttlservis' => $ttlservis,  					
+					///'ttlservis' => $ttlservis,
 					'keterangan' => $keterangan,       
 					'status' => 'I',       
 					'inputdate' => $inputdate,       
@@ -2416,10 +2361,7 @@ class Inventaris extends MX_Controller{
 			
 		} else if ($type=='EDITTMP'){
 			$info = array (
-					       
-					'kdgroup' => $kdgroup,       
-					'kdsubgroup' => $kdsubgroup,       
-					'stockcode' => $stockcode,       
+
 					'kdbengkel' => $kdbengkel,       
 					'kdsubbengkel' => $kdsubbengkel,       
 					'upbengkel' => $upbengkel,       
@@ -2427,8 +2369,8 @@ class Inventaris extends MX_Controller{
 					'tglawal' => $tglawal,       
 					'tglakhir' => $tglakhir,  
 					'km_awal' => $kmawal,       
-					'km_akhir' => $kmakhir,  					
-					'ttlservis' => $ttlservis,  					
+					'km_akhir' => $kmakhir,
+                    ///'ttlservis' => $ttlservis,
 					'descbarang' => $descbarang,       
 					'keterangan' => $keterangan,       
 					'status' => 'I',       
@@ -2439,7 +2381,8 @@ class Inventaris extends MX_Controller{
 			$this->db->where('nodok',$nodok);	
 			$this->db->where('nodokref',$nodokref);	
 			$this->db->update('sc_tmp.perawatanspk',$info);
-			redirect("ga/inventaris/inputspk_view/$nodokref/edit_succes");	
+			$enc_nodokref = $this->fiky_encryption->enkript($nodokref);
+			redirect("ga/inventaris/inputspk_view/$enc_nodokref/edit_succes");
 				
 		} else if ($type=='EDITTMPEDIT'){
 			$info = array (
@@ -2452,8 +2395,8 @@ class Inventaris extends MX_Controller{
 					'tglawal' => $tglawal,       
 					'tglakhir' => $tglakhir,  
 					'km_awal' => $kmawal,       
-					'km_akhir' => $kmakhir,  					
-					'ttlservis' => $ttlservis,  					
+					'km_akhir' => $kmakhir,
+                ///'ttlservis' => $ttlservis,
 					'descbarang' => $descbarang,       
 					'keterangan' => $keterangan,       
 					'updatedate' => $inputdate,       
@@ -2463,7 +2406,8 @@ class Inventaris extends MX_Controller{
 			$this->db->where('nodok',$nodok);	
 			$this->db->where('nodokref',$nodokref);	
 			$this->db->update('sc_tmp.perawatanspk',$info);
-			redirect("ga/inventaris/edit_inputspk/$nodoktmp/edit_succes");	
+            $enc_nodokref = $this->fiky_encryption->enkript($nodokref);
+			redirect("ga/inventaris/edit_inputspk/$enc_nodokref/edit_succes");
 				
 		}   else if ($type=='DELETE'){
 
@@ -2490,7 +2434,10 @@ class Inventaris extends MX_Controller{
 		$idfaktur=strtoupper(trim($this->input->post('idfaktur')));
 		$enc_strtrimref=strtoupper(trim($this->input->post('strtrimref')));
 		if(empty($enc_strtrimref)) { redirect("ga/inventaris/form_spk"); }
-		
+        $uploadPath = './assets/attachment/att_spkperawatan/';
+        if (!is_dir($uploadPath)) {
+            mkdir($uploadPath, 0777, TRUE);
+        }
 		if(!empty($_FILES['userFiles']['name'])){
             $filesCount = count($_FILES['userFiles']['name']);
             for($index = 0; $index < $filesCount; $index++){
@@ -2500,7 +2447,7 @@ class Inventaris extends MX_Controller{
                 $_FILES['userFile']['error'] = $_FILES['userFiles']['error'][$index];
                 $_FILES['userFile']['size'] = $_FILES['userFiles']['size'][$index];
 
-                $uploadPath = './assets/attachment/att_spkperawatan/';
+
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp|pdf|zip|rar|doc|docx|ppt|pptx|xls|xlsx';
                 $config['encrypt_name'] = true;
@@ -2643,24 +2590,28 @@ class Inventaris extends MX_Controller{
 	function final_editspk(){
 		$nodok=strtoupper(trim($this->input->post('nodok')));
 		$nodokref=strtoupper(trim($this->input->post('nodokref')));
+		$nama = $this->session->userdata('nik');
 		$info = array (
 				'status' => 'F',       
-									
-				);	
+				'updatedate' => date('Y-m-d H:i:'),
+				'updateby' => $nama,
+				);
 		$this->db->where('nodok',$nodok);
 		$this->db->update('sc_tmp.perawatanspk',$info);
 		
 		
 		$param=" and modul='PERAWATAN-SPK' and userid='$nama'";
 		$dtltrx=$this->m_inventaris->trxerror($param)->row_array();
+
 		$nodoktmp=trim($dtltrx['nomorakhir1']);
-		
+		$enc_nodoktmp = $this->fiky_encryption->enkript($nodoktmp);
 		redirect("ga/inventaris/index_spk/edit_succes/$nodoktmp");
 	}
 	
 	function finalisasi_perawatan(){
 		$nodok=strtoupper(trim($this->input->post('nodok')));
 		$nodokref=strtoupper(trim($this->input->post('nodokref')));
+        $nama = $this->session->userdata('nik');
 		$info = array (
 				'status' => 'X',       
 									
@@ -2675,9 +2626,46 @@ class Inventaris extends MX_Controller{
 		
 		redirect("ga/inventaris/index_spk/final_succes/$nodok");
 	}
-	
+
+    function approval1_perawatan(){
+        $nodok=strtoupper(trim($this->input->post('nodok')));
+        $nodokref=strtoupper(trim($this->input->post('nodokref')));
+        $nama = $this->session->userdata('nik');
+        $info = array (
+            'status' => 'A1',
+
+        );
+        $this->db->where('nodok',$nodok);
+        $this->db->update('sc_his.perawatanspk',$info);
+
+
+        $param=" and modul='PERAWATAN-SPK' and userid='$nama'";
+        $dtltrx=$this->m_inventaris->trxerror($param)->row_array();
+        $nodoktmp=trim($dtltrx['nomorakhir1']);
+
+        redirect("ga/inventaris/index_spk/final_succes/$nodok");
+    }
+
+    function cancel_inputspk(){
+        $nodok=strtoupper(trim($this->fiky_encryption->dekript($this->uri->segment(4))));
+
+        $nama = $this->session->userdata('nik');
+        $info = array (
+            'status' => 'C',
+
+        );
+        $this->db->where('nodok',$nodok);
+        $this->db->update('sc_his.perawatanspk',$info);
+
+
+        $param=" and modul='PERAWATAN-SPK' and userid='$nama'";
+        $dtltrx=$this->m_inventaris->trxerror($param)->row_array();
+        $nodoktmp=trim($dtltrx['nomorakhir1']);
+
+        redirect("ga/inventaris/index_spk/cancel_succes/$nodok");
+    }
 	function sti_spk_perawatan(){
-		$nodok=trim(strtoupper($this->uri->segment(4)));
+		$nodok=$this->fiky_encryption->dekript(strtoupper($this->uri->segment(4)));
 		$data['jsonfile'] = "ga/inventaris/json_spk_perawatan/$nodok";
 		$data['report_file'] = 'assets/mrt/sti_spk_perawatanasset.mrt';
 		$this->load->view("ga/inventaris/sti_v_spk_perawatan",$data);
@@ -2717,7 +2705,7 @@ class Inventaris extends MX_Controller{
 	
 	function detail_inputspk(){
 		$data['title']='DATA SURAT PERINTAH KERJA DENGAN NOMOR REFERENSI ::  ';
-		$nodok=trim($this->uri->segment(4));
+		$nodok=$this->fiky_encryption->dekript($this->uri->segment(4));
 		$nama=$this->session->userdata('nik');
 
 		if($this->uri->segment(5)=="inp_succes")
@@ -2730,7 +2718,7 @@ class Inventaris extends MX_Controller{
 
 		$param2=" and nodok='$nodok'";
 		$data['nodok']=$nodok;
-		
+        $data['dtlakses']=$this->m_akses->q_user_check()->row_array();
 		$data['list_kanwil']=$this->m_inventaris->q_mstkantor()->result();
 		$data['dtl_mst']=$this->m_inventaris->q_hisperawatanspk($param2)->row_array();
 		$data['list_spk']=$this->m_inventaris->q_hisperawatanspk($param2)->result();
@@ -2754,7 +2742,7 @@ class Inventaris extends MX_Controller{
 	
 	function edit_inputspk(){
 		$data['title']='DATA SURAT PERINTAH KERJA DENGAN NOMOR REFERENSI ::  ';
-		$nodok=trim($this->uri->segment(4));
+		$nodok=$this->fiky_encryption->dekript($this->uri->segment(4));
 		$nama=$this->session->userdata('nik');
 
 		if($this->uri->segment(5)=="inp_succes")
@@ -2838,38 +2826,15 @@ class Inventaris extends MX_Controller{
 	
 	
 	function filter_historyperawatan(){
-			$data['title']="FILTER DATA PERAWATAN ASSET & INPUT SPK";	
-						/* CODE UNTUK VERSI */
-						$kodemenu='I.G.E.3';
-						$versirelease='I.G.E.3/ALPHA.001';
-						$userid=$this->session->userdata('nama');
-						$vdb=$this->m_akses->q_versidb($kodemenu)->row_array();
-						$versidb=$vdb['vrelease'];
-						if($versidb<>$versirelease){
-							$infoversiold= array (
-								'vreleaseold'   => $versidb,
-								'vdateold'      => $vdb['vdate'],
-								'vauthorold'    => $vdb['vauthor'],
-								'vketeranganold'=> $vdb['vketerangan'],
-							);               
-							$this->db->where('kodemenu',$kodemenu);
-							$this->db->update('sc_mst.version',$infoversiold);
-							
-							$infoversi= array (
-								'vrelease'   => $versirelease,
-								'vdate'      => date('2017-07-10 11:18:00'),
-								'vauthor'    => 'FIKY',
-								'vketerangan'=> 'PENAMBAHAN VERSION RELEASE',
-								'update_date' => date('Y-m-d H:i:s'),
-								'update_by'   => $userid,
-							);               
-							$this->db->where('kodemenu',$kodemenu);
-							$this->db->update('sc_mst.version',$infoversi);
-						}
-						$vdb=$this->m_akses->q_versidb($kodemenu)->row_array();
-						$versidb=$vdb['vrelease'];
-						$data['version']=$versidb;
-						/* END CODE UNTUK VERSI */
+			$data['title']="FILTER DATA PERAWATAN ASSET & INPUT SPK";
+            /* CODE UNTUK VERSI*/
+            $nama=trim($this->session->userdata('nik'));
+            $kodemenu='I.G.E.3'; $versirelease='I.G.E.3/ALPHA.002'; $releasedate=date('2019-04-12 00:00:00');
+            $versidb=$this->fiky_version->version($kodemenu,$versirelease,$releasedate,$nama);
+            $x=$this->fiky_menu->menus($kodemenu,$versirelease,$releasedate);
+            $data['x'] = $x['rows']; $data['y'] = $x['res']; $data['t'] = $x['xn'];
+            $data['kodemenu']=$kodemenu; $data['version']=$versidb;
+            /* END CODE UNTUK VERSI */
 			$data['list_kanwil']=$this->m_inventaris->q_mstkantor()->result();
 			$data['list_scgroup']=$this->m_inventaris->q_scgroup_ast()->result();
 			$this->template->display('ga/inventaris/v_filterhistoryperawatan.php',$data);
@@ -2887,53 +2852,36 @@ class Inventaris extends MX_Controller{
 		$stockcode=strtoupper($this->input->post('kdbarang'));
 		$nik=strtoupper($this->input->post('nik'));
 		$tgl=explode(' - ',trim($this->input->post('tgl')));
+		$tglinp=explode(' - ',trim($this->input->post('tglinput')));
 
-						/* CODE UNTUK VERSI */
-						$kodemenu='I.G.E.3';
-						$versirelease='I.G.E.3/ALPHA.001';
-						$userid=$this->session->userdata('nama');
-						$vdb=$this->m_akses->q_versidb($kodemenu)->row_array();
-						$versidb=$vdb['vrelease'];
-						if($versidb<>$versirelease){
-							$infoversiold= array (
-								'vreleaseold'   => $versidb,
-								'vdateold'      => $vdb['vdate'],
-								'vauthorold'    => $vdb['vauthor'],
-								'vketeranganold'=> $vdb['vketerangan'],
-							);               
-							$this->db->where('kodemenu',$kodemenu);
-							$this->db->update('sc_mst.version',$infoversiold);
-							
-							$infoversi= array (
-								'vrelease'   => $versirelease,
-								'vdate'      => date('2017-07-10 11:18:00'),
-								'vauthor'    => 'FIKY',
-								'vketerangan'=> 'PENAMBAHAN VERSION RELEASE',
-								'update_date' => date('Y-m-d H:i:s'),
-								'update_by'   => $userid,
-							);               
-							$this->db->where('kodemenu',$kodemenu);
-							$this->db->update('sc_mst.version',$infoversi);
-						}
-						$vdb=$this->m_akses->q_versidb($kodemenu)->row_array();
-						$versidb=$vdb['vrelease'];
-						$data['version']=$versidb;
-						/* END CODE UNTUK VERSI */
+        $nama=trim($this->session->userdata('nik'));
+        $kodemenu='I.G.E.3'; $versirelease='I.G.E.3/ALPHA.002'; $releasedate=date('2019-04-12 00:00:00');
+        $versidb=$this->fiky_version->version($kodemenu,$versirelease,$releasedate,$nama);
+        $x=$this->fiky_menu->menus($kodemenu,$versirelease,$releasedate);
+        $data['x'] = $x['rows']; $data['y'] = $x['res']; $data['t'] = $x['xn'];
+        $data['kodemenu']=$kodemenu; $data['version']=$versidb;
+        /* END CODE UNTUK VERSI */
 
 						
-		if(isset($tgl[0]) and isset($tgl[1])) {
+		/*if(isset($tgl[0]) and isset($tgl[1])) {
 			$tgl1=date('Y-m-d', strtotime(trim($tgl[0])));
 			$tgl2=date('Y-m-d', strtotime(trim($tgl[1])));
-		} else { redirect("ga/inventaris/history_perawatan");	} 
-		
+		} else { redirect("ga/inventaris/history_perawatan");	}
+		*/
+        $tgl1=date('Y-m-d', strtotime(trim($tgl[0])));
+        $tgl2=date('Y-m-d', strtotime(trim($tgl[1])));
+        $tglinput1=date('Y-m-d', strtotime(trim($tglinp[0])));
+        $tglinput2=date('Y-m-d', strtotime(trim($tglinp[1])));
+
 		//$qtyrec=(strtoupper(trim($this->input->post('qtyrec')))=='' ? '0' : strtoupper(trim($this->input->post('qtyrec'))));
 		if(empty($kdgroup)or $kdgroup=='' or $kdgroup==null){ $kdgroup=""; } else { $kdgroup=" and kdgroup='$kdgroup'"; 	}
 		if(empty($kdsubgroup)or $kdsubgroup=='' or $kdsubgroup==null){	$kdsubgroup="";	} else { $kdsubgroup=" and kdsubgroup='$kdsubgroup'"; }	
 		if(empty($stockcode)or $stockcode=='' or $stockcode==null){	$stockcode="";	} else { $stockcode=" and stockcode='$stockcode'";	}
-		if(empty($tgl)or $tgl=='' or $tgl==null){$tgl="";} else { 	$tgl=" and to_char(tgldok,'yyyy-mm-dd') between '$tgl1' and '$tgl2'";}
+		if(empty($tgl[0])or $tgl[0]==='' or $tgl[0]==null){$tgl="";} else { 	$tgl=" and to_char(tgldok,'yyyy-mm-dd') between '$tgl1' and '$tgl2'";}
+		if(empty($tglinp[0])or $tglinp[0]==='' or $tglinp[0]==null){$tgljamput="";} else { 	$tgljamput=" and to_char(inputdate,'yyyy-mm-dd') between '$tglinput1' and '$tglinput2'";}
 		if(empty($nik)or $nik=='' or $nik==null){$nik=""; } else { 	$nik=" and nikmohon='$nik'";}
 
-		$param=$kdgroup.$kdsubgroup.$stockcode.$tgl.$nik."and status!='C'";
+		$param=$kdgroup.$kdsubgroup.$stockcode.$tgl.$tgljamput.$nik."and status!='C'";
 		$data['kdgroup']=$kdgroup;
 		$data['stockcode']=$stockcode;
 		$data['list_kanwil']=$this->m_inventaris->q_mstkantor()->result();
@@ -2948,7 +2896,7 @@ class Inventaris extends MX_Controller{
 	
 	function history_spkperawatan(){
 		$data['title']='DATA SURAT PERINTAH KERJA DENGAN NOMOR REFERENSI ::  ';
-		$nodok=trim($this->uri->segment(4));
+		$nodok=$this->fiky_encryption->dekript($this->uri->segment(4));
 		$nama=$this->session->userdata('nik');
 
 		if($this->uri->segment(5)=="inp_succes")
@@ -3665,6 +3613,59 @@ class Inventaris extends MX_Controller{
         $this->excel_generator->exportTo2007('Master Stock Barang');
 
 	}
+
+
+    function excel_history_perawatan(){
+        $dtlbranch=$this->m_akses->q_branch()->row_array();
+        $branch=$dtlbranch['branch'];
+        $nama=$this->session->userdata('nik');
+        $kdgroup=strtoupper($this->input->post('kdgroup'));
+        $kdsubgroup=strtoupper($this->input->post('kdsubgroup'));
+        $stockcode=strtoupper($this->input->post('kdbarang'));
+        $nik=strtoupper($this->input->post('nik'));
+        $tgl=explode(' - ',trim($this->input->post('tgl')));
+        $tglinput=explode(' - ',trim($this->input->post('tglinput')));
+        if(isset($tgl[0]) and isset($tgl[1])) {
+            $tgl1=date('Y-m-d', strtotime(trim($tgl[0])));
+            $tgl2=date('Y-m-d', strtotime(trim($tgl[1])));
+            $paramdok=" and to_char(tgldok,'yyyy-mm-dd') between '$tgl1' and '$tgl2' ";
+        } else { /*redirect("ga/inventaris/filter_historyperawatan  "); */
+            $paramdok=" ";
+        }
+
+        if (isset($tglinput[0]) and isset($tglinput[1])) {
+            $tglinp1=date('Y-m-d', strtotime(trim($tglinput[0])));
+            $tglinp2=date('Y-m-d', strtotime(trim($tglinput[1])));
+            $paramtglinput = " and  to_char(inputdate,'yyyy-mm-dd') between '$tglinp1' and '$tglinp2'";
+        } else { /*redirect("ga/inventaris/filter_historyperawatan  "); */
+            $paramtglinput = "";
+        }
+
+
+        $param=" and kdgroup='$kdgroup' and status='X' $paramdok $paramtglinput";
+
+        $datane=$this->m_inventaris->q_excel_history_perawatan($param);
+        /*	foreach ($datane as $ls) {
+                echo $ls->nmbarang.' | ';
+                echo $ls->nopol.' | ';
+                echo $ls->tahunpembuatan.' | ';
+                echo $ls->nomorspk.' | ';
+                echo $ls->nomorfaktur.' | ';
+                echo $ls->tgl_perawatan.' | ';
+                echo $ls->km_awal.' | ';
+                echo $ls->km_akhir.' | ';
+                echo $ls->nservis.' | ';
+            } */
+
+
+        $this->excel_generator->set_query($datane);
+        $this->excel_generator->set_header(array('Nama Barang', 'Nopol', 'Nama Bengkel','Nomor SPK','Tgl Perawatan','Tgl Input','KM Awal','KM Akhir','Keterangan','Biaya','Alamat Bengkel','Nama Pemohon'));
+        $this->excel_generator->set_column(array('nmbarang', 'nopol','nmbengkel','nodokref','tgldok','inputdate','km_awal','km_akhir','keterangan','ttlnetto','addbengkel','nmmohon'));
+
+        $this->excel_generator->set_width(array(30,10,40,20,20,20,20,20,20,50,50,20));
+        $this->excel_generator->exportTo2007('Laporan History Perawatan Asset');
+
+    }
 	
 	
 }

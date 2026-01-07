@@ -1,16 +1,6 @@
 <?php
-/*
- * Created by PhpStorm.
- *  * User: FIKY-PC
- *  * Date: 11/6/20, 10:45 AM
- *  * Last Modified: 8/10/20, 10:39 AM.
- *  Developed By: Fiky Ashariza Powered By PhpStorm
- *  Copyright© 2020 .All rights reserved.
- *
- */
-
 class M_arsipdokumen extends CI_Model{
-
+	
 	function q_versidb($kodemenu){
 		return $this->db->query("select * from sc_mst.version where kodemenu='$kodemenu'");
 	}
@@ -35,7 +25,7 @@ class M_arsipdokumen extends CI_Model{
 	function q_ceksckendaraan($kdgroup){
 		return $this->db->query("select * from sc_mst.mgroup where kdgroup='$kdgroup'");
 	}
-
+	
 	function q_sckendaraan(){
 		return $this->db->query("select * from sc_mst.mgroup where left(kdgroup,3)='KDN' order by nmgroup");
 	}
@@ -43,18 +33,18 @@ class M_arsipdokumen extends CI_Model{
 	function q_scsubkendaraan(){
 		return $this->db->query("select * from sc_mst.msubgroup where left(kdgroup,3)='KDN' order by nmsubgroup");
 	}
-
+	
 	function q_mstkendaraan(){
 		return $this->db->query("select * from sc_mst.mbarang a left outer join sc_mst.karyawan b on b.nik=a.userpakai where left(kdgroup,3)='KDN' order by nmbarang");
 	}
 	function q_cekkendaraan($kdrangka){
 		return $this->db->query("select * from sc_mst.mbarang where left(kdgroup,3)='KDN' and nodok='$kdrangka' order by nmbarang");
 	}
-
+	
 	function q_mstkendaraanwil($param1){
 		return $this->db->query("select * from sc_mst.mbarang where left(kdgroup,3)='KDN' $param1  order by nmbarang");
 	}
-
+	
 	function q_mstkantor(){
 		return $this->db->query("select * from sc_mst.kantorwilayah order by desc_cabang asc");
 	}
@@ -64,7 +54,7 @@ class M_arsipdokumen extends CI_Model{
     }
     function q_his_arsipdokumen($param){
 	    return $this->db->query("select * from (
-                                    select a.*,b.archives_name,b.archives_own,c.uraian as nmstatus,b.archives_id as arsip_asli from sc_his.archives_mst a
+                                    select a.*,b.archives_name,b.archives_own,c.uraian as nmstatus from sc_his.archives_mst a
                                     left outer join sc_mst.archives b on a.archives_id = b.docno
                                     left outer join sc_mst.trxtype c on a.status=c.kdtrx and c.jenistrx='STNKB'
                                     ) as x
@@ -73,7 +63,7 @@ class M_arsipdokumen extends CI_Model{
     }
     function q_tmp_arsipdokumen($param){
         return $this->db->query("select * from (
-                                    select a.*,b.archives_name,b.archives_own,c.uraian as nmstatus,b.archives_id as arsip_asli from sc_tmp.archives_mst a
+                                    select a.*,b.archives_name,b.archives_own,c.uraian as nmstatus from sc_tmp.archives_mst a
                                     left outer join sc_mst.archives b on a.archives_id = b.docno
                                     left outer join sc_mst.trxtype c on a.status=c.kdtrx and c.jenistrx='STNKB'
                                     ) as x
@@ -85,7 +75,7 @@ class M_arsipdokumen extends CI_Model{
         return $this->db->query("insert into sc_tmp.archives_mst
                                     (docno,docdate,docref,archives_id,archives_number,archives_exp,old_archives_number,old_archives_exp,namapengurus,contactpengurus,
                                     ttlvalue,description,status,inputdate,inputby,updatedate,updateby,approvaldate,approvalby,nodoktmp)
-                                    (select '$nama',to_char(now(),'yyyy-mm-dd hh24:mi:ss')::timestamp,'' as docref,docno as archives_id,archives_number,archives_exp,archives_number as old_archives_number,archives_exp as old_archives_exp,namapengurus,contactpengurus,
+                                    (select '$nama',to_char(now(),'yyyy-mm-dd hh24:mi:ss')::timestamp,'' as docref,docno as archives_id,archives_number,archives_exp,archives_number as old_archives_number,null as old_archives_exp,namapengurus,contactpengurus,
                                     ttlvalue,'' as description,'I' as status,to_char(now(),'yyyy-mm-dd hh24:mi:ss')::timestamp,'$nama',null,null,null as approvaldate,null as approvalby,null as nodoktmp
                                     from sc_mst.archives where docno is not null $paraminput)
                                 ");

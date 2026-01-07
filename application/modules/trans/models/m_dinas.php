@@ -21,7 +21,7 @@ class M_dinas extends CI_Model{
 								");
 	}
 
-	function q_dinas_karyawan($tgl,$status,$nikatasan){
+	function q_dinas_karyawan_old($tgl,$status,$nikatasan){
 		return $this->db->query(" 
         select *,
            CASE
@@ -62,6 +62,82 @@ class M_dinas extends CI_Model{
 								where to_char(a.tgl_mulai, 'mmYYYY')='$tgl' and a.status $status)
 								as x1 $nikatasan
 								order by tgl_dok desc");
+	}
+	
+	function q_dinas_karyawan($tgl,$status,$nikatasan){
+		return $this->db->query(" 
+            SELECT
+                x1.nodok,
+                x1.nik,
+                x1.nmlengkap,
+                x1.nmdept,
+                x1.nohp1,
+                x1.tgl_mulai,
+                x1.tgl_selesai,
+                x1.keperluan,
+                x1.tgl_dok,
+                COALESCE(x1.destination_text, x1.tujuan_kota)           AS namakotakab,
+                COALESCE(x1.jenis_tujuan, 'LL')                          AS jenis_tujuan,
+                x1.status,
+                x1.status_text AS status1,
+                x1.status_text,
+                EXISTS (
+                    SELECT 1
+                    FROM sc_trx.cashbon cb
+                    WHERE cb.dutieid = x1.nodok
+                      AND cb.status = 'P'
+                ) AS casboned,
+                EXISTS (
+                    SELECT 1
+                    FROM sc_trx.declaration_cashbon dc
+                    WHERE dc.dutieid = x1.nodok
+                      AND dc.status = 'P'
+                ) AS declared
+            FROM (
+                     SELECT
+                         a.nodok,
+                         a.nik,
+                         a.tujuan_kota,
+                         a.jenis_tujuan,
+                         a.status,
+                         a.tgl_mulai,
+                         a.tgl_selesai,
+                         a.tgl_dok,
+                         b.nmlengkap,
+                         a.keperluan,
+                         b.nohp1,
+                         c.nmdept,
+                         g.destination_text,
+                         CASE a.status
+                             WHEN 'A' THEN 'PERLU PERSETUJUAN'
+                             WHEN 'C' THEN 'DIBATALKAN'
+                             WHEN 'I' THEN 'INPUT'
+                             WHEN 'D' THEN 'DIHAPUS'
+                             WHEN 'P' THEN 'DISETUJUI / PRINT'
+                             END AS status_text
+                     FROM sc_trx.dinas a
+                              LEFT JOIN sc_mst.karyawan  b ON b.nik = a.nik
+                              LEFT JOIN sc_mst.departmen c ON c.kddept = b.bag_dept
+                              LEFT JOIN (
+                         SELECT
+                             aa.nodok,
+                             string_agg(aa.namakotakab, ', ' ORDER BY aa.namakotakab) AS destination_text
+                         FROM (
+                                  SELECT
+                                      d.nodok,
+                                      k.namakotakab
+                                  FROM sc_trx.dinas d
+                                           JOIN LATERAL unnest(string_to_array(d.tujuan_kota, ',')) AS kota(kode) ON TRUE
+                                           LEFT JOIN sc_mst.kotakab k ON k.kodekotakab = kota.kode
+                              ) aa
+                         GROUP BY aa.nodok
+                     ) g ON g.nodok = a.nodok
+                     WHERE
+                         a.status $status
+                         AND to_char(a.tgl_mulai, 'mmYYYY') = '$tgl'
+                 ) x1 $nikatasan
+            ORDER BY x1.tgl_dok DESC
+        ");
 	}
 
 

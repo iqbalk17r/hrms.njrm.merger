@@ -50,6 +50,7 @@ class Uang_makan extends MX_Controller
         $data['tgl'] = $this->input->post('tgl');
         $data['tgl1'] = $awal;
         $data['tgl2'] = $akhir;
+		//var_dump($data);
         $this->db->trans_start();
 
         /*if ($callplan == "t") {
@@ -66,10 +67,10 @@ class Uang_makan extends MX_Controller
 
         $cabang_regu = ['01','02','03','04','05','06','07','08','09','10','11','12'];
         if (in_array($kdcabang, $cabang_regu, true)) {
-            $data['list_um'] = $this->m_uang_makan->q_uangmakan_regu_njrm($kdcabang, $awal, $akhir, $callplan, $borong)->result();
+            $data['list_um'] = $this->m_uang_makan->q_uangmakan_regu_old($kdcabang, $awal, $akhir, $callplan, $borong)->result();
             $this->db->trans_commit();
         } else {
-            $data['list_um'] = $this->m_uang_makan->q_uangmakan_regu($kdcabang, $awal, $akhir, $callplan, $borong)->result();
+            $data['list_um'] = $this->m_uang_makan->q_uangmakan_regu_old($kdcabang, $awal, $akhir, $callplan, $borong)->result();
             $this->db->trans_commit();
         }
 

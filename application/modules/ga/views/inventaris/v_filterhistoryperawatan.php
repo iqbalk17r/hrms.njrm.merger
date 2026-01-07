@@ -26,7 +26,7 @@
 </style>
 <legend><?php echo $title;?></legend>
 				<div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-6">
 						<div class="box">
 							<div class="box-header">
 								<div class="col-xs-12">
@@ -36,18 +36,28 @@
                             <div class="box-body">
 								<div class="form-horizontal">
 									<form action="<?php echo site_url('ga/inventaris/history_perawatan');?>" name="form" role="form" method="post">										
-										<div class="form-group">
-										 <label class="col-lg-3">Periode Servis Barang</label>
-											<div class="col-lg-9">
-												<div class="input-group">
-													<div class="input-group-addon">
-														<i class="fa fa-calendar"></i>
-													</div>
-													<input type="text" id="tgl" name="tgl"  class="form-control pull-right" required>
-												</div><!-- /.input group -->
-											</div>
-										</div>
-										
+                            <div class="form-group">
+                             <label class="col-lg-3">Periode Servis Barang</label>
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" id="tgl" name="tgl"  class="form-control pull-right" >
+                                    </div><!-- /.input group -->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3">Periode Tanggal Input</label>
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" id="tglinput" name="tglinput"  class="form-control pull-right" >
+                                    </div><!-- /.input group -->
+                                </div>
+                            </div>
 							
 							<div class="form-group ">
 								<label class="col-sm-3" for="inputsm">Kode Group Asset</label>	
@@ -248,14 +258,14 @@ $(function() {
 			});
 </script>		
 										
-										<!-- <div class="form-group" >
+										<div class="form-group">
 											<label class="col-lg-3">NIK & KARYAWAN</label>	
 											<div class="col-sm-9">  
 												<select name="nik" class="form-control input-sm ch" placeholder="---KETIK NIK / NAMA KARYAWAN--" id="nik">
 													<option value="" class=""></option>
 												</select>
 											</div>
-										</div> -->
+										</div>
 <script type="text/javascript">
 $(function() {				 
 	 var totalCount, 
@@ -322,7 +332,120 @@ $(function() {
 							</div>
 						</div>
 					</div>
+					<div class="col-xs-6">
+						<div class="box">
+							<div class="box-header">
+								<div class="col-xs-12">
+									<h4>DOWNLOAD EXCEL HISTORY PERAWATAN</h4>
+								</div>
+							</div>
+                            <div class="box-body">
+								<div class="form-horizontal">
+									<form action="<?php echo site_url('ga/inventaris/excel_history_perawatan');?>" name="form" role="form" method="post">										
+										<div class="form-group">
+										 <label class="col-lg-3">Periode Servis Barang</label>
+											<div class="col-lg-9">
+												<div class="input-group">
+													<div class="input-group-addon">
+														<i class="fa fa-calendar"></i>
+													</div>
+													<input type="text" id="tgl1" name="tgl"  class="form-control pull-right tgl" >
+												</div><!-- /.input group -->
+											</div>
+										</div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3">Periode Tanggal Input</label>
+                                            <div class="col-lg-9">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+                                                    <input type="text" id="tglinput" name="tglinput"  class="form-control pull-right tgl" >
+                                                </div><!-- /.input group -->
+                                            </div>
+                                        </div>
+										<div class="form-group ">
+												<label class="col-sm-3" for="inputsm">Kode Group Asset</label>	
+													<div class="col-sm-9">  
+													<select name="kdgroup" class="form-control input-sm ch" placeholder="---KETIK KODE GROUP/ NAMA GROUP---" id="kdgroup_2" required>
+														<option value="" class=""></option>
+													</select>
+													</div>
+										</div>
+										<div class="form-group"> 
+													<div class="col-lg-4">
+														<button type='submit' class='btn btn-success' ><i class="fa fa-download"></i> DOWNLOAD</button>
+													   <!-- <button id="tampilkan" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> Tampilkan</button>-->
+													</div>
+										</div>
+									</form>
+								</div>
+							</div>	
+									
+						</div>	
+<script type="text/javascript">
+$(function() {
+	 
+					 
+	 var totalCount, 
+        page, 
+        perPage = 4;				 
+	 ///$('[name=\'kdgroup\']').selectize({
+	 $('#kdgroup_2').selectize({
+        plugins: ['hide-arrow', 'selectable-placeholder', 'infinite-scroll'],
+        valueField: 'kdgroup',
+        labelField: 'nmgroup',
+        searchField: ['kdgroup', 'nmgroup'],
+        options: [],
+        create: false,
+        render: {
+            option: function(item, escape) {
+                return '' +
+                 '<div class=\'row\'>' +
+                    '<div class=\'col-xs-2 col-md-2 text-nowrap\'>' + escape(item.kdgroup) + '</div>' +
+                    '<div class=\'col-xs-5 col-md-5 text-nowrap\'>' + escape(item.nmgroup) + '</div>' +
+                  '</div>' +
+                 '';
+            }
+        },
+        load: function(query, callback) {
+            query = JSON.parse(query);
+            page = query.page || 1;
+        
+            if( ! totalCount || totalCount > ( (page - 1) * perPage) ){
+            $.post(base('ga/instock/add_stock_ajax_kdgroup'), {
+                _search_: query.search,
+                _perpage_: perPage,
+                _page_: page,
+				_paramkdgroupmodul_: " and kdgroup in ('KDN') "
+            })
+            .done(function(json) {
+                  console.log('JSON Data: ' + JSON.stringify(json, null, '\t'));
+                  totalCount = json.totalcount;
+                  callback(json.group);
+            })
+            .fail(function( jqxhr, textStatus, error ) {
+                  callback();
+            });
+            } else {
+                callback();
+            }
+        }
+    }).on('change click', function() {
+        console.log('kdgroup_2 >> on.change');
+        console.log('kdsubgroup >> clear');
+		//$('[name=\'kdsubgroup\']')[0].selectize.clearOptions();
+        $('#kdsubgroup')[0].selectize.clearOptions();
+    });
+					 
+					 
+			});
+</script>			
+					
+					
+					</div>
 				</div>
+		</div>
 		
 	
 
@@ -333,6 +456,8 @@ $(function() {
 	
 	//Date range picker
     $('#tgl').daterangepicker();
+    $('#tglinput').daterangepicker();
+    $('.tgl').daterangepicker();
 
   
 

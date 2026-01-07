@@ -49,7 +49,7 @@
 		<!--/div-->
 	</div><!-- /.box-header -->
 </div>	
-<div>
+
 
 <div class="row">
 	<!--div class="col-sm-3">
@@ -125,7 +125,7 @@
 												
 												
 											<?php } else { ?>
-												<a href="<?php echo site_url('ga/inventaris/inputspk_view/'.trim($row->nodok));?>" class="btn btn-primary  btn-sm">
+												<a href="<?php echo site_url('ga/inventaris/inputspk_view/'.$this->fiky_encryption->enkript(trim($row->nodok)));?>" class="btn btn-primary  btn-sm">
 														<i class="fa fa-edit"></i> INPUT SPK</a>
 											
 												<!--a href="<?php echo site_url('ga/inventaris/inputspk_view/'.trim($row->nodok).'/'.$kdcabang.'/'.$tgl);?>" class="btn btn-primary  btn-sm">

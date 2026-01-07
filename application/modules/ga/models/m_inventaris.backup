@@ -294,12 +294,15 @@ class M_inventaris extends CI_Model{
 	
 	function q_master_branch(){
 		return $this->db->query("select 
-								coalesce(branch    ,'')::text as branch      ,
-								coalesce(branchname,'')::text as branchname  ,
-								coalesce(address   ,'')::text as address     ,
-								coalesce(phone1    ,'')::text as phone1      ,
-								coalesce(phone2    ,'')::text as phone2      ,
-								coalesce(fax       ,'')::text as fax from sc_mst.branch where branch='MJKCNI'");
+                                        coalesce(trim(branch	::text),'') as 	branch		,
+                                        coalesce(trim(branchname::text),'') as 	branchname	,
+                                        coalesce(trim(address	::text),'') as 	address		,
+                                        coalesce(trim(phone1	::text),'') as 	phone1		,
+                                        coalesce(trim(phone2	::text),'') as 	phone2		,
+                                        coalesce(trim(fax		::text),'') as 	fax			,
+                                        coalesce(trim(cdefault  ::text),'') as  cdefault  
+                                        from sc_mst.branch where cdefault='YES'
+");
 	}
 	
 	private function _get_query_perawatanspk()
@@ -599,5 +602,16 @@ class M_inventaris extends CI_Model{
 								select branch,satkecil,satminta,kdgroup,kdsubgroup,stockcode from sc_trx.po_dtlref where coalesce(satkecil,'')<>'' and coalesce(satminta,'')<>'' group by branch,satkecil,satminta,kdgroup,kdsubgroup,stockcode) as x
 								group by branch,satkecil,satminta,kdgroup,kdsubgroup,stockcode))");
 	}
+
+    function q_excel_history_perawatan($param){
+        return $this->db->query("select * from (
+								select d.nmbarang,d.nopol,d.tahunpembuatan,a.nodok as nomorspk,trim(a.idfaktur) as nomorfaktur,to_char(b.tgl,'DD-MM-YYYY') as tgl_perawatan,c.km_awal,c.km_akhir,trim(a.keterangan) as keterangan,a.nservis,b.tgl,d.kdgroup from sc_his.perawatan_detail_lampiran a
+								left outer join sc_his.perawatan_mst_lampiran b on a.nodok=b.nodok
+								left outer join sc_his.perawatanspk c on a.nodok=c.nodok
+								left outer join sc_mst.mbarang d on c.stockcode=d.nodok ) as x
+								where nomorspk is not null --$param
+								order by nmbarang,nopol,tgl
+								");
+    }
 
 }	

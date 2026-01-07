@@ -1,13 +1,9 @@
 <?php
 /*
- * Created by PhpStorm.
- *  * User: FIKY-PC
- *  * Date: 11/6/20, 10:46 AM
- *  * Last Modified: 8/2/18, 2:47 PM.
- *  Developed By: Fiky Ashariza Powered By PhpStorm
- *  Copyright© 2020 .All rights reserved.
- *
- */
+	@author : Junis
+	02-12-2015
+*/
+//error_reporting(0);
 
 class Indoc extends MX_Controller{
     

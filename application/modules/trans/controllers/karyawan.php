@@ -353,7 +353,7 @@ class Karyawan extends MX_Controller {
         /* END CODE UNTUK VERSI */
 
         $data["dtl"] = $this->m_karyawan->get_by_id($id)->row_array();
-        var_dump($data["dtl"]);
+       // var_dump($data["dtl"]);
         $this->template->display("trans/karyawan/v_editkary", $data);
     }
 

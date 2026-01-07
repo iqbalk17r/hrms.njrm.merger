@@ -254,7 +254,7 @@ class Stspeg extends MX_Controller{
         $allemployee = $this->M_Employee->q_mst_read_where()->result();
         foreach ($allemployee as $row) {
             foreach ($this->m_stspeg->q_transaction_read(' TRUE AND TRIM(nik) = \'' . trim($row->nik) . '\' AND status is null  ')->result() as $doc) {
-				$max = $this->m_stspeg->q_transaction_read_where(' AND nik = \''.trim($row->nik).'\'  ORDER BY ko,tgl_selesai DESC LIMIT 1 ')->row();
+				$max = $this->m_stspeg->q_transaction_read_where(' AND nik = \''.trim($row->nik).'\'  ORDER BY tgl_selesai DESC LIMIT 1 ')->row();
                         if ($max->tgl_selesai == $doc->tgl_selesai){
 													
 						$this->m_stspeg->q_transaction_update(array(

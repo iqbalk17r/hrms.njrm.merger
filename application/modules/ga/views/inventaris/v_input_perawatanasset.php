@@ -35,24 +35,24 @@
 				$("#example2").dataTable();
 				$("#example3").dataTable();
 				$("#example4").dataTable();
-				//$("#kdsubgroup").chained("#kdgroup");	
-				//$("#stockcode").chained("#kdsubgroup");	
-				//$("#userpakai").chained("#stockcode");	
-				//$(".stockcode").chained(".kdgroup");	
+				//$("#kdsubgroup").chained("#kdgroup");
+				//$("#stockcode").chained("#kdsubgroup");
+				//$("#userpakai").chained("#stockcode");
+				//$(".stockcode").chained(".kdgroup");
 				//$(".userpakai").chained(".stockcode");
 				$(".pengguna").hide();
-			//	$("#tglrange").daterangepicker(); 
-			
+			//	$("#tglrange").daterangepicker();
+
 			$("#usermohon").selectize();
-	/*		
+	/*
 			$('.pengguna').hide();
 			$('#userpakai').change(function(){
 												$('.pengguna').hide();
-												
+
 												if ($(this).val() != '' || $(this).val() != null) {
-													$('.pengguna').show(); 
+													$('.pengguna').show();
 												}
-											
+
 											});*/
             });
 
@@ -64,10 +64,10 @@
 
 
 <legend><?php echo $title;?></legend>
-	
-                         
+
+
 <div class="row">
-	<div class="col-xs-12">                            
+	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-content">
 	  <div class="box-header">
@@ -77,59 +77,59 @@
 	  <div class="box-body">
 		<form role="form" action="<?php echo site_url('ga/inventaris/input_perawatanasset');?>" method="post">
 		<div class='row'>
-			<div class='col-sm-6'>	
-			 
+			<div class='col-sm-6'>
+
 				<input type="hidden" class="form-control input-sm" id="type" name="type" value="INPUT">
 <?php /*
 				<div class="form-group">
-				<label for="inputsm">Kode Group Barang</label>	
+				<label for="inputsm">Kode Group Barang</label>
 					<select class="form-control input-sm" name="kdgroup" id="kdgroup" required>
-					 <option value="">---PILIH KODE GROUP--</option> 
-					  <?php foreach($list_scgroup as $sc){?>					  
-					  <option value="<?php echo trim($sc->kdgroup);?>" ><?php echo trim($sc->kdgroup).' || '.trim($sc->nmgroup);?></option>						  
+					 <option value="">---PILIH KODE GROUP--</option>
+					  <?php foreach($list_scgroup as $sc){?>
+					  <option value="<?php echo trim($sc->kdgroup);?>" ><?php echo trim($sc->kdgroup).' || '.trim($sc->nmgroup);?></option>
 					  <?php }?>
 					</select>
 			</div>
 			<div class="form-group">
-				<label for="inputsm">Kode Sub Group Barang</label>	
+				<label for="inputsm">Kode Sub Group Barang</label>
 					<select class="form-control input-sm " name="kdsubgroup" id="kdsubgroup" required>
-					 <option  value="">---PILIH KODE SUB GROUP--</option> 
-					  <?php foreach($list_scsubgroup as $sc){?>					  
-					  <option value="<?php echo trim($sc->kdsubgroup);?>"  class="<?php echo trim($sc->kdgroup);?>" ><?php echo trim($sc->kdsubgroup).' || '.trim($sc->nmsubgroup);?></option>						  
+					 <option  value="">---PILIH KODE SUB GROUP--</option>
+					  <?php foreach($list_scsubgroup as $sc){?>
+					  <option value="<?php echo trim($sc->kdsubgroup);?>"  class="<?php echo trim($sc->kdgroup);?>" ><?php echo trim($sc->kdsubgroup).' || '.trim($sc->nmsubgroup);?></option>
 					  <?php }?>
 					</select>
 			</div>
 			<div class="form-group">
-				<label for="inputsm">Pilih Barang</label>	
+				<label for="inputsm">Pilih Barang</label>
 					<select class="form-control input-sm" name="stockcode" id="stockcode" required>
-					 <option value="">---PILIH KODE BARANG--</option> 
-					  <?php foreach($list_barang as $sc){?>					  
-					  <option value="<?php echo trim($sc->nodok);?>"  class="<?php echo trim($sc->kdsubgroup);?>" ><?php echo trim($sc->nodok).' || '.trim($sc->nmbarang).' || '.trim($sc->nopol);?></option>						  
+					 <option value="">---PILIH KODE BARANG--</option>
+					  <?php foreach($list_barang as $sc){?>
+					  <option value="<?php echo trim($sc->nodok);?>"  class="<?php echo trim($sc->kdsubgroup);?>" ><?php echo trim($sc->nodok).' || '.trim($sc->nmbarang).' || '.trim($sc->nopol);?></option>
 					  <?php }?>
 					</select>
 			</div>
-*/ ?>			
+*/ ?>
 			 <!--div class="form-group">
 				<label for="inputsm">Input Deskripsi Barang</label>
 				<input type="text" class="form-control input-sm" id="descbarang" style="text-transform:uppercase" name="descbarang" placeholder="Deskripsi Barang"  maxlength="30" required>
 			</div--->
 
 							<div class="form-group">
-									<label for="inputsm">Kode Group Barang</label>	
-									 
+									<label for="inputsm">Kode Group Barang</label>
+
                                     <select name="kdgroup" class="form-control input-sm ch" placeholder="---KETIK KODE / NAMA GROUP---" id="kdgroup_inp">
                                         <option value="" class=""></option>
                                     </select>
-									
+
 							</div>
-							
+
 <script type="text/javascript">
 $(function() {
-	 
-					 
-	 var totalCount, 
-        page, 
-        perPage = 7;				 
+
+
+	 var totalCount,
+        page,
+        perPage = 7;
 	 ///$('[name=\'kdgroup_inp\']').selectize({
 	 $('#kdgroup_inp').selectize({
         plugins: ['hide-arrow', 'selectable-placeholder', 'infinite-scroll'],
@@ -151,7 +151,7 @@ $(function() {
         load: function(query, callback) {
             query = JSON.parse(query);
             page = query.page || 1;
-        
+
             if( ! totalCount || totalCount > ( (page - 1) * perPage) ){
             $.post(base('ga/instock/add_stock_ajax_kdgroup'), {
                 _search_: query.search,
@@ -177,23 +177,23 @@ $(function() {
 		//$('[name=\'kdsubgroup_inp\']')[0].selectize.clearOptions();
         $('#kdsubgroup_inp')[0].selectize.clearOptions();
     });
-					 
-					 
+
+
 			});
 </script>
 							<div class="form-group">
-								<label for="inputsm">Kode Sub Group Barang</label>	
-									 
+								<label for="inputsm">Kode Sub Group Barang</label>
+
                                     <select name="kdsubgroup" class="form-control input-sm ch" placeholder="---KETIK / NAMA SUB GROUP---" id="kdsubgroup_inp">
                                         <option value="" class=""></option>
                                     </select>
-									
+
 							</div>
 <script type="text/javascript">
-$(function() {				 
-	 var totalCount, 
-        page, 
-        perPage = 7;				 
+$(function() {
+	 var totalCount,
+        page,
+        perPage = 7;
 	/// $('[name=\'kdsubgroup_inp\']').selectize({
 	 $('#kdsubgroup_inp').selectize({
         plugins: ['hide-arrow', 'selectable-placeholder', 'infinite-scroll'],
@@ -215,7 +215,7 @@ $(function() {
         load: function(query, callback) {
             query = JSON.parse(query);
             page = query.page || 1;
-        
+
             if( ! totalCount || totalCount > ( (page - 1) * perPage) ){
             $.post(base('ga/instock/add_stock_ajax_kdsubgroup'), {
                 _search_: query.search,
@@ -243,23 +243,23 @@ $(function() {
         //$('[name=\'kdgroup_inp\']')[0].selectize.clearOptions();
         $('#kdbarang_inp')[0].selectize.clearOptions();
     });
-					 
-					 
+
+
 			});
-</script>							
+</script>
 							<div class="form-group">
-								<label for="inputsm">Kode Barang</label>	
-									
+								<label for="inputsm">Kode Barang</label>
+
                                     <select name="stockcode" class="form-control input-sm ch" placeholder="---KETIK / NAMA BARANG--" id="kdbarang_inp">
                                         <option value="" class=""></option>
                                     </select>
-									
+
 							</div>
 <script type="text/javascript">
-$(function() {				 
-	 var totalCount, 
-        page, 
-        perPage = 7;				 
+$(function() {
+	 var totalCount,
+        page,
+        perPage = 7;
 	//$('[name=\'kdbarang_inp\']').selectize({
 
 	$('#kdbarang_inp').selectize({
@@ -305,42 +305,66 @@ $(function() {
                 callback();
             }
         }
+    })
+	.on('change', function() {
+        //console.log('_officeid_ >> on.change');
+        //console.log('kdgroup_inp >> clear');
+        //console.log($(this).val());
+        //console.log("<?php echo site_url('ga/inventaris/load_stock')?>" + "/"+ $(this).val());
+
+        $("#loadMe").modal({
+            backdrop: "static", //remove ability to close modal with click
+            keyboard: false, //remove option to close with keyboard
+            show: true //Display loader!
+        });
+        $.ajax({
+            url: "<?php echo site_url('ga/inventaris/load_stock')?>/"+ $(this).val(),
+            type: "POST",
+            dataType: "JSON",
+            success: function(data)
+            {
+                console.log(data.km_akhir);
+                $('[name=\'km_awal\']').val(data.km_akhir);
+                $("#loadMe").modal("hide");
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert('Error get data from ajax');
+                $("#loadMe").modal("hide");
+            }
+        });
+
     });
-	/*.on('change', function() {
-        console.log('_officeid_ >> on.change');
-        console.log('kdgroup_inp >> clear');
-        $('[name=\'kdgroup_inp\']')[0].selectize.clearOptions();
-    }); */
-					 
-					 
+
+
 			});
-</script>				
-			
+</script>
+
 			<!--div class="form-group pengguna">
-				<label for="inputsm">Karyawan Pengguna</label>	
+				<label for="inputsm">Karyawan Pengguna</label>
 					<select class="form-control input-sm" name="userpakai" id="userpakai" readonly disabled>
-					  <?php foreach($list_karyawanbarang as $sc){?>					  
-					  <option value="<?php echo trim($sc->nik);?>"  class="<?php echo trim($sc->nodok);?>" ><?php echo trim($sc->nik).' || '.trim($sc->nmlengkap);?></option>						  
+					  <?php foreach($list_karyawanbarang as $sc){?>
+					  <option value="<?php echo trim($sc->nik);?>"  class="<?php echo trim($sc->nodok);?>" ><?php echo trim($sc->nik).' || '.trim($sc->nmlengkap);?></option>
 					  <?php }?>
 					</select>
 			</div--->
-			
+
 			<div class="form-group">
-				<label for="inputsm">Pilih Karyawan Pemohon Perawatan</label>	
+				<label for="inputsm">Pilih Karyawan Pemohon Perawatan</label>
 					<select class="form-control input-sm" name="usermohon" id="usermohon" required>
-					 <option value="">---PILIH KARYAWAN PEMOHON--</option> 
-					  <?php foreach($list_karyawanparam as $sc){?>					  
-					  <option value="<?php echo trim($sc->nik);?>"><?php echo trim($sc->nik).' || '.trim($sc->nmlengkap);?></option>						  
+					 <option value="">---PILIH KARYAWAN PEMOHON--</option>
+					  <?php foreach($list_karyawanparam as $sc){?>
+					  <option value="<?php echo trim($sc->nik);?>"><?php echo trim($sc->nik).' || '.trim($sc->nmlengkap);?></option>
 					  <?php }?>
 					</select>
 			</div>
 			<div class="form-group">
-				<label for="inputsm">JENIS PERAWATAN</label>	
+				<label for="inputsm">JENIS PERAWATAN</label>
 					<select class="form-control input-sm" name="jnsperawatan" id="jnsperawatan"  required>
-					<option value="">---PILIH JENIS PERAWATAN--</option> 
-					<option value="BK"><?php echo 'BK'.' || '.'BERKALA';?></option>						  
-					<option value="IS"><?php echo 'IS'.' || '.'ISIDENTIL';?></option>						  
-					
+					<option value="">---PILIH JENIS PERAWATAN--</option>
+					<option value="BK"><?php echo 'BK'.' || '.'BERKALA';?></option>
+					<option value="IS"><?php echo 'IS'.' || '.'ISIDENTIL';?></option>
+
 					</select>
 			</div>
 			<div class="form-group">
@@ -355,11 +379,11 @@ $(function() {
 			</div>
 			<div class="form-group">
 				<label for="inputsm">KM Awal</label>
-				<input type="text" class="form-control input-sm" id="km_awal" name="km_awal"  placeholder="0" > <!--value=?php echo date('d-m-Y', strtotime(trim($ls->tglmasuk)));?-->
+				<input type="text" class="form-control input-sm ratakanan" id="km_awal" name="km_awal"  placeholder="0" > <!--value=?php echo date('d-m-Y', strtotime(trim($ls->tglmasuk)));?-->
 			</div>
 			<div class="form-group">
 				<label for="inputsm">KM Akhir</label>
-				<input type="text" class="form-control input-sm" id="km_akhir" name="km_akhir"  placeholder="0" > <!--value=?php echo date('d-m-Y', strtotime(trim($ls->tglmasuk)));?-->
+				<input type="text" class="form-control input-sm ratakanan" id="km_akhir" name="km_akhir"  placeholder="0" > <!--value=?php echo date('d-m-Y', strtotime(trim($ls->tglmasuk)));?-->
 			</div>
 			<div class="form-group">
 				<label for="inputsm">Penanganan Keluhan</label>
@@ -373,7 +397,7 @@ $(function() {
 				<label for="inputsm">Kondisi Setelah Penanganan</label>
 				<textarea  class="textarea" name="laporanksp" placeholder="Kondisi Setelah Penanganan"   maxlength ="159" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px ;"></textarea>
 			</div--->
-			</div> 
+			</div>
 		</div>
 		</div>
 		<div class="box-footer">
@@ -382,8 +406,8 @@ $(function() {
 		<button type="submit" class="btn btn-primary pull-right">Submit</button>
       </div>
 		</form>
-		
-		</div>  
+
+		</div>
 	</div><!-- /.box-body -->
 	</div><!-- /.box-body -->
 </div><!-- /.box-body -->
@@ -393,39 +417,18 @@ $(function() {
 
 <script>
 
-$(document).ready(function() {
-    $('#kdgroup_inp').on('change', function() {
-        var selectedGroup = $(this).val();
-        
-        if (selectedGroup === 'KDN') {
-            // Enable KM Awal and KM Akhir when "KDN" (KENDARAAN) is selected
-            $('#km_awal').prop('disabled', false);
-            $('#km_akhir').prop('disabled', false);
-        } else {
-            // Disable KM Awal and KM Akhir for other values
-            $('#km_awal').prop('disabled', true);
-            $('#km_akhir').prop('disabled', true);
-            // Optionally, clear the values in KM Awal and KM Akhir
-            $('#km_awal').val('');
-            $('#km_akhir').val('');
-        }
-    });
-
-    // Trigger the change event on page load to set initial state
-    $('#kdgroup_inp').trigger('change');
-});
 
 
-	
+
 	//Date range picker
-    	$("#tgl").datepicker(); 
-    	$(".tgl").datepicker(); 
-    	$(".tglan").datepicker(); 
+    	$("#tgl").datepicker();
+    	$(".tgl").datepicker();
+    	$(".tglan").datepicker();
 				$('.year').datepicker({
 					format: " yyyy",
-					viewMode: "years", 
+					viewMode: "years",
 					minViewMode: "years"
-				
+
 				});
 
 </script>

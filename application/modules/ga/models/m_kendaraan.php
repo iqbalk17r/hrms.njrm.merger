@@ -17,26 +17,20 @@ class M_kendaraan extends CI_Model{
         return $this->db->query("select * from sc_mst.msubgroup where left(kdgroup,3)='KDN' order by nmsubgroup");
     }
 
-    function q_mstkendaraan() {
-        return $this->db->query("
-            SELECT a.*, b.locaname
+    function q_mstkendaraan(){
+        return $this->db->query("SELECT a.*, b.locaname
             FROM sc_mst.mbarang a
             LEFT OUTER JOIN sc_mst.mgudang b ON a.kdgudang = b.loccode
             WHERE LEFT(a.kdgroup, 3) = 'KDN' 
-            AND (a.expstnkb - INTERVAL '1 MONTH' <= NOW() OR a.exppkbstnkb - INTERVAL '1 MONTH' <= NOW()) AND a.hold_item = 'NO'
-            ORDER BY nmbarang
-        ");
+            AND (a.expstnkb - INTERVAL '1 MONTH' <= NOW() OR a.exppkbstnkb - INTERVAL '1 MONTH' <= NOW()) AND a.hold_item = 'NO'");
     }
 	
-	function q_masterkendaraan() {
-        return $this->db->query("
-            SELECT a.*, b.locaname
+	function q_masterkendaraan(){
+        return $this->db->query("SELECT a.*, b.locaname
             FROM sc_mst.mbarang a
             LEFT OUTER JOIN sc_mst.mgudang b ON a.kdgudang = b.loccode
             WHERE LEFT(a.kdgroup, 3) = 'KDN' 
-            AND a.hold_item = 'NO'
-            ORDER BY nmbarang
-        ");
+			");
     }
 	
 	function q_kirkendaraan() {
@@ -44,7 +38,7 @@ class M_kendaraan extends CI_Model{
             select a.*,b.nmbarang,b.nopol,b.jenisid,b.modelid,b.tahunpembuatan,b.nodok,b.hold_item,c.locaname from sc_his.kir_mst a
 			left outer join sc_mst.mbarang b on b.nodok=a.stockcode
 			LEFT OUTER JOIN sc_mst.mgudang c ON b.kdgudang = c.loccode
-            where to_char(a.expkir,'YYYYMM') between to_char(now() - interval '2 Months','YYYYMM') and  to_char(now() + interval '2 Months','YYYYMM') AND b.hold_item = 'NO'
+            where to_char(a.expkir,'YYYYMM') between to_char(now() - interval '15 days','YYYYMMDD') and  to_char(now() + interval '15 days','YYYYMMDD') AND b.hold_item = 'NO'
             ORDER BY nmbarang
         ");
     }
@@ -274,72 +268,13 @@ class M_kendaraan extends CI_Model{
 									SC_HIS.STNKB a left outer join sc_mst.mbarang b on a.kdrangka=b.nodok) as x
 									WHERE tanggal IS NOT NULL $param order by tanggal asc");
     }
-
-    function q_master_read_where($clause = null){
-        return $this->db->query($this->q_master_txt_where($clause));
-    }
-    function q_master_txt_where($clause = null){
-        return sprintf(<<<'SQL'
-select * from(
-     select
-         a.branch,
-         trim(a.nodok) AS id,
-         trim(a.nodok) AS nodok,
-         trim(a.nodokref) AS nodokref,
-         a.nmbarang AS vehicle_name,
-         a.nmbarang,
-         a.kdgroup,
-         a.kdsubgroup,
-         a.kdgudang,
-         a.nmpemilik,
-         a.addpemilik,
-         a.kdasuransi,
-         a.kdrangka,
-         a.kdmesin,
-         a.nopol,
-         a.nopol AS police_number,
-         a.hppemilik,
-         a.typeid,
-         a.jenisid,
-         a.modelid,
-         a.tahunpembuatan,
-         a.silinder,
-         a.warna,
-         a.bahanbakar,
-         a.warnatnkb,
-         a.tahunreg,
-         a.nobpkb,
-         a.kdlokasi,
-         a.expstnkb,
-         a.exppkbstnkb,
-         a.nopkb,
-         a.nominalpkb,
-         a.pprogresif,
-         a.brand,
-         a.hold_item,
-         a.qty,
-         a.expasuransi,
-         coalesce(trim(a.userpakai),'-') AS userpakai,
-         coalesce(b.nmlengkap,'-') AS nmlengkap,
-         a.startpakai,
-         a.endpakai,
-         a.keterangan,
-         a.inputdate,
-         a.inputby,
-         a.updatedate,
-         a.updateby,
-         a.docujikir,
-         a.expkir,
-         a.lastkmh,
-         a.ujikir,
-         a.asuransi
-     from sc_mst.mbarang a
-        LEFT OUTER JOIN sc_mst.karyawan b ON a.userpakai = b.nik
-     WHERE TRUE
-       AND a.kdgroup = 'KDN'
- ) a
-WHERE TRUE
-SQL
-            ).$clause;
-    }
+	
+	function q_excel_mstkendaraan(){
+        return $this->db->query("SELECT A.NOPOL,NMPEMILIK,BRAND,TAHUNPEMBUATAN,KDRANGKA,KDMESIN,TO_CHAR(EXPSTNKB,'DD-MM-YYYY') AS MASABERLAKUSTNK,TO_CHAR(EXPPKBSTNKB,'DD-MM-YYYY') AS MASABERLAKUPAJAK,LOCANAME,NMLENGKAP
+								from sc_mst.mbarang a
+								left outer join sc_mst.mgudang b on a.kdgudang=b.loccode
+								LEFT OUTER JOIN SC_MST.KARYAWAN C ON A.USERPAKAI=C.NIK
+								where left(a.kdgroup,3)='KDN'  order by nmbarang");
+	}
+	
 }	

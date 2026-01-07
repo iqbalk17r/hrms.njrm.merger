@@ -1,0 +1,1 @@
+ER TABLE sc_trx.meal_allowance ALTER COLUMN nik TYPE bpchar(20) USING nik::bpchar(20);

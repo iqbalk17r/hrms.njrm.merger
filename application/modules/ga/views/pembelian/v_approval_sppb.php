@@ -431,7 +431,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4">Quantity Permintaan</label>
                                     <div class="col-sm-8">
-                                        <input type="number" id="qtysppbminta" name="qtysppbminta" min="1"   value="<?php echo trim($lb->qtysppbminta);?>"    placeholder="0" class="form-control" required >
+                                        <input type="number" id="qtysppbminta" name="qtysppbminta"   value="<?php echo trim($lb->qtysppbminta);?>"    placeholder="0" class="form-control" required >
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -653,7 +653,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4">Quantity Permintaan</label>
                                     <div class="col-sm-8">
-                                        <input type="number" id="qtysppbminta" name="qtysppbminta" min="1"   value="<?php echo trim($lb->qtysppbminta);?>"    placeholder="0" class="form-control" required >
+                                        <input type="number" id="qtysppbminta" name="qtysppbminta"   value="<?php echo trim($lb->qtysppbminta);?>"    placeholder="0" class="form-control" required >
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -870,7 +870,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4">Quantity Permintaan</label>
                                     <div class="col-sm-8">
-                                        <input type="number" id="qtysppbminta" name="qtysppbminta" min="1"   value="<?php echo trim($lb->qtysppbminta);?>"    placeholder="0" class="form-control" required >
+                                        <input type="number" id="qtysppbminta" name="qtysppbminta"   value="<?php echo trim($lb->qtysppbminta);?>"    placeholder="0" class="form-control" required >
                                     </div>
                                 </div>
                                 <div class="form-group">

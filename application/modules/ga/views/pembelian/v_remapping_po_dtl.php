@@ -147,12 +147,9 @@
 									<label class="col-sm-4">PPN</label>
 									<span class="col-sm-6"> 
 									<!--input type="hidden" id="pkp" value="<!?php echo trim($po_mst['pkp']); ?>" name="pkp" readonly-->
-									<select class="form-control col-sm-12 cal"  id="checkppn"   name="pkp" readonly>
-										<?php if (trim($po_mst['pkp'])=='NO') { ?>
-											<option  <?php if (trim($po_mst['pkp'])=='NO') { echo 'selected';}?>  value="NO"> NO </option>
-										<?php }else{ ?>
-											<option  <?php if (trim($po_mst['pkp'])=='YES') { echo 'selected';}?>  value="YES"> YES </option>
-										<?php } ?>
+									<select class="form-control col-sm-12 cal"  id="checkppn"   name="pkp">
+									 <option  <?php if (trim($po_dtl['pkp'])=='NO') { echo 'selected';}?>  value="NO"> NO  </option>
+									 <option  <?php if (trim($po_dtl['pkp'])=='YES') { echo 'selected';}?>  value="YES">  YES  </option>
 									</select>
 									</span>
 								</span>

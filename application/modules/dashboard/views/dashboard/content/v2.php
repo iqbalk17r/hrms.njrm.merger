@@ -693,9 +693,9 @@
                     }).then(function() {});
                 });
         }
-        getData();
+        // getData();
         setInterval(function() {
-            getData();
+            // getData();
         }, 1800000); // 30 minutes in milliseconds
     });
 
