@@ -1043,7 +1043,7 @@ class M_uang_makan extends CI_Model{
                 GROUPING(b.nmlengkap) AS group_nmlengkap, 
                 GROUPING(a.keterangan) AS group_keterangan
                 FROM sc_trx.uangmakan a 
-                LEFT JOIN sc_mst.karyawan b ON a.nik = b.nik
+                LEFT JOIN sc_mst.karyawan b ON trim(a.nik) = b.nik
                 LEFT JOIN sc_mst.departmen c ON b.bag_dept = c.kddept 
                 LEFT JOIN sc_mst.subdepartmen d ON b.bag_dept = d.kddept AND b.subbag_dept = d.kdsubdept 
                 LEFT JOIN sc_mst.jabatan e ON b.bag_dept = e.kddept AND b.jabatan = e.kdjabatan AND b.subbag_dept = e.kdsubdept
